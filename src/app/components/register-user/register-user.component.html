@@ -1,0 +1,50 @@
+
+<div >
+    <form class="form-box" [formGroup]="registerForm" action="process_form.php" method="post">
+
+        <label class="first-column" for="username">Username:</label>
+        <input class="second-column" type="text" id="username" formControlName="username"><br><br>
+        <div *ngIf="username?.invalid && (username?.dirty || username?.touched)">
+            <div class="errorMsg" *ngIf="username?.hasError('required')">Username is required</div>
+            <div class="errorMsg" *ngIf="username?.hasError('pattern')">Invalid character type</div>
+            <div class="errorMsg" *ngIf="username?.hasError('userExist')">This username already exist!</div>
+        </div>
+        <label class="first-column" for="password">Password:</label>
+        <input class="second-column" type="password" id="password" formControlName="password"><br><br>
+        <div *ngIf="password?.invalid && (password?.dirty || password?.touched)">
+            <div class="errorMsg" *ngIf="password?.hasError('required')">Password is required</div>
+            <div class="errorMsg" *ngIf="password?.hasError('userExist')">This username already exist!</div>
+        </div>
+
+        <label class="first-column" for="name">First name:</label>
+        <input class="second-column" type="text" id="name" formControlName="name"><br><br>
+        <div *ngIf="name?.invalid && (name?.dirty || name?.touched)">
+            <div class="errorMsg" *ngIf="name?.hasError('required')">First name is required</div>
+        </div>
+
+        <label class="first-column" for="lastname">Last Name:</label>
+        <input class="second-column" type="text" id="lastname" formControlName="lastname"><br><br>
+        <div *ngIf="lastname?.invalid && (lastname?.dirty || lastname?.touched)">
+            <div class="errorMsg" *ngIf="lastname?.hasError('required')">Lastname is required</div>
+        </div>
+
+        <label class="first-column" for="email">Email:</label>
+        <input class="second-column" type="email" id="email" formControlName="email"><br><br>
+        <div *ngIf="email?.invalid && (email?.dirty || email?.touched)">
+            <div class="errorMsg" *ngIf="email?.hasError('required')">Email is required</div>
+            <div class="errorMsg" *ngIf="email?.hasError('pattern')">Invalid email</div>
+            <div class="errorMsg" *ngIf="email?.hasError('userExist')">This email already exist!</div>
+        </div>
+
+        <label class="first-column" for="country">Country:</label>
+        <input class="second-column" type="text" id="country" formControlName="country"><br><br>
+        <div *ngIf="country?.invalid && (country?.dirty || country?.touched)">
+            <div class="errorMsg" *ngIf="country?.hasError('required')">Country is required</div>
+            <div class="errorMsg" *ngIf="country?.hasError('pattern')">Invalid character type</div>
+        </div>
+
+        <input class="submit-button" type="submit" value="Submit">
+
+        
+    </form>
+</div>

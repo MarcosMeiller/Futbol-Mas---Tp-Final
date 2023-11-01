@@ -1,0 +1,43 @@
+.form-box{
+    
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: -moz-fit-content;
+    width: fit-content;
+    background-color: rgb(66, 96, 231);
+    padding: 2rem;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    justify-items: stretch;
+    border-radius: 10px;
+}
+
+.first-column{
+    grid-column: 1;
+    color: gainsboro;
+}
+
+.second-column{
+    grid-column: 2;
+}
+
+.submit-button {
+    padding: 5px;
+    color: gainsboro;
+    border-radius: 10px;
+    border-color: aquamarine;
+    background-color: rgb(67, 133, 255);
+    border-width: 0;
+}
+
+input{
+    background-color: rgb(167, 183, 255);
+    border-width: 0px;
+    border-radius: 10px;
+    padding: 0.4rem;
+
+}
+.errorMsg{
+    color: 	rgb(255,51,51);
+}
