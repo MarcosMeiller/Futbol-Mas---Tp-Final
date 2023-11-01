@@ -1,11 +1,11 @@
 export class User {
-    id: string='';
-    username: string='';
-    password: string='';
-    name: string='';
-    lastname: string='';
-    email: string='';
-    country: string='';
+    id='';
+    username='';
+    password='';
+    name='';
+    lastname='';
+    email='';
+    country='';
   
     //constructor()
     //   id: string,
