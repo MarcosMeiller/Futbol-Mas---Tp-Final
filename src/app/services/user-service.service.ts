@@ -10,8 +10,8 @@ export class UserServiceService {
   private apiURL = 'http://localhost:1234/users'
   constructor( private http: HttpClient) { }
 
-  getByUsername(value : string): Promise<any>{
-    return this.http.get(this.apiURL + '?username='+value).toPromise()
+  getByUsername(value : string){
+    return this.http.get(this.apiURL + '?username='+value)
   }
 
   registerUser (user: User){
@@ -20,7 +20,7 @@ export class UserServiceService {
         'Content-Type' : 'application/json'
       })
     }
-    return this.http.post(this.apiURL,user,httpOptions).toPromise()
+    return this.http.post(this.apiURL,user,httpOptions)
   }
 
 }
