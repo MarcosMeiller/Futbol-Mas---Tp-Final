@@ -1,0 +1,8 @@
+<div>
+    <input [(ngModel)]="searchTerm" (input)="search()" placeholder="Buscar...">
+    <button (click)="search()">Buscar</button>
+  </div>
+  <ul *ngIf="searchResults.length > 0">
+    <li *ngFor="let resultado of searchResults">{{ resultado.name }}</li>
+  </ul>
+  
