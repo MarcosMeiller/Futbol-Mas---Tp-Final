@@ -7,13 +7,26 @@ import { FootballApiService } from '../../services/football-api.service';
   styleUrls: ['./leagues.component.css']
 })
 export class LeaguesComponent implements OnInit {
-  ligas: any[] = [];
-
+  ligas: any;
+  search=''
   constructor(private footballApiService: FootballApiService) {}
 
   ngOnInit() {
-    this.footballApiService.getLeagues().subscribe((data: any[]) => {
-      this.ligas = data;
+    this.footballApiService.getLeagues().subscribe({
+      next: (data: any) => {
+        console.log(data)
+        this.ligas = data.response;
+      },
+      error: (data: any) => {
+        console.log(data)
+      }
     });
+  }
+
+  searchLeagues(){
+    this.footballApiService.search(this.search).subscribe((res:any)=>{
+      console.log(res)
+      this.ligas=res.response
+    })
   }
 }

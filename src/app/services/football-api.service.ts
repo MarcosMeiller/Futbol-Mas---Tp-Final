@@ -1,17 +1,23 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FootballApiService {
-  private apiUrl = 'https://v3.football.api-sports.io'; 
-
-  constructor(private http: HttpClient) {}
+  private apiUrl = 'https://v3.football.api-sports.io/'; 
+  private  APIKEY='b3db8ca9c6ef70a78619374b611c75ef'
+  options={headers:new HttpHeaders({
+    'X-RapidAPI-Key': 'b3db8ca9c6ef70a78619374b611c75ef',
+    //'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
+  })}
+  constructor(private http: HttpClient) {
+  }
 
   getLeagues(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/leagues`);
+   
+    return this.http.get<any[]>(`${this.apiUrl}/leagues`,this.options);
   }
 
   getTeams(): Observable<any[]> {
@@ -23,6 +29,6 @@ export class FootballApiService {
   }
 
   search(query: string): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/search?q=${query}`);
+    return this.http.get<any[]>(`${this.apiUrl}/leagues?search=${query}`,this.options);
   }
 }
