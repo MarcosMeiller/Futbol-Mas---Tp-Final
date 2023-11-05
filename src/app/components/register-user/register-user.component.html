@@ -1,49 +1,81 @@
 
-<div >
-    <form class="form-box" [formGroup]="registerForm" (ngSubmit)="registerUser()" >
+<div id="divMain" class="flex-col relative">
+    
+    <form class="bg-slate-700 w-96 min m-4 p-8 flex-col input-group rounded-lg shadow-xl" [formGroup]="registerForm" (ngSubmit)="registerUser()" >
+        <h1 class="text-5xl text-white text-center mb-6"> Sign up</h1>
 
-        <label class="first-column" for="username">Username:</label>
-        <input class="second-column" type="text" id="username" formControlName="username"><br><br>
-        <div *ngIf="username?.invalid && (username?.dirty || username?.touched)">
-            <div class="errorMsg" *ngIf="username?.hasError('required')">Username is required</div>
-            <div class="errorMsg" *ngIf="username?.hasError('pattern')">Invalid character type</div>
-            <div class="errorMsg" *ngIf="username?.hasError('userExist')">This username already exist!</div>
+
+        <div class="block" *ngIf="username?.invalid && (username?.dirty || username?.touched)">
+            <app-error-msg [msg]="'Username is required'" *ngIf="username?.hasError('required')" ></app-error-msg>
+            <app-error-msg [msg]="'Invalid type character'" *ngIf="username?.hasError('pattern')" ></app-error-msg>
+            <app-error-msg [msg]="'This username already exist!'" *ngIf="username?.hasError('userExist')"></app-error-msg>
         </div>
-        <label class="first-column" for="password">Password:</label>
-        <input class="second-column" type="password" id="password" formControlName="password"><br><br>
-        <div *ngIf="password?.invalid && (password?.dirty || password?.touched)">
-            <div class="errorMsg" *ngIf="password?.hasError('required')">Password is required</div>
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">@</span>
+            <input id="username" formControlName="username" type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+        </div>
+        
+
+        <div class="block" *ngIf="email?.invalid && (email?.dirty || email?.touched)">
+            <app-error-msg [msg]="'Email is required'" *ngIf="email?.hasError('required')" ></app-error-msg>
+            <app-error-msg [msg]="'Invalid email'" *ngIf="email?.hasError('email')" ></app-error-msg>
+        </div>
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
+                    <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"/>
+                  </svg>
+            </span>
+            <input type="email" class="form-control" formControlName="email" placeholder="username@example.com" aria-label="Recipient's username" aria-describedby="basic-addon2">
             
         </div>
 
-        <label class="first-column" for="name">First name:</label>
-        <input class="second-column" type="text" id="name" formControlName="name"><br><br>
-        <div *ngIf="name?.invalid && (name?.dirty || name?.touched)">
-            <div class="errorMsg" *ngIf="name?.hasError('required')">First name is required</div>
+
+        <div class="block" *ngIf="(name?.invalid || lastname?.invalid) && (name?.dirty || name?.touched || lastname?.dirty || lastname?.touched)">
+            <app-error-msg [msg]="'Fullname is required'" *ngIf="name?.hasError('required') || lastname?.hasError('required')" ></app-error-msg>
+        </div>
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+                    <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z"/>
+                  </svg>
+            </span>
+            <input type="text" class="form-control w-1/4" formControlName="name" placeholder="Name" aria-label="Recipient's username" aria-describedby="basic-addon2">
+            <input type="text" class="  w-1/2 form-control" formControlName="lastname" placeholder="Lastname" aria-label="Recipient's username" aria-describedby="basic-addon2">
         </div>
 
-        <label class="first-column" for="lastname">Last Name:</label>
-        <input class="second-column" type="text" id="lastname" formControlName="lastname"><br><br>
-        <div *ngIf="lastname?.invalid && (lastname?.dirty || lastname?.touched)">
-            <div class="errorMsg" *ngIf="lastname?.hasError('required')">Lastname is required</div>
+        <div class="block" *ngIf="password?.invalid && (password?.dirty || password?.touched)">
+            <app-error-msg [msg]="'Password is required'" *ngIf="password?.hasError('required')" ></app-error-msg>
+        </div>
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lock" viewBox="0 0 16 16">
+                    <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2zM5 8h6a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/>
+                  </svg>
+            </span>
+
+            <input type="password" class="form-control" formControlName="password" placeholder="Password" aria-label="password" aria-describedby="basic-addon2">
+        </div>
+       
+
+        <div class="block" *ngIf="country?.invalid && (country?.dirty || country?.touched)">
+            <app-error-msg [msg]="'Country is required'" *ngIf="country?.hasError('required')" ></app-error-msg>
+        </div>
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-globe-americas" viewBox="0 0 16 16">
+                    <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0ZM2.04 4.326c.325 1.329 2.532 2.54 3.717 3.19.48.263.793.434.743.484-.08.08-.162.158-.242.234-.416.396-.787.749-.758 1.266.035.634.618.824 1.214 1.017.577.188 1.168.38 1.286.983.082.417-.075.988-.22 1.52-.215.782-.406 1.48.22 1.48 1.5-.5 3.798-3.186 4-5 .138-1.243-2-2-3.5-2.5-.478-.16-.755.081-.99.284-.172.15-.322.279-.51.216-.445-.148-2.5-2-1.5-2.5.78-.39.952-.171 1.227.182.078.099.163.208.273.318.609.304.662-.132.723-.633.039-.322.081-.671.277-.867.434-.434 1.265-.791 2.028-1.12.712-.306 1.365-.587 1.579-.88A7 7 0 1 1 2.04 4.327Z"/>
+                  </svg>
+            </span>
+
+            <input type="text" class="form-control" formControlName="country" placeholder="Country" aria-label="Country" aria-describedby="basic-addon2">
+
         </div>
 
-        <label class="first-column" for="email">Email:</label>
-        <input class="second-column" type="email" id="email" formControlName="email"><br><br>
-        <div *ngIf="email?.invalid && (email?.dirty || email?.touched)">
-            <div class="errorMsg" *ngIf="email?.hasError('required')">Email is required</div>
-            <div class="errorMsg" *ngIf="email?.hasError('pattern')">Invalid email</div>
-            
-        </div>
-
-        <label class="first-column" for="country">Country:</label>
-        <input class="second-column" type="text" id="country" formControlName="country"><br><br>
-        <div *ngIf="country?.invalid && (country?.dirty || country?.touched)">
-            <div class="errorMsg" *ngIf="country?.hasError('required')">Country is required</div>
-            <div class="errorMsg" *ngIf="country?.hasError('pattern')">Invalid character type</div>
-        </div>
-
-        <input class="submit-button" type="submit" value="Submit" [disabled]="registerForm.invalid" >
+        <button type="submit" class="btn btn-primary" [disabled]="registerForm.invalid">Register</button>
         
     </form>
+    <app-snackbar [state]="showSnack" [msg]="msg"></app-snackbar>
+
 </div>
+

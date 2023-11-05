@@ -9,8 +9,12 @@ import { UserServiceService } from 'src/app/services/user-service.service';
   templateUrl: './register-user.component.html',
   styleUrls: ['./register-user.component.css']
 })
-export class RegisterUserComponent implements OnInit {
+export class RegisterUserComponent {
   
+  msg='Error registering user, try again in a moment!'
+  bg=''
+  showSnack ='hidden'
+  hidden=false
   user: User = new User()
   registerForm : FormGroup = new FormGroup({
     'username' : new FormControl(this.user.username,
@@ -25,7 +29,8 @@ export class RegisterUserComponent implements OnInit {
       ]),
     'email' : new FormControl(this.user.email,
       [ //Validators
-        Validators.required
+        Validators.required,
+        Validators.email
       ]),
     'lastname' : new FormControl(this.user.lastname,
       [ //Validators
@@ -43,9 +48,6 @@ export class RegisterUserComponent implements OnInit {
 
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   constructor(private userServices:UserServiceService){}
-  ngOnInit(): void {
-    
-  }
 
   get username(){
     return this.registerForm.get('username')
@@ -74,14 +76,20 @@ export class RegisterUserComponent implements OnInit {
     this.user.lastname=this.lastname?.value
     this.user.country=this.country?.value
 
-    console.log(this.user)
-
-    console.log(this.registerForm.status)
-    this.userServices.registerUser(this.user).then(response => {
-      console.log(response)
-    }).catch(response => {
-      console.log(response)
+    this.userServices.registerUser(this.user).subscribe({
+      next: response => {
+        this.msg= 'Registered user successfully'
+        this.bg='bg-green-500'
+        
+      },
+      error: response => {
+        this.msg='Error registering user, try again in a moment!'
+        this.bg='bg-red-500'
+      } 
     })
-    
+    this.showSnack='hide'
+    setTimeout(()=>{
+      this.showSnack='hidden'
+    },3000)
   }
 }

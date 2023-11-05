@@ -9,10 +9,10 @@ export class CustomValidators {
               return Promise.resolve(null)
             }
             else {
-              return userService.getByUsername(control.value)
-                  .then(response => {
-                      return response ? { 'userExist': { value: control.value } } : null;
-                  })
+              return userService.getByUsername(control.value).toPromise().then(
+                response =>{
+                    return response ? { 'userExist': { value: control.value } } : null;
+                })
             }                  
         }
     }
