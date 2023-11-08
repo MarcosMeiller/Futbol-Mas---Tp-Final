@@ -3,6 +3,7 @@
 <input type="text" [(ngModel)]="search">
 <button (click)="searchLeagues()">search</button>
 <ul>
-  <li *ngFor="let liga of ligas">{{ liga.league.name }}</li>
+  <li *ngFor="let liga of ligas" >{{ liga.league.name }} 
+  <button (click)="mostrarInformacionLiga(liga)">Ver Detalles</button></li>
 </ul>
 

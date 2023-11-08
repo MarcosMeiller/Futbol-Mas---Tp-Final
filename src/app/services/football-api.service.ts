@@ -21,11 +21,11 @@ export class FootballApiService {
   }
 
   getTeams(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/teams`);
+    return this.http.get<any[]>(`${this.apiUrl}/teams`,this.options);
   }
 
   getPlayers(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/players`);
+    return this.http.get<any[]>(`${this.apiUrl}/players`,this.options);
   }
 
   search(query: string): Observable<any[]> {
