@@ -1,0 +1,12 @@
+<div *ngFor="let eventos of events">
+    <ng-container *ngIf="eventos.team.id===idHome then home else away">
+        
+    </ng-container>
+    <ng-template #home>
+        <app-home-event [event]="eventos"></app-home-event>
+    </ng-template>
+    <ng-template #away>
+        <app-away-event [event]="eventos"></app-away-event>
+    </ng-template>
+</div>
+

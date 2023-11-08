@@ -9,26 +9,16 @@ import { MatchService } from 'src/app/services/match.service';
   styleUrls: ['./match-score.component.css']
 })
 
-export class MatchScoreComponent implements OnInit{
+export class MatchScoreComponent implements OnInit {
+  ngOnInit(): void {
+    
+  }
 
-  @Input()
-  matchId=0
-
+  
+@Input()
+  match:any|null 
   awayResult=0
   homeResult=0
 
-  match!: any | null;
-  constructor(private matchService : MatchService){}
-  ngOnInit(): void {
-    this.loadMatch()
-  }
-
-  loadMatch()
-  {
-    this.matchService.getMatch({matchId: this.matchId}).subscribe({
-      next: (res:any)=> {this.match=res.response[0]; console.log(res.response[0]);},
-      error: (res)=>this.match=null
-    })
-  }
- 
+  
 }

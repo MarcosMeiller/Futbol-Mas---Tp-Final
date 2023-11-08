@@ -12,6 +12,9 @@ import { SnackbarComponent } from './components/snackbar/snackbar.component'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatchViewComponent } from './components/match-view/match-view.component';
 import { MatchScoreComponent } from './components/match-score/match-score.component';
+import { HomeEventComponent } from './components/home-event/home-event.component';
+import { AwayEventComponent } from './components/away-event/away-event.component';
+import { MatchEventsComponent } from './components/match-events/match-events.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,10 @@ import { MatchScoreComponent } from './components/match-score/match-score.compon
     ErrorMsgComponent,
     SnackbarComponent,
     MatchViewComponent,
-    MatchScoreComponent
+    MatchScoreComponent,
+    HomeEventComponent,
+    AwayEventComponent,
+    MatchEventsComponent
   ],
   imports: [
     BrowserModule,
