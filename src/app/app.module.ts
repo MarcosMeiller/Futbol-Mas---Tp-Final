@@ -10,13 +10,17 @@ import { ErrorMsgComponent } from './components/error-msg/error-msg.component';
 import { SnackbarComponent } from './components/snackbar/snackbar.component'
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatchViewComponent } from './components/match-view/match-view.component';
+import { MatchScoreComponent } from './components/match-score/match-score.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegisterUserComponent,
     ErrorMsgComponent,
-    SnackbarComponent
+    SnackbarComponent,
+    MatchViewComponent,
+    MatchScoreComponent
   ],
   imports: [
     BrowserModule,
