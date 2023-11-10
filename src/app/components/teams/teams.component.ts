@@ -12,8 +12,9 @@ export class TeamsComponent implements OnInit {
   constructor(private footballApiService: FootballApiService) {}
 
   ngOnInit() {
-    this.footballApiService.getTeams().subscribe((data: any[]) => {
-      this.equipos = data;
+    this.footballApiService.getTeams('2023').subscribe((data: any) => {
+      this.equipos = data.response;
+      console.log(this.equipos)
     });
   }
 }
