@@ -1,5 +1,8 @@
 <h2>Jugadores</h2>
+<input type="text" [(ngModel)]="search">
+<button (click)="searchPlayer()">search</button>
 <ul>
-  <li *ngFor="let jugador of jugadores">{{ jugador.name }}</li>
+  <li *ngFor="let jugador of jugadores">{{ jugador.player.name }}
+  <button (click)="mostrarInformacionLiga(jugador)">Ver Detalles</button></li>
 </ul>
 

@@ -1,0 +1,13 @@
+<div *ngIf="liga">
+    <h2>Detalles de la liga</h2>
+    <p>Nombre: {{ liga.league.name }}  <img [src]="liga.league.logo"  width="200" height="100"></p>
+    <p>País: {{ liga.country.name }}<img [src]="liga.country.flag"  width="200" height="100"></p>
+    <h3>Temporadas:</h3>
+    <ul>
+        <li *ngFor="let season of liga.seasons">
+            <p>Año: {{ season.year }}</p>
+            <p>Fecha de inicio: {{ season.start }}</p>
+            <p>Fecha de fin: {{ season.end}}</p>
+        </li>
+    </ul>
+  </div>
