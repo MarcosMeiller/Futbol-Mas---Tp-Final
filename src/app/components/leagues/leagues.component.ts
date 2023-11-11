@@ -29,7 +29,7 @@ export class LeaguesComponent implements OnInit {
   }
 
   searchLeagues(){
-    this.footballApiService.search(this.search).subscribe((res:any)=>{
+    this.footballApiService.searchAll(this.search).subscribe((res:any)=>{
       console.log(res)
       this.ligas=res.response
     })

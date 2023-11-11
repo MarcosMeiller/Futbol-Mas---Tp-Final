@@ -4,6 +4,7 @@
 <button (click)="searchLeagues()">search</button>
 <ul>
   <li *ngFor="let liga of ligas" >{{ liga.league.name }} 
+    <button >Seguir</button>
   <button (click)="mostrarInformacionLiga(liga)">Ver Detalles</button></li>
 </ul>
 

@@ -10,10 +10,12 @@ import { DetalleService } from '../../services/detalle.service';
 export class TeamsComponent implements OnInit {
   equipos: any;
   search=''
+ 
   constructor(private footballApiService: FootballApiService,private router: Router,private dataService: DetalleService) {}
 
   ngOnInit() {
-    this.footballApiService.getTeams().subscribe({
+    
+   this.footballApiService.getTeams('2023',33).subscribe({
       next: (data: any) => {
         console.log(data)
         this.equipos = data.response;
@@ -22,10 +24,12 @@ export class TeamsComponent implements OnInit {
         console.log(data)
       }
     });
-  }
-
+   }
+  
+    
+   
   searchTeams(){
-    this.footballApiService.search(this.search).subscribe((res:any)=>{
+    this.footballApiService.searchAll(this.search).subscribe((res:any)=>{
       console.log(res)
       this.equipos=res.response
     })
@@ -36,3 +40,4 @@ export class TeamsComponent implements OnInit {
     this.router.navigate(['/detalleEquipo']);
   }
 }
+ 

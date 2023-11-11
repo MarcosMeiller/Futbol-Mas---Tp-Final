@@ -3,6 +3,7 @@
 <button (click)="searchPlayer()">search</button>
 <ul>
   <li *ngFor="let jugador of jugadores">{{ jugador.player.name }}
+    <button >Seguir</button>
   <button (click)="mostrarInformacionLiga(jugador)">Ver Detalles</button></li>
 </ul>
 

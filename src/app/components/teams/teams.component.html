@@ -3,6 +3,8 @@
 <button (click)="searchTeams()">search</button>
 <ul>
   <li *ngFor="let equipo of equipos">{{ equipo.team.name }}
+    <button >Seguir</button>
   <button (click)="mostrarInformacionLiga(equipo)">Ver Detalles</button></li>
+  
 </ul>
 

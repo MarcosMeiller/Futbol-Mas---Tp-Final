@@ -18,7 +18,7 @@ export class SearchComponent {
       return;
     }
 
-    this.footballApiService.search(this.searchTerm).subscribe((data: any[]) => {
+    this.footballApiService.searchAll(this.searchTerm).subscribe((data: any[]) => {
       this.searchResults = data;
     });
   }

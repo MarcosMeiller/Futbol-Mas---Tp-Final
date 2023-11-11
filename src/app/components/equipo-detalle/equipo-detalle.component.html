@@ -7,3 +7,13 @@
     <p>Nombre: {{ equipo.venue.name }}  <img [src]="equipo.venue.image"  width="200" height="100"></p>
     <p>Ciudad:{{ equipo.venue.city}}</p>
     <p>Capacidad:{{ equipo.venue.capacity}}</p>
+    <h2>Jugadores</h2>
+<input type="text" [(ngModel)]="search">
+<button (click)="searchPlayer()">search</button>
+<ul>
+  <li *ngFor="let jugador of jugadores">{{ jugador.player.name }}
+    <button >Seguir</button>
+  <button (click)="mostrarInformacionJugador(jugador)">Ver Detalles</button></li>
+</ul>
+    <button >Seguir</button>
+    </div>

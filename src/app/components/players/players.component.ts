@@ -14,7 +14,7 @@ export class PlayersComponent implements OnInit {
   constructor(private footballApiService: FootballApiService,private router: Router,private dataService: DetalleService) {}
 
   ngOnInit() {
-    this.footballApiService.getPlayers().subscribe({
+    this.footballApiService.getPlayers('2023',33).subscribe({
       next: (data: any) => {
         console.log(data)
         this.jugadores = data.response;
@@ -23,10 +23,11 @@ export class PlayersComponent implements OnInit {
         console.log(data)
       }
     });
-  }
+   }
+  
 
   searchPlayer(){
-    this.footballApiService.search(this.search).subscribe((res:any)=>{
+    this.footballApiService.searchAll(this.search).subscribe((res:any)=>{
       console.log(res)
       this.jugadores=res.response
     })
