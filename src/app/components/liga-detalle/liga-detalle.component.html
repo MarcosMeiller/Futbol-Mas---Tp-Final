@@ -1,0 +1,17 @@
+<div *ngIf="liga">
+    <h2>Detalles de la liga</h2>
+    <p>Nombre: {{ liga.league.name }}  <img [src]="liga.league.logo"  width="200" height="100"></p>
+    <p>País: {{ liga.country.name }}<img [src]="liga.country.flag"  width="200" height="100"></p>
+   
+    <h2>Equipos</h2>
+<input type="text" [(ngModel)]="search">
+<button (click)="searchTeams()">search</button>
+<ul>
+  <li *ngFor="let equipo of equipos">{{ equipo.team.name }}
+    <button >Seguir</button>
+  <button (click)="mostrarInformacionEquipo(equipo)">Ver Detalles</button></li>
+  
+</ul>
+
+    <button >Seguir</button>
+  </div>
