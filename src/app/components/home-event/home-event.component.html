@@ -1,5 +1,25 @@
-<div class="bg-slate-500 shadow-xl rounded-xl m-2">
-    <p>{{player.name}}</p>
-    <p>{{asist.name}}</p>
-    <p>{{type}}</p>
+
+
+<div class="eventsContainer items-center  m-2">
+    <div class="flex items-center bg-slate-500 shadow-xl rounded-lg p-2 mr-12">
+        <div class="flex items-center transform scale-y-[-1]">
+            <img [appEventIcon]="eventType" alt="sust" class="w-8 h-fit ">
+        </div>
+        
+        <div class="ml-3">
+            <p class="text-white ">{{eventType.type==='subst'?asist.name : player.name}}</p>
+            <p class="text-slate-300 ">{{eventType.type==='subst'?player.name : asist.name}}{{asist.name===null?eventType.type : ''}}</p>
+        </div>
+    </div>
+
+    <div class="flex flex-col items-center justify-center">
+        <p class="text-white">{{time.elapsed}}'</p>
+        <p class="bg-slate-400 w-px h-max">'</p>
+    </div>
+    <div class=" ">
+        
+    </div>
+    
 </div>
+
+

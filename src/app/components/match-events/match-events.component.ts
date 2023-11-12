@@ -7,7 +7,7 @@ import { Event } from 'src/app/models/event';
   templateUrl: './match-events.component.html',
   styleUrls: ['./match-events.component.css']
 })
-export class MatchEventsComponent implements OnInit{
+export class MatchEventsComponent{
 
   
 
@@ -19,11 +19,7 @@ export class MatchEventsComponent implements OnInit{
   @Input()
   idAway=0
   constructor(private matchService: MatchService){}
-  ngOnInit(): void {
-    console.log(this.idHome)
-  }
 
-  
 
   
 }

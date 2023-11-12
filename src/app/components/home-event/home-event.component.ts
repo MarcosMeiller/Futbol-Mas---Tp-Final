@@ -10,14 +10,17 @@ export class HomeEventComponent implements OnInit {
   @Input()
   event:any
   
-  type=""
-  player!: { id: number; name: string; };
+ player!: { id: number; name: string; };
   asist!: { id: number; name: string; };
- 
+  time!: {elapsed:number}
+  
+  eventType :{type:string,detail :string}={type: '',detail:''}
+
   ngOnInit(): void {
-    console.log(this.event)
-    this.type=this.event.type
+    this.eventType.detail= this.event.detail
+    this.eventType.type=this.event.type
     this.player=this.event.player 
     this.asist=this.event.assist
+    this.time=this.event.time
   }
 }

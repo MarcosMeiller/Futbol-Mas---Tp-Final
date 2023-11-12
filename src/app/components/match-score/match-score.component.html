@@ -3,7 +3,10 @@
         <span class="text-white text-center ml-auto mr-auto h-max w-max  text-4xl flex-1">{{match.teams.home.name}}</span>
         <div class="flex">
             <img src="{{match.teams.home.logo}}" class="m-3 h-28 w-auto "  alt="Logo Real Madrid">
-            <span class="text-white align-middle  h-max text-6xl m-5">{{match.goals.home}} : {{match.goals.away}}</span>
+            <div class="flex flex-col items-center justify-center text-lg">
+                <p class="text-white align-middle  h-max text-6xl m-5">{{match.goals.home}} : {{match.goals.away}}</p>
+                <p class="text-slate-300">{{match.fixture.status.elapsed}}' {{match.fixture.status.long}}</p>
+            </div>
             <img src="{{match.teams.away.logo}}"  class="m-3 h-28 w-auto" alt="Logo Real Madrid">
         </div>
         

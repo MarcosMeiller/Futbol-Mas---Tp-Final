@@ -15,6 +15,13 @@ import { MatchScoreComponent } from './components/match-score/match-score.compon
 import { HomeEventComponent } from './components/home-event/home-event.component';
 import { AwayEventComponent } from './components/away-event/away-event.component';
 import { MatchEventsComponent } from './components/match-events/match-events.component';
+import { EventIconDirective } from './directives/event-icon.directive';
+import { Routes,RouterModule } from '@angular/router';
+
+const appRoutes: Routes = [
+ 
+  {path: 'view-match/:id', component: MatchViewComponent}
+]
 
 @NgModule({
   declarations: [
@@ -26,14 +33,22 @@ import { MatchEventsComponent } from './components/match-events/match-events.com
     MatchScoreComponent,
     HomeEventComponent,
     AwayEventComponent,
-    MatchEventsComponent
+    MatchEventsComponent,
+    EventIconDirective
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    RouterModule.forRoot(
+      appRoutes,
+      {enableTracing:false}
+    )
+  ],
+  exports: [
+    RouterModule
   ],
   providers: [],
   bootstrap: [AppComponent]
