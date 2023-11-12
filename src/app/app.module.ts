@@ -27,10 +27,7 @@ import { EquipoDetalleComponent } from './components/equipo-detalle/equipo-detal
 import { JugadorDetalleComponent } from './components/jugador-detalle/jugador-detalle.component';
 import { LoginComponent } from './components/login/login.component';
 
-const appRoutes: Routes = [
 
-  {path: 'view-match/:id', component: MatchViewComponent}
-]
 
 @NgModule({
   declarations: [
@@ -60,13 +57,6 @@ const appRoutes: Routes = [
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    RouterModule.forRoot(
-      appRoutes,
-      {enableTracing:false}
-    )
-  ],
-  exports: [
-    RouterModule
   ],
   providers: [],
   bootstrap: [AppComponent]
