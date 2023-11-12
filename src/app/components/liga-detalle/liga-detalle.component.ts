@@ -15,8 +15,9 @@ export class LigaDetalleComponent  {
   
   constructor(private footballApiService: FootballApiService,private dataService: DetalleService,private router: Router) {}
   ngOnInit() {
+    
     this.liga = this.dataService.getDatos();
-    this.footballApiService.getTeams('2023',this.liga.id).subscribe({
+    this.footballApiService.getTeams('2023',this.liga.league.id).subscribe({
       next: (data: any) => {
         console.log(data)
         this.equipos = data.response;

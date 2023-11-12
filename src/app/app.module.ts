@@ -7,8 +7,8 @@ import { AppRoutingModule } from './app-routing.module'; // Importa el módulo d
 
 import { AppComponent } from './app.component';
 import { LeaguesComponent } from './components/leagues/leagues.component';
-import { TeamsComponent } from './components/teams/teams.component';
-import { PlayersComponent } from './components/players/players.component';
+
+
 import { SearchComponent } from './components/search/search.component';
 import { LigaDetalleComponent } from './components/liga-detalle/liga-detalle.component';
 import { EquipoDetalleComponent } from './components/equipo-detalle/equipo-detalle.component';
@@ -18,8 +18,8 @@ import { JugadorDetalleComponent } from './components/jugador-detalle/jugador-de
   declarations: [
     AppComponent,
     LeaguesComponent,
-    TeamsComponent,
-    PlayersComponent,
+ 
+ 
     SearchComponent,
     LigaDetalleComponent,
     EquipoDetalleComponent,
