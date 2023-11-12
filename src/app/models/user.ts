@@ -6,6 +6,7 @@ export class User {
     lastname='';
     email='';
     country='';
+    token=''
   
     //constructor()
     //   id: string,

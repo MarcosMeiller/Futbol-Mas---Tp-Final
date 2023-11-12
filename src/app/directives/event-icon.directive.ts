@@ -1,6 +1,4 @@
 import { Directive, ElementRef, Input, Renderer2 } from '@angular/core';
-import { faExchangeAlt, faFutbol } from '@fortawesome/free-solid-svg-icons';
-
 @Directive({
   selector: '[appEventIcon]'
 })
@@ -26,7 +24,7 @@ export class EventIconDirective {
         return 'https://oneftbl-cms.imgix.net/https%3A%2F%2Fimages.onefootball.com%2Fcw%2Ficons%2Fgoal-dark.svg?auto=format%2Ccompress&crop=faces&dpr=2&fit=crop&h=24&q=25&w=24&s=e4ba345d35e1b099bf0e05b57b6ab288';
       case 'Card':
         {
-          
+
         if(detail==='Red Card')
           return '../assets/red_card.png';
         else

@@ -1,0 +1,13 @@
+<div *ngIf="jugador">
+    <h2>Detalles de jugador</h2>
+    <p>Nombre: {{ jugador.player.firstname }}  <img [src]="jugador.player.photo"  width="200" height="100"></p>
+    <p>Apellido: {{ jugador.player.lastname  }}</p>
+    <p>Edad: {{ jugador.player.age  }}</p>
+    <p>Altura: {{ jugador.player.height  }}</p>
+    <p>Peso: {{ jugador.player.weight  }}</p>
+    <h2>Nacimiento</h2>
+    <p>Nombre: {{ jugador.player.birth.date  }} </p>
+    <p>Ciudad:{{ jugador.player.birth.place }}</p>
+    <p>Capacidad:{{ jugador.player.birth.country }}</p>
+    <button >Seguir</button>
+</div>
