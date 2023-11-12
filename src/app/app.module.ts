@@ -25,6 +25,7 @@ import { SearchComponent } from './components/search/search.component';
 import { LigaDetalleComponent } from './components/liga-detalle/liga-detalle.component';
 import { EquipoDetalleComponent } from './components/equipo-detalle/equipo-detalle.component';
 import { JugadorDetalleComponent } from './components/jugador-detalle/jugador-detalle.component';
+import { LoginComponent } from './components/login/login.component';
 
 const appRoutes: Routes = [
 
@@ -49,7 +50,8 @@ const appRoutes: Routes = [
     SearchComponent,
     LigaDetalleComponent,
     EquipoDetalleComponent,
-    JugadorDetalleComponent
+    JugadorDetalleComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
