@@ -11,9 +11,17 @@
 <input type="text" [(ngModel)]="search">
 <button (click)="searchPlayer()">search</button>
 <ul>
-  <li *ngFor="let jugador of jugadores">{{ jugador.player.name }}
-    <button >Seguir</button>
-  <button (click)="mostrarInformacionJugador(jugador)">Ver Detalles</button></li>
+  <div *ngFor="let item of jugadores">
+    <ul>
+      <li *ngFor="let jugador of item.players">
+        {{ jugador.name }}
+        <button >Seguir</button>
+  <button (click)="mostrarInformacionJugador(jugador)">Ver Detalles</button>
+      </li>
+    </ul>
+  </div>
+    
 </ul>
     <button >Seguir</button>
     </div>
+    
