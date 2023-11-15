@@ -1,0 +1,6 @@
+<div class="grid grid-cols-4 grid-rows-5" >
+    <div *ngFor="let _ of [].constructor(numberRows); let i = index">
+
+    </div>
+    <app-player-lineup *ngFor="let player of homeLineup.startXl" [player]="player"></app-player-lineup>
+</div>
