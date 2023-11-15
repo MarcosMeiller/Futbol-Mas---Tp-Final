@@ -7,9 +7,6 @@ import { Component, Input } from '@angular/core';
 })
 export class MatchStaticsComponent {
 
-  @Input()
-  statics
-
-  
+ 
 
 }
