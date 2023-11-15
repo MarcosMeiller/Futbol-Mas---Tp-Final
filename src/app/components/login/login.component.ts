@@ -1,6 +1,6 @@
 // login.component.ts
 import { Component } from '@angular/core';
-import { AuthService } from '../../services/auth.service'; // Ajusta la ruta según la ubicación de tu servicio de autenticación
+import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router'
 
 @Component({
@@ -19,8 +19,7 @@ export class LoginComponent {
     this.authService.login(this.email, this.password).subscribe(
       (response) => {
         console.log('Respuesta exitosa:', response);
-        // Redirigir al usuario a localhost:4200/ después del inicio de sesión exitoso
-        this.router.navigate(['/ligas']);
+        this.router.navigate(['/ligas']); //esto despues tenemos que ver a donde cambiarlo.
       },
       (error) => {
         console.error('Error en el inicio de sesión:', error);
