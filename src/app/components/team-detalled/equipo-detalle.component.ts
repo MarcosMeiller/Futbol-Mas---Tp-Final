@@ -18,7 +18,7 @@ export class EquipoDetalleComponent {
     this.footballApiService.getPlayers(this.equipo.team.id).subscribe({
       next: (data: any) => {
         console.log(data)
-        this.jugadores = data.response;
+        this.jugadores = data.response; 
       },
       error: (data: any) => {
         console.log(data)

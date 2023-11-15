@@ -1,10 +1,20 @@
-<h2>Ligas</h2>
+<div class="container mt-4">
+  <h2 class="text-center">Ligas</h2>
 
-<input type="text" [(ngModel)]="search">
-<button (click)="searchLeagues()">search</button>
-<ul>
-  <li *ngFor="let liga of ligas" >{{ liga.league.name }} 
-    <button >Seguir</button>
-  <button (click)="mostrarInformacionLiga(liga)">Ver Detalles</button></li>
-</ul>
+  <div class="search-bar">
+    <input type="text" [(ngModel)]="search" placeholder="Buscar liga..." class="form-control">
+    <button (click)="searchLeagues()" class="btn btn-primary">Buscar</button>
+  </div>
+
+  <ul class="list-group liga-list">
+    <li *ngFor="let liga of ligas" class="list-group-item liga-item">
+      <div class="d-flex align-items-center">
+        <img [src]="liga.league.logo" class="logo-img" alt="Logo de la liga">
+        <span>{{ liga.league.name }}</span>
+      </div>
+      <button class="btn btn-success follow-button " style="margin-right: 5px;">Seguir</button>
+      <button (click)="mostrarInformacionLiga(liga)" class="btn btn-info details-button">Ver Detalles</button>
+    </li>
+  </ul>
+</div>
 

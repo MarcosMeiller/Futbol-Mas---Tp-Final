@@ -1,19 +1,44 @@
-<div *ngIf="equipo">
-    <h2>Detalles de equipo</h2>
-    <p>Nombre: {{ equipo.team.name }}  <img [src]="equipo.team.logo"  width="200" height="100"></p>
-    <p>País: {{ equipo.team.country }}</p>
-    <p>Año de creacion: {{ equipo.team.founded }}</p>
-    <h2>Estadio</h2>
-    <p>Nombre: {{ equipo.venue.name }}  <img [src]="equipo.venue.image"  width="200" height="100"></p>
-    <p>Ciudad:{{ equipo.venue.city}}</p>
-    <p>Capacidad:{{ equipo.venue.capacity}}</p>
-    <h2>Jugadores</h2>
-<input type="text" [(ngModel)]="search">
-<button (click)="searchPlayer()">search</button>
-<ul>
-  <li *ngFor="let jugador of jugadores">{{ jugador.players.name }}
-    <button >Seguir</button>
-  <button (click)="mostrarInformacionJugador(jugador)">Ver Detalles</button></li>
-</ul>
-    <button >Seguir</button>
+<div *ngIf="equipo" class="container mt-4">
+  <h2 class="text-center">Detalles de equipo</h2>
+  <div class="team-details">
+    <div class="team-info">
+      <p>Nombre: {{ equipo.team.name }} <img [src]="equipo.team.logo" width="200" height="100"></p>
+      <p>País: {{ equipo.team.country }}</p>
+      <p>Año de creación: {{ equipo.team.founded }}</p>
     </div>
+    <div class="venue-details">
+      <h2>Estadio</h2>
+      <p>Nombre: {{ equipo.venue.name }} <img [src]="equipo.venue.image" width="200" height="100"></p>
+      <p>Ciudad: {{ equipo.venue.city }}</p>
+      <p>Capacidad: {{ equipo.venue.capacity }}</p>
+    </div>
+  </div>
+
+  <h2 class="mt-4">Jugadores</h2>
+  <div class="search-bar">
+    <input type="text" [(ngModel)]="search" placeholder="Buscar jugador..." class="form-control">
+    <button (click)="searchPlayer()" class="btn btn-primary">Buscar</button>
+  </div>
+  <div class="d-flex flex-wrap">
+    <div *ngFor="let item of jugadores" class="mr-3 mb-3">
+      <ul class="list-group">
+        <li *ngFor="let jugador of item.players" class="list-group-item player-item">
+          <div class="card mx-auto" style="width: 14rem;"> 
+            <img [src]="jugador.photo" class="card-img-top" alt="Foto del jugador">
+            <div class="card-body">
+              <h5 class="card-title">{{ jugador.name }}</h5>
+              <p class="card-text">Edad: {{ jugador.age }}</p>
+              <p class="card-text">Número: {{ jugador.number }}</p>
+              <p class="card-text">Posición: {{ jugador.position }}</p>
+              <button class="btn btn-success">Seguir</button>
+            </div>
+          </div>
+          <button (click)="mostrarInformacionJugador(jugador)" class="btn btn-info details-button mt-2">Ver Detalles</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <button class="btn btn-success follow-button mt-3">Seguir</button>
+</div>
+

@@ -1,0 +1,25 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+.container, .list-group-item, .btn {
+  font-family: 'Roboto', sans-serif;
+}
+
+.liga-details {
+    color: #000000; 
+    font-size: 18px; 
+  }
+  
+  .liga-details p {
+    margin-bottom: 10px; 
+  }
+  
+  .liga-details img {
+    max-width: 100%; 
+    border-radius: 8px; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+  }

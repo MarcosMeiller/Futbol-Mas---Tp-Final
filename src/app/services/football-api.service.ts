@@ -33,6 +33,10 @@ export class FootballApiService {
     return this.http.get<any[]>(`${this.apiUrl}/players/squads?team=${team}`,this.options);
   }
 
+  getPlayerStatistic(id: number,season: string): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/players?id=${id}&season=${season}`,this.options);
+  }
+
   
 
   searchAll(query: string): Observable<any> {
