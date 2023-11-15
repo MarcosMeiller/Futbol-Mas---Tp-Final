@@ -7,6 +7,8 @@ import { User } from '../models/user';
 })
 export class UserServiceService {
 
+  user!: User
+
   private apiURL = 'http://localhost:1234/users'
   constructor( private http: HttpClient) { }
 
@@ -22,5 +24,4 @@ export class UserServiceService {
     }
     return this.http.post(this.apiURL,user,httpOptions)
   }
-
 }

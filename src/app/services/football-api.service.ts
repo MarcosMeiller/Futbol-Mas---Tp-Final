@@ -29,8 +29,8 @@ export class FootballApiService {
 
   }
 
-  getPlayers(season: string, leagueId: number): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/players?season=${season}&league=${leagueId}`,this.options);
+  getPlayers(id: number): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/players/squads?team=${id}`,this.options);
   }
 
   

@@ -10,7 +10,7 @@ import { Router } from '@angular/router'
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:1234';  // No es necesario agregar '/login' aquí, ya que se especifica en la llamada al método
+  private apiUrl = 'http://localhost:1234';
 
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -37,10 +37,9 @@ export class AuthService {
   }
 
   logout(): void {
-    // Lógica de logout, por ejemplo, limpiar el token y redirigir a la pantalla de login
     this.clearUser();
     this.clearToken();
-    this.router.navigate(['/login']); // Ajusta la ruta según tu configuración
+    this.router.navigate(['/login']);
   }
 
   private saveToken(token: string): void {
