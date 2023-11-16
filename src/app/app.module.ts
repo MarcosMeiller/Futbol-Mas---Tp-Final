@@ -26,6 +26,9 @@ import { LigaDetalleComponent } from './components/league-detalled/liga-detalle.
 import { EquipoDetalleComponent } from './components/team-detalled/equipo-detalle.component';
 import { JugadorDetalleComponent } from './components/player-detalled/jugador-detalle.component';
 import { LoginComponent } from './components/login/login.component';
+import { LineupComponent } from './lineup/lineup.component';
+import { PlayerLineupComponent } from './player-lineup/player-lineup.component';
+import { MatchStaticsComponent } from './components/match-statics/match-statics.component';
 
 
 
@@ -46,7 +49,10 @@ import { LoginComponent } from './components/login/login.component';
     LigaDetalleComponent,
     EquipoDetalleComponent,
     JugadorDetalleComponent,
-    LoginComponent
+    LoginComponent,
+    LineupComponent,
+    PlayerLineupComponent,
+    MatchStaticsComponent
   ],
   imports: [
     BrowserModule,

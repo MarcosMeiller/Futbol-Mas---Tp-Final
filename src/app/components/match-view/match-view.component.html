@@ -18,5 +18,8 @@
   </div>
   <div class="mt-3">
       <app-match-events class="flex justify-center items-center" *ngIf="view === 'events'" [events]="match.events" [idHome]="match.teams.home.id" [idAway]="match.teams.away.id"></app-match-events>
-  </div>
+      <app-lineup *ngIf="view === 'lineup'" [lineups]="match.lineups" [players]="match.players"></app-lineup>
+      <app-match-statics *ngIf="view === 'statics'"></app-match-statics>
+      
+    </div>
 </div>

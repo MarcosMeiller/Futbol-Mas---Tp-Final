@@ -12,6 +12,7 @@ import { LoginComponent } from './components/login/login.component'; // Agrega e
 import { AuthGuard } from './services/auth.guard';
 
 import { MatchViewComponent } from './components/match-view/match-view.component';
+import { RegisterUserComponent } from './components/register-user/register-user.component';
 
 const routes: Routes = [
   { path: 'ligas', component: LeaguesComponent, canActivate: [AuthGuard]  },
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'detalleEquipo', component: EquipoDetalleComponent, canActivate: [AuthGuard]  },
   { path: 'detallejugador', component: JugadorDetalleComponent, canActivate: [AuthGuard]  },
   { path: 'login', component: LoginComponent },
+  {path: 'register',component:RegisterUserComponent},
   {path: 'view-match/:id', component: MatchViewComponent, canActivate: [AuthGuard] },
   { path: '', redirectTo: '/ligas', pathMatch: 'full' },
   { path: '**', redirectTo: '/ligas' } ,
