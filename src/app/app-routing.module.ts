@@ -9,16 +9,18 @@ import { LigaDetalleComponent } from './components/league-detalled/liga-detalle.
 import { EquipoDetalleComponent } from './components/team-detalled/equipo-detalle.component';
 import { JugadorDetalleComponent } from './components/player-detalled/jugador-detalle.component';
 import { LoginComponent } from './components/login/login.component'; // Agrega esta línea
+import { AuthGuard } from './services/auth.guard';
+
 import { MatchViewComponent } from './components/match-view/match-view.component';
 
 const routes: Routes = [
-  { path: 'ligas', component: LeaguesComponent },
-  { path: 'busqueda', component: SearchComponent },
-  { path: 'detalleliga', component: LigaDetalleComponent },
-  { path: 'detalleEquipo', component: EquipoDetalleComponent },
-  { path: 'detallejugador', component: JugadorDetalleComponent },
+  { path: 'ligas', component: LeaguesComponent, canActivate: [AuthGuard]  },
+  { path: 'busqueda', component: SearchComponent, canActivate: [AuthGuard]  },
+  { path: 'detalleliga', component: LigaDetalleComponent, canActivate: [AuthGuard]  },
+  { path: 'detalleEquipo', component: EquipoDetalleComponent, canActivate: [AuthGuard]  },
+  { path: 'detallejugador', component: JugadorDetalleComponent, canActivate: [AuthGuard]  },
   { path: 'login', component: LoginComponent },
-  {path: 'view-match/:id', component: MatchViewComponent},
+  {path: 'view-match/:id', component: MatchViewComponent, canActivate: [AuthGuard] },
   { path: '', redirectTo: '/ligas', pathMatch: 'full' },
   { path: '**', redirectTo: '/ligas' } ,
 ];
