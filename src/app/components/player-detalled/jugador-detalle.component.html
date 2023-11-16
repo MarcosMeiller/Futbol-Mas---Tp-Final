@@ -23,14 +23,14 @@
     <div class="mt-3">
       <h3 class="text display-5">Estadisticas de Temporada</h3>
       <ul class="list-group">
-        <li class="list-group-item"><strong>Apariciones:</strong> {{ player[0].statistics.games.appearences }}</li>
-        <li class="list-group-item"><strong>Tiros:</strong> {{ player[0].statistics.shots.total  }}</li>
-        <li class="list-group-item"><strong>Goles:</strong> {{ player[0].statistics.goals.total}}</li>
-        <li class="list-group-item"><strong>Asistencia:</strong> {{ player[0].statistics.goals.assists}}</li>
-        <li class="list-group-item"><strong>Pases :</strong> {{ player[0].statistics.passes.total}}  <strong>Exactitud :</strong>   {{ player[0].statistics.passes.accurancy}}  </li>
-        <li class="list-group-item"><strong>Faltas :</strong> {{ player[0].statistics.fouls.committed}}    </li>
-        <li class="list-group-item"><strong>Tarjetas Amarillas :</strong> {{ player[0].statistics.cards.yellow}} <strong>Tarjetas rojas :</strong>   {{ player[0].statistics.cards.yellowred +  player[0].statistics.cards.red}} </li>
-        <li class="list-group-item"><strong>Penales :</strong> {{ player[0].statistics.penalty.scored + player[0].statistics.penalty.missed}}  <strong>Acertados :</strong>   {{ player[0].statistics.penalty.scored}} <strong>Errados :</strong>   {{ player[0].statistics.penalty.missed}}  </li>
+        <li class="list-group-item"><strong>Apariciones:</strong> {{ player[0].statistics[0].games.appearences }}</li>
+        <li class="list-group-item"><strong>Tiros:</strong> {{ player[0].statistics[0].shots.total  }}</li>
+        <li class="list-group-item"><strong>Goles:</strong> {{ player[0].statistics[0].goals.total}}</li>
+        <li class="list-group-item"><strong>Asistencia:</strong> {{ player[0].statistics[0].goals.assists}}</li>
+        <li class="list-group-item"><strong>Pases :</strong> {{ player[0].statistics[0].passes.total}}  <strong>Exactitud :</strong>   {{ player[0].statistics[0].passes.accuracy}}  </li>
+        <li class="list-group-item"><strong>Faltas :</strong> {{ player[0].statistics[0].fouls.committed}}    </li>
+        <li class="list-group-item"><strong>Tarjetas Amarillas :</strong> {{ player[0].statistics[0].cards.yellow}} <strong>Tarjetas rojas :</strong>   {{ player[0].statistics[0].cards.yellowred +  player[0].statistics[0].cards.red}} </li>
+        <li class="list-group-item"><strong>Penales :</strong> {{ player[0].statistics[0].penalty.scored + player[0].statistics[0].penalty.missed}}  <strong>Acertados :</strong>   {{ player[0].statistics[0].penalty.scored}} <strong>Errados :</strong>   {{ player[0].statistics[0].penalty.missed}}  </li>
 
       </ul>
     </div>

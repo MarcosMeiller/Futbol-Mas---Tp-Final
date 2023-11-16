@@ -1,25 +1,25 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-
-body {
-  font-family: 'Roboto', sans-serif;
+.ligas-container {
+  background-color: #001f3f; 
+  color: #ffffff; 
+  padding: 20px; 
 }
-
-.container, .list-group-item, .btn {
-  font-family: 'Roboto', sans-serif;
+.ligas-title {
+  font-size: 32px; 
+  font-family: 'TuFuente', sans-serif; 
+  font-weight: bold; 
+  margin-bottom: 20px; 
 }
-
-.liga-details {
-    color: #000000; 
-    font-size: 18px; 
-  }
-  
-  .liga-details p {
-    margin-bottom: 10px; 
-  }
-  
-  .liga-details img {
-    max-width: 100%; 
-    border-radius: 8px; 
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
-  }
+.follow-button, .details-button {
+  font-size: 16px; 
+  margin-top: 5px; 
+}
+.liga-item {
+  border: 1px solid #ffffff; 
+  margin-bottom: 10px; 
+}
+.liga-item img.logo-img {
+  width: 50px; 
+  height: 50px;
+  object-fit: cover; 
+  border-radius: 50%; 
+}
