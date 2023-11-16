@@ -52,7 +52,8 @@ import { MatchStaticsComponent } from './components/match-statics/match-statics.
     LoginComponent,
     LineupComponent,
     PlayerLineupComponent,
-    MatchStaticsComponent
+    MatchStaticsComponent,
+
   ],
   imports: [
     BrowserModule,

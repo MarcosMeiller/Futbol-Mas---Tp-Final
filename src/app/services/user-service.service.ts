@@ -22,6 +22,7 @@ export class UserServiceService {
         'Content-Type' : 'application/json'
       })
     }
+    console.log( user);
     return this.http.post(this.apiURL,user,httpOptions)
   }
 }
