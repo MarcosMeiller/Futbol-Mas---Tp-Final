@@ -10,6 +10,7 @@ import { EquipoDetalleComponent } from './components/equipo-detalle/equipo-detal
 import { JugadorDetalleComponent } from './components/jugador-detalle/jugador-detalle.component';
 import { LoginComponent } from './components/login/login.component'; // Agrega esta línea
 import { MatchViewComponent } from './components/match-view/match-view.component';
+import { RegisterUserComponent } from './components/register-user/register-user.component';
 
 const routes: Routes = [
   { path: 'ligas', component: LeaguesComponent },
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'detalleEquipo', component: EquipoDetalleComponent },
   { path: 'detallejugador', component: JugadorDetalleComponent },
   { path: 'login', component: LoginComponent },
+  {path: 'register',component:RegisterUserComponent},
   {path: 'view-match/:id', component: MatchViewComponent},
   { path: '', redirectTo: '/ligas', pathMatch: 'full' },
   { path: '**', redirectTo: '/ligas' } ,
