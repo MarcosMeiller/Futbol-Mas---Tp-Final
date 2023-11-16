@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { CustomValidators } from 'src/app/models/custom-validators';
 import { User } from 'src/app/models/user';
 import { UserServiceService } from 'src/app/services/user-service.service';
@@ -47,7 +48,7 @@ export class RegisterUserComponent {
   })
 
   // eslint-disable-next-line @typescript-eslint/no-empty-function
-  constructor(private userServices:UserServiceService){}
+  constructor(private userServices:UserServiceService, private router: Router){}
 
   get username(){
     return this.registerForm.get('username')
@@ -80,6 +81,7 @@ export class RegisterUserComponent {
       next: response => {
         this.msg= 'Registered user successfully'
         this.bg='bg-green-500'
+        this.router.navigate(['/login'])
         
       },
       error: response => {
