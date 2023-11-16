@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { DetalleService } from 'src/app/services/detalle.service';
+
 import { FootballApiService } from '../../services/football-api.service';
+
 @Component({
   selector: 'app-jugador-detalle',
   templateUrl: './jugador-detalle.component.html',
@@ -8,6 +10,7 @@ import { FootballApiService } from '../../services/football-api.service';
 })
 export class JugadorDetalleComponent {
  jugador: any;
+
   player:any;
   constructor(private footballApiService: FootballApiService,private dataService: DetalleService) {}
   ngOnInit() {
@@ -23,6 +26,7 @@ export class JugadorDetalleComponent {
     });
    }
   }
+
 
 
 

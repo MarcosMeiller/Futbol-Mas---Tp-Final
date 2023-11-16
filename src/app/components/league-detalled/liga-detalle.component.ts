@@ -29,6 +29,7 @@ export class LigaDetalleComponent  {
     }
   }
   
+
    searchTeams(){
     this.footballApiService.searchAll(this.search).subscribe((res:any)=>{
       console.log(res)

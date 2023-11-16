@@ -29,12 +29,14 @@ export class FootballApiService {
 
   }
 
+
   getPlayers(team: number): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}/players/squads?team=${team}`,this.options);
   }
 
   getPlayerStatistic(id: number,season: string): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}/players?id=${id}&season=${season}`,this.options);
+
   }
 
   

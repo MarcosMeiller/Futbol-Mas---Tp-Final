@@ -42,8 +42,6 @@ import { LoginComponent } from './components/login/login.component';
     MatchEventsComponent,
     EventIconDirective,
     LeaguesComponent,
- 
- 
     SearchComponent,
     LigaDetalleComponent,
     EquipoDetalleComponent,

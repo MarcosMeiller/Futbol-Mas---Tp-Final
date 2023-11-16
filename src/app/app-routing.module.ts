@@ -13,8 +13,6 @@ import { MatchViewComponent } from './components/match-view/match-view.component
 
 const routes: Routes = [
   { path: 'ligas', component: LeaguesComponent },
-  
-
   { path: 'busqueda', component: SearchComponent },
   { path: 'detalleliga', component: LigaDetalleComponent },
   { path: 'detalleEquipo', component: EquipoDetalleComponent },
