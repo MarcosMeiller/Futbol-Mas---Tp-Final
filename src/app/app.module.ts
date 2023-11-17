@@ -29,6 +29,7 @@ import { LoginComponent } from './components/login/login.component';
 import { LineupComponent } from './lineup/lineup.component';
 import { PlayerLineupComponent } from './player-lineup/player-lineup.component';
 import { MatchStaticsComponent } from './components/match-statics/match-statics.component';
+import { MatchHistoryComponent } from './components/match-history/match-history.component';
 
 
 
@@ -52,7 +53,8 @@ import { MatchStaticsComponent } from './components/match-statics/match-statics.
     LoginComponent,
     LineupComponent,
     PlayerLineupComponent,
-    MatchStaticsComponent
+    MatchStaticsComponent,
+    MatchHistoryComponent
   ],
   imports: [
     BrowserModule,

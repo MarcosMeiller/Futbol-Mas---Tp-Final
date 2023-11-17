@@ -14,12 +14,15 @@
       <li class="nav-item nav-item w-20">
         <a class="nav-link text-white text-center" href="#" (click)="setView('players',$event)" >Players</a>
       </li>
+      <li class="nav-item nav-item w-20">
+        <a class="nav-link text-white text-center" href="#" (click)="setView('history',$event)" >History</a>
+      </li>
   </ul>
   </div>
   <div class="mt-3">
       <app-match-events class="flex justify-center items-center" *ngIf="view === 'events'" [events]="match.events" [idHome]="match.teams.home.id" [idAway]="match.teams.away.id"></app-match-events>
       <app-lineup *ngIf="view === 'lineup'" [lineups]="match.lineups" [players]="match.players"></app-lineup>
       <app-match-statics *ngIf="view === 'statics'"></app-match-statics>
-      
+      <app-match-history *ngIf="view === 'history'" [idLocal]="match.teams.home.id "  [idVisit]="match.teams.away.id "></app-match-history>
     </div>
 </div>
