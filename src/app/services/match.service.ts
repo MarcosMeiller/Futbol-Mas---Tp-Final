@@ -10,7 +10,7 @@ import { Injectable } from '@angular/core';
 })
 export class MatchService {
 
-  private url= 'https://v3.football.api-sports.io/fixtures'
+  private url= 'http://localhost:1234/fixtures'
   private  APIKEY='b3db8ca9c6ef70a78619374b611c75ef'
 
   
@@ -21,6 +21,7 @@ export class MatchService {
   constructor(private http: HttpClient) {
   }
   getMatch({matchId}:any){
+    console.log("holas get match")
     return this.http.get(this.url+`?id=${matchId}`,this.options)
   }
 }
