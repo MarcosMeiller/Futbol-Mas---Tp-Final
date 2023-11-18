@@ -19,12 +19,12 @@ import { MatchEventsComponent } from './components/match-events/match-events.com
 import { EventIconDirective } from './directives/event-icon.directive';
 import { Routes,RouterModule } from '@angular/router';
 import { LeaguesComponent } from './components/leagues/leagues.component';
-import { TeamsComponent } from './components/teams/teams.component';
-import { PlayersComponent } from './components/players/players.component';
+
+
 import { SearchComponent } from './components/search/search.component';
-import { LigaDetalleComponent } from './components/liga-detalle/liga-detalle.component';
-import { EquipoDetalleComponent } from './components/equipo-detalle/equipo-detalle.component';
-import { JugadorDetalleComponent } from './components/jugador-detalle/jugador-detalle.component';
+import { LigaDetalleComponent } from './components/league-detalled/liga-detalle.component';
+import { EquipoDetalleComponent } from './components/team-detalled/equipo-detalle.component';
+import { JugadorDetalleComponent } from './components/player-detalled/jugador-detalle.component';
 import { LoginComponent } from './components/login/login.component';
 import { LineupComponent } from './lineup/lineup.component';
 import { PlayerLineupComponent } from './player-lineup/player-lineup.component';
@@ -45,8 +45,6 @@ import { MatchStaticsComponent } from './components/match-statics/match-statics.
     MatchEventsComponent,
     EventIconDirective,
     LeaguesComponent,
-    TeamsComponent,
-    PlayersComponent,
     SearchComponent,
     LigaDetalleComponent,
     EquipoDetalleComponent,
@@ -54,7 +52,8 @@ import { MatchStaticsComponent } from './components/match-statics/match-statics.
     LoginComponent,
     LineupComponent,
     PlayerLineupComponent,
-    MatchStaticsComponent
+    MatchStaticsComponent,
+
   ],
   imports: [
     BrowserModule,

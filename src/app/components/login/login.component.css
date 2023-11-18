@@ -1,0 +1,86 @@
+/* login.component.css */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  background: #ecf0f3;
+}
+
+h1 {
+  color: #fafafa;
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.custom-form {
+  min-width: 400px;
+  max-width: 70%;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 2rem 3rem;
+  border-radius: 2.5rem;
+  background-color: #3498db;
+  box-shadow: 13px 13px 20px #cbced1, -13px -13px 20px #ffffff;
+  color: white;
+  margin-top: 10rem;
+  position: relative;
+}
+
+.custom-form input {
+  display: block;
+  margin: 2rem 0;
+  width: calc(100% - 2rem);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  border: none;
+  box-shadow: inset -5px -5px 15px rgba(255, 255, 255, 0.8), inset 5px 5px 10px rgba(0, 0, 0, 0.1);
+  border: 0 none;
+  background: #ebf5fc;
+  color: #3498db;
+}
+
+.custom-form button {
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  border: none;
+  font-size: 1rem;
+  color: #ffffff;
+  font-weight: bold;
+  background-color: #3498db;
+  width: 100%;
+  display: block;
+  padding: 1rem;
+  border-radius: 1.5rem;
+  box-shadow: 3px 3px 8px #b1b1b1, -3px -3px 8px #ffffff;
+  cursor: pointer;
+}
+
+.btn {
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  border: none;
+  font-size: 1rem;
+  color: #ffffff;
+  font-weight: bold;
+  background-color: #3498db;
+  width: 100%;
+  display: block;
+  padding: 1rem;
+  border-radius: 1.5rem;
+  box-shadow: 3px 3px 8px #b1b1b1, -3px -3px 8px #ffffff;
+  cursor: pointer;
+}
+
+.btn:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.error-message {
+  color: red;
+  margin-top: 10px;
+}

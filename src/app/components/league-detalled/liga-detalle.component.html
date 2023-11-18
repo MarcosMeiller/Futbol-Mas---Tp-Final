@@ -1,0 +1,32 @@
+<div *ngIf="liga" class="container mt-4" style="background-color: #001f3f; color: #fff; padding: 20px; border-radius: 8px;">
+  <h1 class="text-center" style="font-size: 24px; font-weight: bold;">Detalles de la liga</h1>
+  <div class="liga-details">
+    <div class="d-flex align-items-center justify-content-between">
+      <div class="d-flex align-items-center">
+       <p> {{ liga.league.name }} <img [src]="liga.league.logo" class="logo-img" alt="Logo de la liga"></p>
+      </div>
+      <p> {{ liga.country.name }} <img [src]="liga.country.flag" width="200" height="100"></p>
+    </div>
+  </div>
+
+  <h1 class="mt-4">Equipos</h1>
+  <div class="search-bar">
+    <input type="text" [(ngModel)]="search" placeholder="Buscar equipo..." class="form-control">
+    <button (click)="searchTeams()" class="btn btn-primary">Buscar</button>
+  </div>
+
+  <ul class="list-group team-list">
+    <li *ngFor="let equipo of equipos" class="list-group-item team-item d-flex justify-content-between align-items-center">
+      <div class="d-flex align-items-center">
+        <img [src]="equipo.team.logo" class="team-logo-img" alt="Logo del equipo "  style="width: 70px;">
+        <span>{{ equipo.team.name }}</span>
+      </div>
+      <div>
+        <button class="btn btn-success follow-button">Seguir</button>
+        <button (click)="mostrarInformacionEquipo(equipo)" class="btn btn-info details-button ml-2">Ver Detalles</button>
+      </div>
+    </li>
+  </ul>
+</div>
+
+

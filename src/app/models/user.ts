@@ -1,12 +1,13 @@
 export class User {
-    id='';
-    username='';
-    password='';
-    name='';
-    lastname='';
-    email='';
-    country='';
-    token=''
+    //Id='';
+    Username='';
+    Password='';
+    FirstName='';
+    LastName='';
+    Email='';
+    Country='';
+  
+    //token=''
   
     //constructor()
     //   id: string,

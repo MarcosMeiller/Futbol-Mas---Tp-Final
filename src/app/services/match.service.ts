@@ -24,4 +24,8 @@ export class MatchService {
     console.log("holas get match")
     return this.http.get(this.url+`?id=${matchId}`,this.options)
   }
+  
+  getMatchHystory(teamsId:string){
+    return this.http.get(this.url+`/headtohead?h2h=${teamsId}`,this.options)
+  }
 }
