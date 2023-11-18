@@ -21,9 +21,10 @@ const routes: Routes = [
   { path: 'detalleEquipo', component: EquipoDetalleComponent, canActivate: [AuthGuard]  },
   { path: 'detallejugador', component: JugadorDetalleComponent, canActivate: [AuthGuard]  },
   { path: 'login', component: LoginComponent },
+  {path: 'home', component: LoginComponent, canActivate: [AuthGuard]  },
   {path: 'register',component:RegisterUserComponent},
   {path: 'view-match/:id', component: MatchViewComponent, canActivate: [AuthGuard] },
-  { path: '', redirectTo: '/ligas', pathMatch: 'full' },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', redirectTo: '/ligas' } ,
 ];
 
