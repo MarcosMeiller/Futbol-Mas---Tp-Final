@@ -22,8 +22,8 @@ export class MatchViewComponent implements OnInit {
   loadMatch()
   {
     this.matchService.getMatch({matchId: this.matchId}).subscribe({
-      next: (res:any)=> {this.match=res.response[0];console.log(this.match)},
-      error: (res)=>this.match=null
+      next: (res:any)=> {console.log("holassssss");this.match=res[0];console.log(this.match)},
+      error: (res)=>{console.log(res);this.match=null}
     })
   }
  setView(name:string,event:Event){
