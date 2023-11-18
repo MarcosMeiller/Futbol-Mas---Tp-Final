@@ -18,30 +18,30 @@ export class RegisterUserComponent {
   hidden=false
   user: User = new User()
   registerForm : FormGroup = new FormGroup({
-    'username' : new FormControl(this.user.username,
+    'username' : new FormControl(this.user.Username,
       [ //Validators
         Validators.required,
         Validators.pattern(/^[a-zA-Z0-9_-]+$/),
       ],
       [ CustomValidators.userExist( this.userServices )]),
-    'password' : new FormControl(this.user.password,
+    'password' : new FormControl(this.user.Password,
       [ //Validators
         Validators.required
       ]),
-    'email' : new FormControl(this.user.email,
+    'email' : new FormControl(this.user.Email,
       [ //Validators
         Validators.required,
         Validators.email
       ]),
-    'lastname' : new FormControl(this.user.lastname,
+    'lastname' : new FormControl(this.user.LastName,
       [ //Validators
         Validators.required
       ]),
-    'country' : new FormControl(this.user.country,
+    'country' : new FormControl(this.user.Country,
       [ //Validators
         Validators.required
       ]),
-      'name' : new FormControl(this.user.name,
+      'name' : new FormControl(this.user.FirstName,
         [ //Validators
           Validators.required
         ]),
@@ -70,13 +70,13 @@ export class RegisterUserComponent {
   }
 
   registerUser(){
-    this.user.username=this.username?.value
-    this.user.password=this.password?.value
-    this.user.email=this.email?.value
-    this.user.name=this.name?.value
-    this.user.lastname=this.lastname?.value
-    this.user.country=this.country?.value
-
+    this.user.Username=this.username?.value
+    this.user.Password=this.password?.value
+    this.user.Email=this.email?.value
+    this.user.FirstName=this.name?.value
+    this.user.LastName=this.lastname?.value
+    this.user.Country=this.country?.value
+    console.log(this.user)
     this.userServices.registerUser(this.user).subscribe({
       next: response => {
         this.msg= 'Registered user successfully'
