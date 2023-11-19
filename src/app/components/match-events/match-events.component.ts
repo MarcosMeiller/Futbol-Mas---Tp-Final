@@ -7,18 +7,23 @@ import { Event } from 'src/app/models/event';
   templateUrl: './match-events.component.html',
   styleUrls: ['./match-events.component.css']
 })
-export class MatchEventsComponent{
+export class MatchEventsComponent implements OnInit{
 
-  
 
-  @Input()
-   events:Event[]=[]
-  @Input()
+  events:Event[]=[]
   idHome=0
   event!: Event;
-  @Input()
   idAway=0
   constructor(private matchService: MatchService){}
+
+  ngOnInit(): void {
+    this.events=this.matchService.getMatchEvents()
+    this.idHome=this.matchService.getLocalTeam().id
+    this.idAway=this.matchService.getAwayTeam().id
+  }
+   
+
+  
 
 
   

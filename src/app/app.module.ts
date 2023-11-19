@@ -30,8 +30,6 @@ import { LineupComponent } from './lineup/lineup.component';
 import { PlayerLineupComponent } from './player-lineup/player-lineup.component';
 import { MatchStaticsComponent } from './components/match-statics/match-statics.component';
 import { MatchHistoryComponent } from './components/match-history/match-history.component';
-import { HomeComponent } from './components/home/home.component';
-
 
 
 @NgModule({
@@ -55,8 +53,7 @@ import { HomeComponent } from './components/home/home.component';
     LineupComponent,
     PlayerLineupComponent,
     MatchStaticsComponent,
-    MatchHistoryComponent
-    HomeComponent,
+    MatchHistoryComponent,
   ],
   imports: [
     BrowserModule,
