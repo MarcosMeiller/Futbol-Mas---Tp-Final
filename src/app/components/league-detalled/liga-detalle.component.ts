@@ -30,11 +30,15 @@ export class LigaDetalleComponent  {
   }
   
 
-   searchTeams(){
-    this.footballApiService.searchAll(this.search).subscribe((res:any)=>{
-      console.log(res)
-      this.equipos=res.response
-    })
+  searchTeams() {
+    if (this.search.trim() !== '') {
+      this.footballApiService.searchTeamsByName(this.search).subscribe((res: any) => {
+        console.log(res);
+        this.equipos = res.response;
+      });
+    } else {
+      this.ngOnInit();
+    }
   }
 
   mostrarInformacionEquipo(equipo: any) {

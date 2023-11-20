@@ -32,6 +32,7 @@ import { MatchStaticsComponent } from './components/match-statics/match-statics.
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,6 +54,7 @@ import { MatchStaticsComponent } from './components/match-statics/match-statics.
     LineupComponent,
     PlayerLineupComponent,
     MatchStaticsComponent,
+    
 
   ],
   imports: [

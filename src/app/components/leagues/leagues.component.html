@@ -4,21 +4,23 @@
   </div>
 
   <div class="search-bar">
-    <input type="text" [(ngModel)]="search" placeholder="Buscar liga..." class="form-control">
-    <button (click)="searchLeagues()" class="btn btn-primary">Buscar</button>
+    <input type="text" [(ngModel)]="search" placeholder="Buscar liga o equipo..." class="form-control">
+    <button (click)="searchLeaguesAndTeams()" class="btn btn-primary">Buscar</button>
   </div>
 
-  <ul class="list-group liga-list">
-    <li *ngFor="let liga of ligas" class="list-group-item liga-item d-flex justify-content-between align-items-center">
-      <div class="d-flex align-items-center">
-        <img [src]="liga.league.logo" class="logo-img" alt="Logo de la liga">
-        <span>{{ liga.league.name }}</span>
+  <div class="card-deck mt-3">
+    <div *ngFor="let liga of ligas" class="card ligas-card mb-3">
+      <img [src]="liga.league.logo" class="card-img-top" alt="Logo de la liga">
+      <div class="card-body">
+        <h5 class="card-title">{{ liga.league.name }}</h5>
+        <div class="d-flex justify-content-between align-items-center">
+          <button class="btn btn-success follow-button" style="margin-right: 5px;"><i class="fa fa-heart"></i> Seguir</button>
+          <button (click)="mostrarInformacionLiga(liga)" class="btn btn-info details-button">Ver Detalles</button>
+        </div>
       </div>
-      <div>
-        <button class="btn btn-success follow-button" style="margin-right: 5px;">Seguir</button>
-        <button (click)="mostrarInformacionLiga(liga)" class="btn btn-info details-button">Ver Detalles</button>
-      </div>
-    </li>
-  </ul>
+    </div>
+  </div>
+</div>
+
 
 

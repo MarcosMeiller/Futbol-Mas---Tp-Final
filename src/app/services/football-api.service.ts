@@ -42,11 +42,21 @@ export class FootballApiService {
 
   
 
-  searchAll(query: string): Observable<any> {
-    const searchLeagues$ = this.http.get<any[]>(`${this.apiUrl}/leagues?search=${query}`, this.options);
-    const searchTeams$ = this.http.get<any[]>(`${this.apiUrl}/teams?search=${query}`, this.options);
-    const searchPlayers$ = this.http.get<any[]>(`${this.apiUrl}/players?search=${query}`, this.options);
   
-    return forkJoin([searchLeagues$, searchTeams$, searchPlayers$]);
+  searchLeaguesAndTeams(query: string): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/leagues?name=${query}`, this.options)
+      .pipe(
+        switchMap((leagues: any) => {
+          const leagueIds = leagues.response.map((league: any) => league.league.id);
+          return this.http.get<any[]>(`${this.apiUrl}/teams?season=2023&league=${leagueIds.join(',')}`, this.options);
+        })
+      );
   }
+searchTeamsByName(name: string): Observable<any[]> {
+  return this.http.get<any[]>(`${this.apiUrl}/teams?name=${name}`, this.options);
 }
+
+searchPlayersByName(teamId: number, playerName: string): Observable<any[]> {
+  return this.http.get<any[]>(`${this.apiUrl}/players?team=${teamId}&search=${playerName}`, this.options);
+}
+ }

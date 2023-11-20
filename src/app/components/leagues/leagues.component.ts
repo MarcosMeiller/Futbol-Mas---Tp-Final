@@ -13,7 +13,7 @@ import { DetalleService } from '../../services/detalle.service';
 export class LeaguesComponent implements OnInit {
   ligas: any;
   search='';
-
+  ligasYEquipos:any;
   constructor(private footballApiService: FootballApiService,private router: Router,private dataService: DetalleService) {}
 
   ngOnInit() {
@@ -28,13 +28,17 @@ export class LeaguesComponent implements OnInit {
     });
   }
 
-  searchLeagues(){
-    this.footballApiService.searchAll(this.search).subscribe((res:any)=>{
-      console.log(res)
-      this.ligas=res.response
-    })
+  searchLeaguesAndTeams() {
+    if (this.search.trim() !== '') {
+      this.footballApiService.searchLeaguesAndTeams(this.search).subscribe((res: any) => {
+        console.log(res);
+        this.ligasYEquipos = res.response;
+      });
+    } else {
+      
+      this.ngOnInit();
+    }
   }
-
 
   mostrarInformacionLiga(liga: any) {
     this.dataService.setDatos(liga);
