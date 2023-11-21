@@ -21,7 +21,7 @@ export class LigaDetalleComponent  {
       this.footballApiService.getTeams('2023', this.liga.league.id).subscribe({
         next: (data: any) => {
           console.log(data);
-          this.equipos = data.response;
+          this.equipos = data;
         },
         error: (data: any) => {
           console.log(data);
@@ -33,8 +33,8 @@ export class LigaDetalleComponent  {
 
    searchTeams(){
     this.footballApiService.searchAll(this.search).subscribe((res:any)=>{
-      console.log(res)
-      this.equipos=res.response
+      this.equipos=res
+      console.log(this.equipos)
     })
   }
 
