@@ -84,3 +84,13 @@ h1 {
   color: red;
   margin-top: 10px;
 }
+
+.custom-form button.disabled-button {
+  background-color: rgb(143, 143, 143);
+  cursor: not-allowed;
+  user-select: none;
+}
+
+.custom-form button.active-button {
+  background-color: #3498db;
+}

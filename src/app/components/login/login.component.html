@@ -8,19 +8,25 @@
       [(ngModel)]="email"
       name="email"
       placeholder="Email"
-      required="required"
+      required
     />
     <input
       type="password"
       [(ngModel)]="password"
       name="password"
       placeholder="Password"
-      required="required"
+      required
     />
-    <button type="submit" (click)="login()">Ingresar</button>
+    <button
+    type="submit"
+    (click)="login()"
+    [ngClass]="{'disabled-button': isLoginButtonDisabled(), 'active-button': areFieldsCompleted()}"
+    [disabled]="isLoginButtonDisabled()"
+  >
+    Ingresar
+  </button>
     <br>
     <button routerLink="/register" class="btn">Registrarse</button>
-
   </form>
 </div>
 
