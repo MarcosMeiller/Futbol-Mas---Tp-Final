@@ -1,26 +1,24 @@
-<div class="container mt-4 ligas-container">
+<div *ngIf="ligas" class="bg-slate-800 rounded-2xl m-4 p-4 shadow-2xl flex-col justify-center items-center">
+  <h1 class="text-center" style="font-size: 32px; font-weight: bold; color: #ffffff;">Ligas</h1>
   <div>
     <h2 class="text-center ligas-title">Ligas</h2>
   </div>
 
-  <div class="search-bar">
-    <input type="text" [(ngModel)]="search" placeholder="Buscar liga o equipo..." class="form-control">
-    <button (click)="searchLeaguesAndTeams()" class="btn btn-primary">Buscar</button>
+  <div class="search-bar mb-3">
+    <input type="text" [(ngModel)]="search" placeholder="Buscar liga..." class="form-control">
+    <button (click)="searchLeagues" class="btn btn-primary">Buscar </button>
   </div>
 
-  <div class="card-deck mt-3">
-    <div *ngFor="let liga of ligas" class="card ligas-card mb-3">
-      <img [src]="liga.league.logo" class="card-img-top" alt="Logo de la liga">
+  <div class="d-flex flex-wrap justify-content-center">
+    <div *ngFor="let liga of ligas" class="card m-2" style="width: 18rem; cursor: pointer;"  (click)="mostrarInformacionLiga(liga)">
+      <img [src]="liga.league.logo" class="card-img-top" alt="Logo de la liga" style="max-height: 100px; object-fit: contain;">
       <div class="card-body">
-        <h5 class="card-title">{{ liga.league.name }}</h5>
+        <h5 class="card-title text-center">{{ liga.league.name }}</h5>
         <div class="d-flex justify-content-between align-items-center">
-          <button class="btn btn-success follow-button" style="margin-right: 5px;"><i class="fa fa-heart"></i> Seguir</button>
-          <button (click)="mostrarInformacionLiga(liga)" class="btn btn-info details-button">Ver Detalles</button>
+          <button class="btn btn-danger follow-button" style="margin-right: 5px;"><i class="fa fa-heart"></i> </button>
         </div>
       </div>
     </div>
   </div>
 </div>
-
-
 

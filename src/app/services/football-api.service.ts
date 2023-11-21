@@ -8,7 +8,7 @@ import { catchError } from 'rxjs/operators';
 })
 export class FootballApiService {
   private apiUrl = 'https://v3.football.api-sports.io/'; 
-  //private  APIKEY='4aae6e0ae3bfc754b192636ab49e3c77'
+  
   private  APIKEY='71e9962cf38604017c974f8be33f449b'
   options={headers:new HttpHeaders({
 
@@ -39,18 +39,16 @@ export class FootballApiService {
     return this.http.get<any[]>(`${this.apiUrl}/players?id=${id}&season=${season}`,this.options);
 
   }
+  
+  getFeaxture(id:number, season:string):Observable <any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/fixtures?league=${id}&season=${season}`,this.options);
 
+  }
   
 
   
-  searchLeaguesAndTeams(query: string): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/leagues?name=${query}`, this.options)
-      .pipe(
-        switchMap((leagues: any) => {
-          const leagueIds = leagues.response.map((league: any) => league.league.id);
-          return this.http.get<any[]>(`${this.apiUrl}/teams?season=2023&league=${leagueIds.join(',')}`, this.options);
-        })
-      );
+  searchLeagueByName(name: string): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/leagues?name=${name}`, this.options);
   }
 searchTeamsByName(name: string): Observable<any[]> {
   return this.http.get<any[]>(`${this.apiUrl}/teams?name=${name}`, this.options);

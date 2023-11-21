@@ -28,20 +28,19 @@ export class LeaguesComponent implements OnInit {
     });
   }
 
-  searchLeaguesAndTeams() {
+  searchLeagues() {
     if (this.search.trim() !== '') {
-      this.footballApiService.searchLeaguesAndTeams(this.search).subscribe((res: any) => {
+      this.footballApiService.searchLeagueByName(this.search).subscribe((res: any) => {
         console.log(res);
-        this.ligasYEquipos = res.response;
+        this.ligas = res.response;
       });
     } else {
-      
       this.ngOnInit();
     }
   }
 
   mostrarInformacionLiga(liga: any) {
-    this.dataService.setDatos(liga);
+    this.dataService.setLiga(liga);
     this.router.navigate(['/detalleliga']);
   }
   

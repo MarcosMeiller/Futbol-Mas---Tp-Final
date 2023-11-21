@@ -12,9 +12,12 @@ export class EquipoDetalleComponent {
   search=''
   equipo: any;
   view='events'
+  selectedPlayer: any;
+
+  
   constructor(private footballApiService: FootballApiService,private router: Router,private dataService: DetalleService) {}
   ngOnInit() {
-    this.equipo = this.dataService.getDatos();
+    this.equipo = this.dataService.getEquipo();
     this.footballApiService.getPlayers(this.equipo.team.id).subscribe({
       next: (data: any) => {
         console.log(data)
@@ -37,9 +40,10 @@ export class EquipoDetalleComponent {
       this.ngOnInit();
     }
   }
+ 
 
   mostrarInformacionJugador(jugador: any) {
-    this.dataService.setDatos(jugador);
+    this.dataService.setJugador(jugador);   
     this.router.navigate(['/detallejugador']);
   }
 
