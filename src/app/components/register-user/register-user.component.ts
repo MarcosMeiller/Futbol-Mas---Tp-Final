@@ -11,7 +11,6 @@ import { UserServiceService } from 'src/app/services/user-service.service';
   styleUrls: ['./register-user.component.css']
 })
 export class RegisterUserComponent {
-  
   msg='Error registering user, try again in a moment!'
   bg=''
   showSnack ='hidden'
@@ -45,6 +44,7 @@ export class RegisterUserComponent {
         [ //Validators
           Validators.required
         ]),
+      'passwordRepeat': new FormControl('', [Validators.required]),
   })
 
   // eslint-disable-next-line @typescript-eslint/no-empty-function
@@ -55,6 +55,9 @@ export class RegisterUserComponent {
   }
   get password(){
     return this.registerForm.get('password')
+  }
+  get passwordRepeat(){
+    return this.registerForm.get('passwordRepeat')
   }
   get email(){
     return this.registerForm.get('email')
@@ -70,25 +73,30 @@ export class RegisterUserComponent {
   }
 
   registerUser(){
+    const formValues = this.registerForm.value;
     this.user.Username=this.username?.value
     this.user.Password=this.password?.value
     this.user.Email=this.email?.value
     this.user.FirstName=this.name?.value
     this.user.LastName=this.lastname?.value
     this.user.Country=this.country?.value
-    console.log(this.user)
-    this.userServices.registerUser(this.user).subscribe({
-      next: response => {
-        this.msg= 'Registered user successfully'
-        this.bg='bg-green-500'
-        this.router.navigate(['/login'])
-        
-      },
-      error: response => {
-        this.msg='Error registering user, try again in a moment!'
-        this.bg='bg-red-500'
-      } 
-    })
+    if (formValues.password === formValues.passwordRepeat) {
+      this.userServices.registerUser(this.user).subscribe({
+        next: response => {
+          this.msg = 'Registered user successfully';
+          this.bg = 'bg-green-500';
+          this.router.navigate(['/login']);
+        },
+        error: response => {
+          this.msg = 'Error registering user: ' + response;
+          this.bg = 'bg-red-500';
+        }
+      });
+    } else {
+      this.msg = 'Passwords do not match, try again';
+      this.bg = 'bg-red-500';
+    }
+
     this.showSnack='hide'
     setTimeout(()=>{
       this.showSnack='hidden'
