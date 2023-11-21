@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { DetalleService } from 'src/app/services/detalle.service';
 
 import { FootballApiService } from '../../services/football-api.service';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-jugador-detalle',
@@ -9,12 +10,13 @@ import { FootballApiService } from '../../services/football-api.service';
   styleUrls: ['./jugador-detalle.component.css']
 })
 export class JugadorDetalleComponent {
+  @Input()
  jugador: any;
 
   player:any;
-  constructor(private footballApiService: FootballApiService,private dataService: DetalleService) {}
+  constructor(private footballApiService: FootballApiService,private dataService: DetalleService,private route:ActivatedRoute) {}
   ngOnInit() {
-    this.jugador = this.dataService.getDatos();
+    this.jugador=Number(this.route.snapshot.paramMap.get('id'))
     this.footballApiService.getPlayerStatistic(this.jugador.id,'2023').subscribe({
       next: (data: any) => {
         console.log(data)

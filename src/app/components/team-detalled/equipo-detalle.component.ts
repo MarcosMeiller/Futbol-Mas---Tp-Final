@@ -36,7 +36,7 @@ export class EquipoDetalleComponent {
 
   mostrarInformacionJugador(jugador: any) {
     this.dataService.setDatos(jugador);
-    this.router.navigate(['/detallejugador']);
+    this.router.navigate(['/detallejugador/']+jugador.id);
   }
 
 

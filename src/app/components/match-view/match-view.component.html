@@ -24,6 +24,7 @@
       <app-match-events class="flex justify-center items-center" *ngIf="view === 'events'"></app-match-events>
       <app-lineup *ngIf="view === 'lineup'" [lineups]="match.lineups" [players]="match.players"></app-lineup>
       <app-match-statics *ngIf="view === 'statics'"></app-match-statics>
+      <app-players-match *ngIf="view === 'players'"></app-players-match>
       <app-match-history *ngIf="view === 'history'" [idLocal]="match.teams.home.id "  [idVisit]="match.teams.away.id "></app-match-history>
     </div>
 </div>

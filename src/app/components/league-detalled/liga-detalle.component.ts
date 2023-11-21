@@ -11,6 +11,7 @@ import { Router } from '@angular/router'
 export class LigaDetalleComponent  {
   equipos: any;
   search=''
+ 
   liga: any;
   
   constructor(private footballApiService: FootballApiService,private dataService: DetalleService,private router: Router) {}

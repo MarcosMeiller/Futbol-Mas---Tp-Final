@@ -19,8 +19,8 @@ export class LeaguesComponent implements OnInit {
   ngOnInit() {
     this.footballApiService.getLeagues().subscribe({
       next: (data: any) => {
-        console.log(data)
-        this.ligas = data.response;
+        console.log(data[0])
+        this.ligas = data;
       },
       error: (data: any) => {
         console.log(data)

@@ -7,26 +7,39 @@ import { catchError } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class FootballApiService {
+  private localApiUrl='http://localhost:1234/'
   private apiUrl = 'https://v3.football.api-sports.io/'; 
   //private  APIKEY='4aae6e0ae3bfc754b192636ab49e3c77'
   private  APIKEY='71e9962cf38604017c974f8be33f449b'
   options={headers:new HttpHeaders({
 
     'X-RapidAPI-Key': this.APIKEY,
-
+    'Authorization' : JSON.stringify(localStorage.getItem('token'))
     //'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
   })}
   constructor(private http: HttpClient) {
   }
 
   getLeagues(): Observable<any[]> {
-   
-    return this.http.get<any[]>(`${this.apiUrl}/leagues`,this.options);
+    const index: {startIndex: number, endIndex:number} = {startIndex : 0, endIndex: 5}
+    const options={headers:new HttpHeaders({
+
+      'X-RapidAPI-Key': this.APIKEY,
+      'Index': JSON.stringify(index)
+  
+      //'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
+    })}
+    return this.http.get<any[]>(`${this.localApiUrl}leagues`,options);
   }
 
 
   getTeams(season: string, leagueId: number): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/teams?season=${season}&league=${leagueId}`,this.options);
+    const header={headers:new HttpHeaders({
+      'Authorization' : JSON.stringify(localStorage.getItem('token'))
+      //'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
+    })}
+    console.log(localStorage.getItem('token'))
+    return this.http.get<any[]>(`${this.localApiUrl}teams?season=${season}&league=${leagueId}`,header);
 
   }
 

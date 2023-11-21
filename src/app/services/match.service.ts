@@ -51,4 +51,11 @@ export class MatchService {
   getAwayStatistics(){
     return this.selectedMatch.statistics[1].statistics
   }
+
+  getLocalPlayers(){
+    return this.selectedMatch.players[0].players
+  }
+  getAwayPlayers(){
+    return this.selectedMatch.players[1].players
+  }
 }
