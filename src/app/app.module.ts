@@ -31,8 +31,6 @@ import { PlayerLineupComponent } from './player-lineup/player-lineup.component';
 import { MatchStaticsComponent } from './components/match-statics/match-statics.component';
 import { MatchHistoryComponent } from './components/match-history/match-history.component';
 import { HomeComponent } from './components/home/home.component';
-import { TeamFixtureComponent } from './components/team-fixture/team-fixture.component';
-
 
 
 
@@ -57,9 +55,8 @@ import { TeamFixtureComponent } from './components/team-fixture/team-fixture.com
     LineupComponent,
     PlayerLineupComponent,
     MatchStaticsComponent,
-    MatchHistoryComponent,
+    MatchHistoryComponent
     HomeComponent,
-    TeamFixtureComponent,
   ],
   imports: [
     BrowserModule,

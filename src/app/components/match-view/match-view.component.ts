@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
 import { MatchService } from 'src/app/services/match.service';
 
 @Component({
@@ -10,6 +11,7 @@ import { MatchService } from 'src/app/services/match.service';
 export class MatchViewComponent implements OnInit {
 
 
+  isLoading =false
   matchId=0
   view='events'
   match!: any | null;
@@ -21,8 +23,13 @@ export class MatchViewComponent implements OnInit {
 
   loadMatch()
   {
+    this.isLoading=true
     this.matchService.getMatch({matchId: this.matchId}).subscribe({
-      next: (res:any)=> {console.log("holassssss");this.match=res[0];console.log(this.match)},
+      next: (res:any)=> {
+        this.match=res[0];
+        console.log(this.match);
+        this.isLoading=false
+        this.matchService.setMatchSelected(this.match)},
       error: (res)=>{console.log(res);this.match=null}
     })
   }

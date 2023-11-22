@@ -31,13 +31,10 @@ export class LineupComponent  implements OnInit{
 
     this.homeLineup.startXl.forEach(player=>{
       const playerComplete=this.players[0].players.find((item: { player: { id: number; }; }) =>item.player.id== player.id)
-      console.log(playerComplete)
       player.img=playerComplete.player.photo
       player.rating=playerComplete.statistics[0].games.rating
     })
     
-
-    console.log(this.homeLineup)
     //this.homeLineup.name=this.lineups[0].team.name
     
     //this.homeLineup.startXl=this.lineups[0].startXI
