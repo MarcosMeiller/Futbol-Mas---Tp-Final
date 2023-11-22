@@ -67,7 +67,7 @@ import { PlayersMatchComponent } from './components/players-match/players-match.
     HomeComponent,
     TeamFixtureComponent,
     StandingsLeagueComponent,
-    StatisticsTeamComponent
+    StatisticsTeamComponent,
     PlayersMatchComponent,
 
   ],
