@@ -18,7 +18,7 @@ export class LoginComponent {
     this.authService.login(this.email, this.password).subscribe(
       (response) => {
         console.log('Respuesta exitosa:', response);
-        this.router.navigate(['/ligas']);
+        this.router.navigate(['/home']); //esto despues tenemos que ver a donde cambiarlo.
       },
       (error) => {
         console.error('Error en el inicio de sesión:', error);

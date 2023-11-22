@@ -10,9 +10,10 @@ import { Injectable } from '@angular/core';
 })
 export class MatchService {
 
-  private url= 'https://v3.football.api-sports.io/fixtures'
-  private  APIKEY='71e9962cf38604017c974f8be33f449b'
+  private url= 'http://localhost:1234/fixtures'
+  private  APIKEY='b3db8ca9c6ef70a78619374b611c75ef'
 
+  selectedMatch:any
   
   options={headers:new HttpHeaders({
     'x-apisports-key': this.APIKEY,
@@ -26,5 +27,28 @@ export class MatchService {
   
   getMatchHystory(teamsId:string){
     return this.http.get(this.url+`/headtohead?h2h=${teamsId}`,this.options)
+  }
+
+  setMatchSelected(match:any){
+    this.selectedMatch=match
+  }
+
+  getMatchEvents(){
+    console.log(this.selectedMatch)
+    return this.selectedMatch.events
+  }
+
+  getLocalTeam(){
+    return this.selectedMatch.teams.home
+  }
+  getAwayTeam(){
+    return this.selectedMatch.teams.away
+  }
+
+  getHomeStatistics(){
+    return this.selectedMatch.statistics[0].statistics
+  }
+  getAwayStatistics(){
+    return this.selectedMatch.statistics[1].statistics
   }
 }

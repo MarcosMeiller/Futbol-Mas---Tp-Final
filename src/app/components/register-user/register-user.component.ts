@@ -100,6 +100,7 @@ export class RegisterUserComponent {
     this.showSnack='hide'
     setTimeout(()=>{
       this.showSnack='hidden'
+      this.router.navigate(['/login'])
     },3000)
   }
 }

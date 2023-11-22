@@ -11,10 +11,13 @@ export class EquipoDetalleComponent {
   jugadores: any;
   search=''
   equipo: any;
+  view='events'
+  selectedPlayer: any;
+
   
   constructor(private footballApiService: FootballApiService,private router: Router,private dataService: DetalleService) {}
   ngOnInit() {
-    this.equipo = this.dataService.getDatos();
+    this.equipo = this.dataService.getEquipo();
     this.footballApiService.getPlayers(this.equipo.team.id).subscribe({
       next: (data: any) => {
         console.log(data)
@@ -27,17 +30,26 @@ export class EquipoDetalleComponent {
    }
   
 
-  searchPlayer(){
-    this.footballApiService.searchAll(this.search).subscribe((res:any)=>{
-      console.log(res)
-      this.jugadores=res.response
-    })
+   searchPlayer() {
+    if (this.search.trim() !== '') {
+      this.footballApiService.searchPlayersByName(this.equipo.team.id,this.search).subscribe((res: any) => {
+        console.log(res);
+        this.selectedPlayer = res.response;
+      });
+    } else {
+      this.selectedPlayer=[];
+      this.ngOnInit();
+    }
   }
+ 
 
   mostrarInformacionJugador(jugador: any) {
-    this.dataService.setDatos(jugador);
+    this.dataService.setJugador(jugador);   
     this.router.navigate(['/detallejugador']);
   }
 
-
+  setView(name:string,event:Event){
+    event.preventDefault();
+    this.view=name
+   }
 }

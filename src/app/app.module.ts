@@ -31,7 +31,9 @@ import { PlayerLineupComponent } from './player-lineup/player-lineup.component';
 import { MatchStaticsComponent } from './components/match-statics/match-statics.component';
 import { PredictionComponent } from './components/prediction/prediction.component';
 import { PredictionAllComponent } from './components/prediction-all/prediction-all.component';
-
+import { MatchHistoryComponent } from './components/match-history/match-history.component';
+import { HomeComponent } from './components/home/home.component';
+import { TeamFixtureComponent } from './components/team-fixture/team-fixture.component';
 
 
 @NgModule({
@@ -57,7 +59,9 @@ import { PredictionAllComponent } from './components/prediction-all/prediction-a
     MatchStaticsComponent,
     PredictionComponent,
     PredictionAllComponent,
-
+    MatchHistoryComponent,
+    HomeComponent,
+    TeamFixtureComponent
   ],
   imports: [
     BrowserModule,

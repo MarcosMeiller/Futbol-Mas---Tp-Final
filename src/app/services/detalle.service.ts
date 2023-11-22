@@ -4,13 +4,33 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class DetalleService {
-  private datos: any; 
+  private equipo: any; 
+  private liga: any;
+  private jugador: any;
 
-  setDatos(data: any) {
-    this.datos = data;
+  setJugador(jugador: any) {
+    this.jugador = jugador;
   }
 
-  getDatos() {
-    return this.datos;
+  getJugador() {
+    return this.jugador;
   }
+  
+  setLiga(liga: any) {
+    this.liga = liga;
+  }
+
+  getLiga() {
+    return this.liga;
+  }
+
+  setEquipo(equipo: any) {
+    this.equipo = equipo;
+  }
+
+  getEquipo() {
+    return this.equipo;
+  }
+
+  
 }

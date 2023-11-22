@@ -15,7 +15,7 @@ export class LigaDetalleComponent  {
   
   constructor(private footballApiService: FootballApiService,private dataService: DetalleService,private router: Router) {}
   ngOnInit() {
-    this.liga = this.dataService.getDatos();
+    this.liga = this.dataService.getLiga();
     if (this.liga && this.liga.league) {
       this.footballApiService.getTeams('2023', this.liga.league.id).subscribe({
         next: (data: any) => {
@@ -30,15 +30,19 @@ export class LigaDetalleComponent  {
   }
   
 
-   searchTeams(){
-    this.footballApiService.searchAll(this.search).subscribe((res:any)=>{
-      console.log(res)
-      this.equipos=res.response
-    })
+  searchTeams() {
+    if (this.search.trim() !== '') {
+      this.footballApiService.searchTeamsByName(this.search).subscribe((res: any) => {
+        console.log(res);
+        this.equipos = res.response;
+      });
+    } else {
+      this.ngOnInit();
+    }
   }
 
   mostrarInformacionEquipo(equipo: any) {
-    this.dataService.setDatos(equipo);
+    this.dataService.setEquipo(equipo);
     this.router.navigate(['/detalleEquipo']);
   }
 }

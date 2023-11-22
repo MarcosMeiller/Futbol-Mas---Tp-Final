@@ -1,32 +1,40 @@
-<div *ngIf="liga" class="container mt-4" style="background-color: #001f3f; color: #fff; padding: 20px; border-radius: 8px;">
-  <h1 class="text-center" style="font-size: 24px; font-weight: bold;">Detalles de la liga</h1>
-  <div class="liga-details">
-    <div class="d-flex align-items-center justify-content-between">
-      <div class="d-flex align-items-center">
-       <p> {{ liga.league.name }} <img [src]="liga.league.logo" class="logo-img" alt="Logo de la liga"></p>
+<!-- Detalles de la liga -->
+<div *ngIf="liga" class="bg-slate-800 rounded-2xl m-4 p-4 shadow-2xl flex-col justify-center items-center">
+  <h1 class="text-center" style="font-size: 32px; font-weight: bold; color: #ffffff;">Detalles de la liga</h1>
+
+  <!-- Información de la liga y logo -->
+  <div class="row">
+    <div class="col-md-6">
+      <p style="font-size: 18px; font-weight: bold; color: #ffffff;">Nombre: {{ liga.league.name }} <img [src]="liga.league.logo" class="logo-img" alt="Logo de la liga"></p>
+    </div>
+    <div class="col-md-6 d-flex justify-content-end align-items-start">
+      <div class="d-flex flex-column align-items-end">
+        <p style="font-size: 18px; font-weight: bold; color: #ffffff;">País: {{ liga.country.name }}</p>
+        <img [src]="liga.country.flag" width="200" height="100" class="mt-2">
       </div>
-      <p> {{ liga.country.name }} <img [src]="liga.country.flag" width="200" height="100"></p>
+    </div>
+    <div class="col-md-6 mt-2">
+      <button class="btn btn-danger follow-button" style="width: fit-content;"><i class="fa fa-heart" style="font-size: 20px;"></i></button>
     </div>
   </div>
 
+  <!-- Equipos -->
   <h1 class="mt-4">Equipos</h1>
   <div class="search-bar">
-    <input type="text" [(ngModel)]="search" placeholder="Buscar equipo..." class="form-control">
+    <input type="text" [(ngModel)]="search" placeholder="Buscar equipo..." class="form-control" style="width: 200px">
     <button (click)="searchTeams()" class="btn btn-primary">Buscar</button>
   </div>
-
-  <ul class="list-group team-list">
-    <li *ngFor="let equipo of equipos" class="list-group-item team-item d-flex justify-content-between align-items-center">
-      <div class="d-flex align-items-center">
-        <img [src]="equipo.team.logo" class="team-logo-img" alt="Logo del equipo "  style="width: 70px;">
-        <span>{{ equipo.team.name }}</span>
+  
+  <div class="d-flex flex-wrap justify-content-center">
+    <div *ngFor="let equipo of equipos" class="card m-2" style="width: 18rem; cursor: pointer;" (click)="mostrarInformacionEquipo(equipo)">
+      <img [src]="equipo.team.logo" class="card-img-top" alt="Logo del equipo" style="width: 55%; height: 150px; object-fit: cover;">
+      <div class="card-body">
+        <h5 class="card-title">{{ equipo.team.name }}</h5>
+        <div class="d-flex justify-content-between align-items-center">
+          <button class="btn btn-danger follow-button" style="width: fit-content;"><i class="fa fa-heart"></i></button>
+        </div>
       </div>
-      <div>
-        <button class="btn btn-success follow-button">Seguir</button>
-        <button (click)="mostrarInformacionEquipo(equipo)" class="btn btn-info details-button ml-2">Ver Detalles</button>
-      </div>
-    </li>
-  </ul>
+    </div>
+  </div>
 </div>
-
 
