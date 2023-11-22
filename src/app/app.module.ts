@@ -32,6 +32,8 @@ import { MatchStaticsComponent } from './components/match-statics/match-statics.
 import { MatchHistoryComponent } from './components/match-history/match-history.component';
 import { HomeComponent } from './components/home/home.component';
 import { TeamFixtureComponent } from './components/team-fixture/team-fixture.component';
+import { StandingsLeagueComponent } from './components/standings-league/standings-league.component';
+import { StatisticsTeamComponent } from './components/statistics-team/statistics-team.component';
 
 
 @NgModule({
@@ -57,7 +59,9 @@ import { TeamFixtureComponent } from './components/team-fixture/team-fixture.com
     MatchStaticsComponent,
     MatchHistoryComponent,
     HomeComponent,
-    TeamFixtureComponent
+    TeamFixtureComponent,
+    StandingsLeagueComponent,
+    StatisticsTeamComponent
   ],
   imports: [
     BrowserModule,

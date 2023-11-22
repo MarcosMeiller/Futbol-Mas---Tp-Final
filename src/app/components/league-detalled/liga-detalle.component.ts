@@ -12,6 +12,7 @@ export class LigaDetalleComponent  {
   equipos: any;
   search=''
   liga: any;
+  view='events'
   
   constructor(private footballApiService: FootballApiService,private dataService: DetalleService,private router: Router) {}
   ngOnInit() {
@@ -45,6 +46,10 @@ export class LigaDetalleComponent  {
     this.dataService.setEquipo(equipo);
     this.router.navigate(['/detalleEquipo']);
   }
+  setView(name:string,event:Event){
+    event.preventDefault();
+    this.view=name
+   }
 }
   
 

@@ -1,0 +1,21 @@
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { StatisticsTeamComponent } from './statistics-team.component';
+
+describe('StatisticsTeamComponent', () => {
+  let component: StatisticsTeamComponent;
+  let fixture: ComponentFixture<StatisticsTeamComponent>;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      declarations: [StatisticsTeamComponent]
+    });
+    fixture = TestBed.createComponent(StatisticsTeamComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});

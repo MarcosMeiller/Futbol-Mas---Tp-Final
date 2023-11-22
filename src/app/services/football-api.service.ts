@@ -29,7 +29,7 @@ export class FootballApiService {
     return this.http.get<any[]>(`${this.apiUrl}/teams?season=${season}&league=${leagueId}`,this.options);
 
   }
-
+  
 
   getPlayers(team: number): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}/players/squads?team=${team}`,this.options);
@@ -45,8 +45,18 @@ export class FootballApiService {
 
   }
   
+getStanding(id:number,season:string):Observable  <any[]> {
+  return this.http.get<any[]>(`${this.apiUrl}/standings?league=${id}&season=${season}`,this.options);
 
-  
+}
+getStatisticsTeam(idTeam:number, idLeague:number, season:string):Observable  <any[]> {
+
+  return this.http.get<any[]>(`${this.apiUrl}/teams/statistics?league=${idLeague}&team=${idTeam}&season=${season}`,this.options);
+ }
+  getFixtureLive():Observable  <any[]> {
+
+    return this.http.get<any[]>(`${this.apiUrl}/fixture?live=all`,this.options);
+   }
   searchLeagueByName(name: string): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}/leagues?name=${name}`, this.options);
   }

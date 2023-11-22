@@ -14,6 +14,8 @@ export class LeaguesComponent implements OnInit {
   ligas: any;
   search='';
   ligasYEquipos:any;
+  view='events';
+  
   constructor(private footballApiService: FootballApiService,private router: Router,private dataService: DetalleService) {}
 
   ngOnInit() {
