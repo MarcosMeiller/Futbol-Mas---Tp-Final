@@ -26,6 +26,9 @@
       <li class="nav-item nav-item w-20">
         <a class="nav-link text-white text-center" href="#" (click)="setView('jugadores',$event)">Jugadores</a>
       </li>
+      <li class="nav-item nav-item w-20">
+        <a class="nav-link text-white text-center" href="#" (click)="setView('fixture',$event)">Partidos</a>
+      </li>
     </ul>
   </div>
 
@@ -38,10 +41,30 @@
       <p style="color: #ffffff;">Capacidad: {{ equipo.venue.capacity }}</p>
       <img [src]="equipo.venue.image" width="300" height="200" style="max-width: 200%; border-radius: 16px; margin-bottom: 30px;">
     </div>
+
     <div *ngIf="view === 'jugadores'" class="d-flex flex-wrap">
+
+      <div class="search-bar">
       <input type="text" [(ngModel)]="search" placeholder="Buscar jugador..." class="form-control">
       <button (click)="searchPlayer()" class="btn btn-primary">Buscar</button>
-      <div *ngIf="selectedPlayer; else playerList" class="mb-4 col-md-12"></div>
+      </div>
+
+      <div *ngIf="selectedPlayer && selectedPlayer.length> 0 ; else playerList" class="mb-4 col-md-12">
+        
+        <div class="row">
+            <div class="card" style="max-width: 250px; cursor: pointer;" (click)="mostrarInformacionJugador(selectedPlayer[0].player)">
+              <img [src]="selectedPlayer[0].player.photo" class="card-img-top" alt="Foto del jugador" style="width: 55%; height: 150px; object-fit: cover;">
+              <div class="card-body">
+                <h5 class="card-title" style="font-size: 18px; font-weight: bold;">{{ selectedPlayer[0].player.name }}</h5>
+                <button class="btn btn-danger follow-button" style="margin-right: 5px;"><i class="fa fa-heart"></i></button>
+              </div>
+            </div>
+        </div>
+      </div>
+      
+    </div>
+
+    <ng-template #playerList>
       <div *ngFor="let item of jugadores" class="mb-4 col-md-12">
         <h2 class="mb-3" style="font-size: 20px; font-weight: bold; color: #ffffff;">{{ item.category }}</h2>
         <div class="row">
@@ -59,23 +82,8 @@
           </div>
         </div>
       </div>
-    </div>
-
-    <ng-template #playerList>
-      <div *ngFor="let item of jugadores" class="mb-4 col-md-12">
-        <h2 class="mb-3" style="font-size: 20px; font-weight: bold; color: #ffffff;">{{ item.category }}</h2>
-        <div class="row">
-          <div *ngFor="let jugador of item.player" class="col-md-4 mb-3">
-            <div class="card" style="max-width: 250px; cursor: pointer;" (click)="mostrarInformacionJugador(jugador)">
-              <img [src]="jugador.photo" class="card-img-top" alt="Foto del jugador" style="width: 55%; height: 150px; object-fit: cover;">
-              <div class="card-body">
-                <h5 class="card-title" style="font-size: 18px; font-weight: bold;">{{ jugador.name }}</h5>
-                <button class="btn btn-danger follow-button" style="margin-right: 5px;"><i class="fa fa-heart"></i></button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+        
+      
     </ng-template>
   
       <app-team-fixture *ngIf="view === 'fixture'" [id]="equipo.team.id"></app-team-fixture>

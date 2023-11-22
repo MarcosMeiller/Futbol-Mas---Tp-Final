@@ -9,7 +9,7 @@ import { catchError } from 'rxjs/operators';
 export class FootballApiService {
   private apiUrl = 'https://v3.football.api-sports.io/'; 
   
-  private  APIKEY='71e9962cf38604017c974f8be33f449b'
+  private  APIKEY='4aae6e0ae3bfc754b192636ab49e3c77'
   options={headers:new HttpHeaders({
 
     'X-RapidAPI-Key': this.APIKEY,

@@ -34,9 +34,10 @@ export class EquipoDetalleComponent {
     if (this.search.trim() !== '') {
       this.footballApiService.searchPlayersByName(this.equipo.team.id,this.search).subscribe((res: any) => {
         console.log(res);
-        this.jugadores = res.response;
+        this.selectedPlayer = res.response;
       });
     } else {
+      this.selectedPlayer=[];
       this.ngOnInit();
     }
   }
