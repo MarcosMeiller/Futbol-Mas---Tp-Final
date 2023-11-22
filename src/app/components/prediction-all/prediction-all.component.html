@@ -1,0 +1,26 @@
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+
+
+<div *ngIf="allPredictions.length > 0">
+  <h2 class="mt-4">All Predictions</h2>
+  <ul class="list-group">
+    <li *ngFor="let prediction of allPredictions" class="list-group-item">
+      Home Score: {{ prediction.homeScore }}, Away Score: {{ prediction.awayScore }}
+    </li>
+  </ul>
+</div>
+
+<div *ngIf="topPredictions.length > 0">
+  <h2 class="mt-4">Top Predictions</h2>
+  <ul class="list-group">
+    <li *ngFor="let topPrediction of topPredictions" class="list-group-item">
+      Home Score: {{ topPrediction.homeScore }}, Away Score: {{ topPrediction.awayScore }},
+      Percentage: {{ topPrediction.percentage }}, Count: {{ topPrediction.count }}
+    </li>
+  </ul>
+</div>
+<div *ngIf="allPredictions.length > 0">
+  <button class="btn btn-primary mt-4" (click)="navigateToCreatePrediction()">Crear Predicción</button>
+</div>
