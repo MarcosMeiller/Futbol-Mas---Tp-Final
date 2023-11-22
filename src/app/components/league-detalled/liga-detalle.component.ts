@@ -11,6 +11,7 @@ import { Router } from '@angular/router'
 export class LigaDetalleComponent  {
   equipos: any;
   search=''
+ 
   liga: any;
   view='events'
   
@@ -21,7 +22,7 @@ export class LigaDetalleComponent  {
       this.footballApiService.getTeams('2023', this.liga.league.id).subscribe({
         next: (data: any) => {
           console.log(data);
-          this.equipos = data.response;
+          this.equipos = data;
         },
         error: (data: any) => {
           console.log(data);
@@ -30,6 +31,7 @@ export class LigaDetalleComponent  {
     }
   }
   
+
 
   searchTeams() {
     if (this.search.trim() !== '') {
@@ -40,6 +42,7 @@ export class LigaDetalleComponent  {
     } else {
       this.ngOnInit();
     }
+
   }
 
   mostrarInformacionEquipo(equipo: any) {

@@ -20,7 +20,7 @@ const routes: Routes = [
   { path: 'busqueda', component: SearchComponent, canActivate: [AuthGuard]  },
   { path: 'detalleliga', component: LigaDetalleComponent, canActivate: [AuthGuard]  },
   { path: 'detalleEquipo', component: EquipoDetalleComponent, canActivate: [AuthGuard]  },
-  { path: 'detallejugador', component: JugadorDetalleComponent, canActivate: [AuthGuard]  },
+  { path: 'detallejugador/:id', component: JugadorDetalleComponent, canActivate: [AuthGuard]  },
   { path: 'login', component: LoginComponent },
   {path: 'home', component: HomeComponent, canActivate: [AuthGuard]  },
   {path: 'register',component:RegisterUserComponent},
