@@ -1,17 +1,35 @@
-<header class=" bg-slate-900">
-    <nav>
-      <div>
-        <button (click)="logout()">Logout</button>
+<header class="navbar navbar-dark bg-primary">
+  <nav class="container-fluid">
+    <button (click)="logout()" class="btn btn-light">Logout</button>
+    <ul class="nav">
+      <li class="nav-item"><a routerLink="/ligas" class="nav-link text-light">Ligas</a></li>
+      <li class="nav-item"><a routerLink="/view-match/1035151" class="nav-link text-light">View match (preview)</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main class="container mt-4">
+  <div *ngIf="live && live.length > 0">
+    <div *ngFor="let match of live" class="card mb-4">
+      <div class="card-header">
+        <div class="d-flex align-items-center">
+          <img [src]="match.league.logo" alt="{{ match.league.name }} Logo" class="me-2" style="max-height: 30px;">
+          <h2 class="mb-0">{{ match.league.name }}</h2>
+        </div>
       </div>
-      <ul class="flex p-6 shadow-2xl">
-        <li class="ml-2 mr-2"><a routerLink="/ligas" class="text-white">Ligas</a></li>
-  
-        
-        <li class="ml-2 mr-2"><a routerLink="/view-match/1035151" class="text-white">View match (preview)</a></li>
-      </ul>
-    </nav>
-  </header>
-  <main>
-    <router-outlet></router-outlet>
-  </main>
-  
+      <div class="card-body">
+        <div class="d-flex align-items-center mb-3">
+          <img [src]="match.teams.home.logo" alt="{{ match.teams.home.name }} Logo" class="me-2" style="max-height: 20px;">
+          <span>{{ match.teams.home.name }}</span>
+          <span class="mx-2">{{ match.goals.home }} - {{ match.goals.away }}</span>
+          <span>{{ match.teams.away.name }}</span>
+          <img [src]="match.teams.away.logo" alt="{{ match.teams.away.name }} Logo" class="ms-2" style="max-height: 20px;">
+        </div>
+        <p class="text-muted">{{ match.fixture.timestamp * 1000 | date: 'hh:mm a' }}</p>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="live && live.length === 0" class="text-muted">
+    No hay partidos en vivo.
+  </div>
+</main>

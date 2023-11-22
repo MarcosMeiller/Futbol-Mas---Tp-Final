@@ -29,6 +29,9 @@
       <li class="nav-item nav-item w-20">
         <a class="nav-link text-white text-center" href="#" (click)="setView('fixture',$event)">Partidos</a>
       </li>
+      <li class="nav-item nav-item w-20">
+        <a class="nav-link text-white text-center" href="#" (click)="setView('statistics',$event)">Estadisticas</a>
+      </li>
     </ul>
   </div>
 
@@ -87,7 +90,7 @@
     </ng-template>
   
       <app-team-fixture *ngIf="view === 'fixture'" [id]="equipo.team.id"></app-team-fixture>
-    
+      <app-statistics-team *ngIf="view === 'statistics'" [id]="equipo.team.id"></app-statistics-team>
   </div>
 </div>
 

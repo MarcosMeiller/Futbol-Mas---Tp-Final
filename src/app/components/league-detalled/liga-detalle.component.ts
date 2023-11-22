@@ -11,7 +11,9 @@ import { Router } from '@angular/router'
 export class LigaDetalleComponent  {
   equipos: any;
   search=''
+ 
   liga: any;
+  view='events'
   
   constructor(private footballApiService: FootballApiService,private dataService: DetalleService,private router: Router) {}
   ngOnInit() {
@@ -20,7 +22,7 @@ export class LigaDetalleComponent  {
       this.footballApiService.getTeams('2023', this.liga.league.id).subscribe({
         next: (data: any) => {
           console.log(data);
-          this.equipos = data.response;
+          this.equipos = data;
         },
         error: (data: any) => {
           console.log(data);
@@ -29,6 +31,7 @@ export class LigaDetalleComponent  {
     }
   }
   
+
 
   searchTeams() {
     if (this.search.trim() !== '') {
@@ -39,12 +42,17 @@ export class LigaDetalleComponent  {
     } else {
       this.ngOnInit();
     }
+
   }
 
   mostrarInformacionEquipo(equipo: any) {
     this.dataService.setEquipo(equipo);
     this.router.navigate(['/detalleEquipo']);
   }
+  setView(name:string,event:Event){
+    event.preventDefault();
+    this.view=name
+   }
 }
   
 

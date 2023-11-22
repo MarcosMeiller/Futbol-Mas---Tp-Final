@@ -14,13 +14,15 @@ export class LeaguesComponent implements OnInit {
   ligas: any;
   search='';
   ligasYEquipos:any;
+  view='events';
+  
   constructor(private footballApiService: FootballApiService,private router: Router,private dataService: DetalleService) {}
 
   ngOnInit() {
     this.footballApiService.getLeagues().subscribe({
       next: (data: any) => {
-        console.log(data)
-        this.ligas = data.response;
+        console.log(data[0])
+        this.ligas = data;
       },
       error: (data: any) => {
         console.log(data)
