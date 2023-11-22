@@ -10,6 +10,8 @@ import { EquipoDetalleComponent } from './components/team-detalled/equipo-detall
 import { JugadorDetalleComponent } from './components/player-detalled/jugador-detalle.component';
 import { LoginComponent } from './components/login/login.component'; // Agrega esta línea
 import { AuthGuard } from './services/auth.guard';
+import { PredictionComponent } from './components/prediction/prediction.component';
+import { PredictionAllComponent } from './components/prediction-all/prediction-all.component';
 
 import { MatchViewComponent } from './components/match-view/match-view.component';
 import { RegisterUserComponent } from './components/register-user/register-user.component';
@@ -23,6 +25,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   {path: 'register',component:RegisterUserComponent},
   {path: 'view-match/:id', component: MatchViewComponent, canActivate: [AuthGuard] },
+  {path: 'show-predictions/:id', component: PredictionAllComponent, canActivate: [AuthGuard] },
+  {path: 'prediction-match/:id', component: PredictionComponent, canActivate: [AuthGuard] },
   { path: '', redirectTo: '/ligas', pathMatch: 'full' },
   { path: '**', redirectTo: '/ligas' } ,
 ];

@@ -1,0 +1,30 @@
+form {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  margin: auto;
+  padding: 20px;
+}
+
+input {
+  margin-bottom: 10px;
+}
+
+/* prediction-all.component.css */
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 10px;
+}
+
+/* app.component.css (o cualquier archivo CSS principal) */
+body {
+  font-family: 'Arial', sans-serif;
+}
+
+h2 {
+  color: #333;
+}

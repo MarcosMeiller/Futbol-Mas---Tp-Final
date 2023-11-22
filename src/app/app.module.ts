@@ -29,6 +29,8 @@ import { LoginComponent } from './components/login/login.component';
 import { LineupComponent } from './lineup/lineup.component';
 import { PlayerLineupComponent } from './player-lineup/player-lineup.component';
 import { MatchStaticsComponent } from './components/match-statics/match-statics.component';
+import { PredictionComponent } from './components/prediction/prediction.component';
+import { PredictionAllComponent } from './components/prediction-all/prediction-all.component';
 
 
 
@@ -53,6 +55,8 @@ import { MatchStaticsComponent } from './components/match-statics/match-statics.
     LineupComponent,
     PlayerLineupComponent,
     MatchStaticsComponent,
+    PredictionComponent,
+    PredictionAllComponent,
 
   ],
   imports: [
