@@ -1,25 +1,21 @@
+
 import { Component } from '@angular/core';
-import { FootballApiService } from '../../services/football-api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.css']
 })
-export class SearchComponent {
-  searchTerm: string = '';
-  searchResults: any[] = [];
+export class  SearchComponent {
+  query: string = '';
 
-  constructor(private footballApiService: FootballApiService) {}
+  constructor(private router: Router) {}
 
   search() {
-    if (this.searchTerm.trim() === '') {
-      this.searchResults = [];
-      return;
+    if (this.query) {
+      this.router.navigate(['/resultados'], { queryParams: { q: this.query } });
     }
-
-    this.footballApiService.searchAll(this.searchTerm).subscribe((data: any[]) => {
-      this.searchResults = data;
-    });
   }
 }
+

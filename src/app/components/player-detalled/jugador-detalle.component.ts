@@ -16,7 +16,8 @@ export class JugadorDetalleComponent {
   player:any;
   constructor(private footballApiService: FootballApiService,private dataService: DetalleService,private route:ActivatedRoute) {}
   ngOnInit() {
-    this.jugador=Number(this.route.snapshot.paramMap.get('id'))
+
+    this.jugador = this.dataService.getJugador();
     this.footballApiService.getPlayerStatistic(this.jugador.id,'2023').subscribe({
       next: (data: any) => {
         console.log(data)

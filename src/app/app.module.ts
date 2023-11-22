@@ -30,7 +30,12 @@ import { LineupComponent } from './lineup/lineup.component';
 import { PlayerLineupComponent } from './player-lineup/player-lineup.component';
 import { MatchStaticsComponent } from './components/match-statics/match-statics.component';
 import { MatchHistoryComponent } from './components/match-history/match-history.component';
+import { HomeComponent } from './components/home/home.component';
+import { TeamFixtureComponent } from './components/team-fixture/team-fixture.component';
+import { StandingsLeagueComponent } from './components/standings-league/standings-league.component';
+import { StatisticsTeamComponent } from './components/statistics-team/statistics-team.component';
 import { PlayersMatchComponent } from './components/players-match/players-match.component';
+
 
 
 @NgModule({
@@ -55,7 +60,12 @@ import { PlayersMatchComponent } from './components/players-match/players-match.
     PlayerLineupComponent,
     MatchStaticsComponent,
     MatchHistoryComponent,
+    HomeComponent,
+    TeamFixtureComponent,
+    StandingsLeagueComponent,
+    StatisticsTeamComponent
     PlayersMatchComponent,
+
   ],
   imports: [
     BrowserModule,
