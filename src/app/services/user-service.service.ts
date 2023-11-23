@@ -23,7 +23,16 @@ export class UserServiceService {
        
       })
     }
-    console.log( user);
     return this.http.post(this.apiURL,user,httpOptions)
+  }
+
+  updateUser (user: User){
+    const httpOptions= {
+      headers: new HttpHeaders({
+        'Content-Type' : 'application/json',
+       
+      })
+    }
+    return this.http.patch(this.apiURL,user,httpOptions)
   }
 }

@@ -5,12 +5,13 @@ import { CustomValidators } from 'src/app/models/custom-validators';
 import { User } from 'src/app/models/user';
 import { UserServiceService } from 'src/app/services/user-service.service';
 
+
 @Component({
-  selector: 'app-register-user',
-  templateUrl: './register-user.component.html',
-  styleUrls: ['./register-user.component.css']
+  selector: 'app-update-user',
+  templateUrl: './update-user.component.html',
+  styleUrls: ['./update-user.component.css']
 })
-export class RegisterUserComponent {
+export class UpdateUserComponent {
   msg='Error registering user, try again in a moment!'
   bg=''
   showSnack ='hidden'
@@ -82,24 +83,24 @@ export class RegisterUserComponent {
     this.user.Country=this.country?.value
     if (formValues.password === formValues.passwordRepeat) {
       this.userServices.registerUser(this.user).subscribe({
-        next: response => {
-          this.msg = 'Registered user successfully';
+        next: (response: any) => {
+          this.msg = 'Usuario modificado con exito';
           this.bg = 'bg-green-500';
         },
-        error: response => {
-          this.msg = 'Error registering user: ' + response;
+        error: (response: string) => {
+          this.msg = 'Error al modificar el usuario: ' + response;
           this.bg = 'bg-red-500';
         }
       });
     } else {
-      this.msg = 'Passwords do not match, try again';
+      this.msg = 'Las contraseñas no coinciden, intentelo de nuevo';
       this.bg = 'bg-red-500';
     }
 
     this.showSnack='hide'
     setTimeout(()=>{
       this.showSnack='hidden'
-      this.router.navigate(['/login'])
+      this.router.navigate(['/home'])
     },3000)
   }
 }
