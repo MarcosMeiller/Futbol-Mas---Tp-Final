@@ -10,7 +10,7 @@ export class FootballApiService {
   private localApiUrl='http://localhost:1234/'
   private apiUrl = 'https://v3.football.api-sports.io/'; 
   
-  private  APIKEY='eefc2e0b4241e4065d89a6689e5c22e2'
+  private  APIKEY='4aae6e0ae3bfc754b192636ab49e3c77'
   options={headers:new HttpHeaders({
 
     'X-RapidAPI-Key': this.APIKEY,
@@ -76,7 +76,7 @@ getStatisticsTeam(idTeam:number, idLeague:number, season:string):Observable  <an
  }
   getFixtureLive():Observable  <any[]> {
 
-    return this.http.get<any[]>(`${this.apiUrl}/fixture?live=all`,this.options);
+    return this.http.get<any[]>(`${this.apiUrl}/fixtures?live=${'all'}`,this.options);
    }
   searchLeagueByName(name: string): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}/leagues?name=${name}`, this.options);

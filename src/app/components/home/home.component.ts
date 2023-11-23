@@ -42,4 +42,36 @@ export class HomeComponent {
   logout(): void {
     this.authService.logout();
   }
-}
+
+  padZero(value: number): string {
+    return value < 10 ? `0${value}` : `${value}`;
+  }
+  formatMatchTime(timestamp: string): string {
+    const matchDate = new Date(Number(timestamp) * 1000);
+    const currentTime = new Date();
+  
+    const elapsedTimeInSeconds = Math.floor((currentTime.getTime() - matchDate.getTime()) / 1000);
+  
+    const minutes = Math.floor(elapsedTimeInSeconds / 60);
+    const seconds = elapsedTimeInSeconds % 60;
+  
+    if (elapsedTimeInSeconds < 45 * 60) {
+      return `1er tiempo - ${this.padZero(minutes)}:${this.padZero(seconds)}`;
+    } else if (elapsedTimeInSeconds < 90 * 60) {
+      const remainingTimeInSeconds = elapsedTimeInSeconds - 45 * 60;
+      const remainingMinutes = Math.floor(remainingTimeInSeconds / 60);
+      const remainingSeconds = remainingTimeInSeconds % 60;
+      return `2do tiempo - ${this.padZero(remainingMinutes)}:${this.padZero(remainingSeconds)}`;
+    } else {
+      const restMinutes = Math.floor((elapsedTimeInSeconds - 90 * 60) / 60);
+      const restSeconds = (elapsedTimeInSeconds - 90 * 60) % 60;
+  
+      if (restMinutes >= 45) {
+        // Si ya ha pasado más de 45 minutos en el "entre tiempo"
+        return `2do tiempo - ${this.padZero(restMinutes - 45)}:${this.padZero(restSeconds)}`;
+      } else {
+        return `Entre Tiempo - ${this.padZero(restMinutes)}:${this.padZero(restSeconds)}`;
+      }
+    }
+  }
+ }

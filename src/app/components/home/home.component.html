@@ -25,7 +25,7 @@
           <span>{{ match.teams.away.name }}</span>
           <img [src]="match.teams.away.logo" alt="{{ match.teams.away.name }} Logo" class="ms-2" style="max-height: 20px;">
         </div>
-        <p class="text-muted">{{ match.fixture.timestamp * 1000 | date: 'hh:mm a' }}</p>
+        <p class="text-muted">{{ formatMatchTime(match.fixture.timestamp) }}</p>
       </div>
     </div>
   </div>

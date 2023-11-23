@@ -1,6 +1,4 @@
 
-
-  
 <table class="table table-striped table-bordered">
   <thead class="thead-dark">
     <tr>
@@ -11,8 +9,8 @@
       <th scope="col">Diferencia de Goles</th>
     </tr>
   </thead>
-  <tbody *ngIf="standings && standings[0]?.league?.standings">
-    <ng-container *ngFor="let team of standings[0]?.league?.standings.slice(0, 10); let i = index">
+  <tbody *ngIf="standings && standings?.league?.standings">
+    <ng-container *ngFor="let team of standings?.league?.standings.slice(0, 10); let i = index">
       <tr>
         <th scope="row">{{ i + 1 }}</th>
         <td>{{ team.team.name }}</td>

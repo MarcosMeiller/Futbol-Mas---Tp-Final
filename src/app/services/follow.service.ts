@@ -14,14 +14,14 @@ export class FollowService {
 
   createNewFollowTeam(followData: any) {
     const token = localStorage.getItem('token');
-  
+  console.log(followData);
     
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `${token}`
     });
 
-    this.http.post(this.apiUrlTeam, followData.team, { headers })
+    this.http.post(this.apiUrlTeam, followData, { headers })
       .subscribe(
         response => {
         },
