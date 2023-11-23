@@ -32,6 +32,14 @@ export class FollowPlayerService {
       );
       this.http.post(this.apiUrlFollow + `/${followData.id}`,{headers})
   }
+  UnfollowPlayer(followData: any){
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `${token}`
+    });
+      this.http.delete(this.apiUrlFollow + `/${followData.id}`,{headers})
+  }
   getUserFollowPlayer(): Observable <any[]> {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders({

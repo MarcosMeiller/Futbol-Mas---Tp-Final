@@ -26,10 +26,18 @@ export class FollowServiceTeam {
         response => {
         },
         error => {
-          console.error('Error creating prediction', error);
+          console.error('Error creating Team', error);
         }
       );
       this.http.post(this.apiUrlFollow + `/${followData.id}`,{headers})
+  }
+  UnfollowTeam(followData: any){
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `${token}`
+    });
+      this.http.delete(this.apiUrlFollow + `/${followData.id}`,{headers})
   }
  
   getUserFollowTeam(): Observable <any[]> {

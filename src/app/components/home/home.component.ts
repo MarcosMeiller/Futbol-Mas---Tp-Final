@@ -67,7 +67,7 @@ export class HomeComponent {
       const restSeconds = (elapsedTimeInSeconds - 90 * 60) % 60;
   
       if (restMinutes >= 45) {
-        // Si ya ha pasado más de 45 minutos en el "entre tiempo"
+        
         return `2do tiempo - ${this.padZero(restMinutes - 45)}:${this.padZero(restSeconds)}`;
       } else {
         return `Entre Tiempo - ${this.padZero(restMinutes)}:${this.padZero(restSeconds)}`;

@@ -18,4 +18,10 @@ export class ViewFollowComponent implements OnInit {
       console.log(this.follows)
     });
   }
+
+  UnfollowTeam(team:any){
+    
+this.followTeam.UnfollowTeam(team);
+
+  }
 }

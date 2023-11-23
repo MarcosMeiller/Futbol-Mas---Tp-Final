@@ -32,6 +32,14 @@ createNewFollowLeague(followData: any) {
       );
       this.http.post(this.apiUrlFollow + `/${followData.id}`,{headers})
   }
+  UnfollowLeague(followData: any){
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `${token}`
+    });
+      this.http.delete(this.apiUrlFollow + `/${followData.id}`,{headers})
+  }
   getUserFollowLeague(): Observable <any[]> {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders({
