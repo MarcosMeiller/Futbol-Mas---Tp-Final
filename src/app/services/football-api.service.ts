@@ -38,13 +38,17 @@ export class FootballApiService {
 
 
   getTeams(season: string, leagueId: number): Observable<any[]> {
-    const header={headers:new HttpHeaders({
+
+
+    return this.http.get<any[]>(`${this.apiUrl}/teams?league=${leagueId}&season=${season}`,this.options);
+
+    /*const header={headers:new HttpHeaders({
       'Authorization' : JSON.stringify(localStorage.getItem('token'))
       //'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
     })}
     console.log(localStorage.getItem('token'))
     return this.http.get<any[]>(`${this.localApiUrl}teams?season=${season}&league=${leagueId}`,header);
-
+*/
   }
   
 

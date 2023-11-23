@@ -14,7 +14,8 @@ export class FollowService {
 
   createNewFollowTeam(followData: any) {
     const token = localStorage.getItem('token');
-
+  
+    
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `${token}`
@@ -28,7 +29,7 @@ export class FollowService {
           console.error('Error creating prediction', error);
         }
       );
-      this.http.post(this.apiUrlFollow + `/${followData.team.id}`,{headers})
+      this.http.post(this.apiUrlFollow + `/${followData.id}`,{headers})
   }
  
   getUserFollowTeam(): Observable <any[]> {

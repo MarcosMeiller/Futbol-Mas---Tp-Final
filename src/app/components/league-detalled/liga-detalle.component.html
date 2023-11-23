@@ -39,15 +39,19 @@
        </div>
   
     <div class="d-flex flex-wrap justify-content-center">
-      <div *ngFor="let equipo of equipos" class="card m-2" style="width: 18rem; cursor: pointer;" (click)="mostrarInformacionEquipo(equipo)">
+      <div *ngFor="let equipo of equipos" class="card m-2" style="width: 18rem; cursor: pointer;">
         <img [src]="equipo.team.logo" class="card-img-top" alt="Logo del equipo" style="width: 55%; height: 150px; object-fit: cover;">
            <div class="card-body">
             <h5 class="card-title">{{ equipo.team.name }}</h5>
            <div class="d-flex justify-content-between align-items-center">
-             <button (click)="FollowTeam(equipo.team)" btn btn-danger follow-button style="width: fit-content;"><i class="fa fa-heart"></i></button>
+             <button (click)="FollowTeam(equipo.team)" >seguir</button>
             </div>
           </div>
+          <div class="d-flex justify-content-between align-items-center">
+            <button (click)="FollowTeam(equipo.team)" class=" btn-danger follow-button" style="width: fit-content;"><i class="fa fa-heart"></i></button>
+           </div>
        </div>
+       
       </div>
     </div>
     
