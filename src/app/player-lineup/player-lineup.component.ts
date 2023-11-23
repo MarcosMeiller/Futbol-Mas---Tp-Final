@@ -8,10 +8,12 @@ import { Component, Input, OnInit } from '@angular/core';
 export class PlayerLineupComponent implements OnInit{
 
   @Input()
-  player : {name: string, img: string, grid: string, rating:string}= {name:'', img: '', grid: '', rating:''}
+  home=1
+  @Input()
+  player : {name: string, img: string, grid: string, rating:string, pos: string}= {name:'', img: '', grid: '', rating:'', pos:''}
   
   ngOnInit(): void {
-    
+    console.log(this.player)
   }
   
 

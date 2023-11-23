@@ -1,6 +1,9 @@
-<div class="grid grid-cols-4 grid-rows-5" >
-    <div *ngFor="let _ of [].constructor(numberRows); let i = index">
-
+<div class="flex justify-between">
+    <div class="flex flex-col" >
+        <app-player-lineup *ngFor="let player of homeLineup.startXl" [player]="player" [home]="1"></app-player-lineup>
     </div>
-    <app-player-lineup *ngFor="let player of homeLineup.startXl" [player]="player"></app-player-lineup>
+    <div>
+        <app-player-lineup *ngFor="let player of awayLineUp.startXl" [player]="player" [home]="0"></app-player-lineup>
+    </div>
+    
 </div>

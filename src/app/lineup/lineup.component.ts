@@ -13,7 +13,8 @@ export class LineupComponent  implements OnInit{
   players: any
   playerXI:{ grid: string, id: number, name: string, number: number, pos: string, img: string, rating: string } ={grid: '', id: 0, name: '', number: 0, pos: '', img: '',rating: '' }
   homeLineup:{name:string, startXl: { grid: string, id: number, name: string, number: number, pos: string, img: string, rating: string }[]}={name:'',startXl:[]}
-  awayLineUp:any
+  awayLineUp:{name:string, startXl: { grid: string, id: number, name: string, number: number, pos: string, img: string, rating: string }[]}={name:'',startXl:[]}
+
 
   formation=''
 
@@ -31,6 +32,16 @@ export class LineupComponent  implements OnInit{
 
     this.homeLineup.startXl.forEach(player=>{
       const playerComplete=this.players[0].players.find((item: { player: { id: number; }; }) =>item.player.id== player.id)
+      player.img=playerComplete.player.photo
+      player.rating=playerComplete.statistics[0].games.rating
+    })
+
+    this.awayLineUp.startXl=this.lineups[1].startXI.map((item: any)=>{
+      return {...this.playerXI, ...item.player}
+    })
+
+    this.awayLineUp.startXl.forEach(player=>{
+      const playerComplete=this.players[1].players.find((item: { player: { id: number; }; }) =>item.player.id== player.id)
       player.img=playerComplete.player.photo
       player.rating=playerComplete.statistics[0].games.rating
     })

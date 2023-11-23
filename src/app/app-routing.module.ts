@@ -17,6 +17,7 @@ import { MatchViewComponent } from './components/match-view/match-view.component
 import { RegisterUserComponent } from './components/register-user/register-user.component';
 import { HomeComponent } from './components/home/home.component';
 import { ViewFollowComponent } from './components/view-follow/view-follow.component';
+import { UpdateUserComponent } from './components/update-user/update-user.component';
 const routes: Routes = [
   { path: 'ligas', component: LeaguesComponent, canActivate: [AuthGuard]  },
   { path: 'busqueda', component: SearchComponent, canActivate: [AuthGuard]  },
@@ -29,6 +30,7 @@ const routes: Routes = [
   {path: 'view-match/:id', component: MatchViewComponent, canActivate: [AuthGuard] },
   {path: 'show-predictions/:id', component: PredictionAllComponent, canActivate: [AuthGuard] },
   {path: 'prediction-match', component: PredictionComponent, canActivate: [AuthGuard] },
+  {path: 'updateUser', component: UpdateUserComponent },
   { path: 'view-follow', component: ViewFollowComponent ,},
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: '**', redirectTo: '/ligas' } ,

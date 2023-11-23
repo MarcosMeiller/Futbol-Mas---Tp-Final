@@ -39,6 +39,7 @@ import { StatisticsTeamComponent } from './components/statistics-team/statistics
 import { PlayersMatchComponent } from './components/players-match/players-match.component';
 import { ViewFollowComponent } from './components/view-follow/view-follow.component';
 import { PreFixtureComponent } from './components/pre-fixture/pre-fixture.component';
+import { UpdateUserComponent } from './components/update-user/update-user.component';
 
 
 
@@ -73,7 +74,7 @@ import { PreFixtureComponent } from './components/pre-fixture/pre-fixture.compon
     PlayersMatchComponent,
     ViewFollowComponent,
     PreFixtureComponent,
-
+    UpdateUserComponent,
   ],
   imports: [
     BrowserModule,

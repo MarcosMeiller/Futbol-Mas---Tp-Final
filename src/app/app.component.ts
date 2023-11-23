@@ -23,4 +23,7 @@ export class AppComponent {
   isRegisterPage() {
     return this.router.url.includes('/register');
   }
+  updateUser(){
+    this.router.navigate(['/updateUser'])
+  }
 }
