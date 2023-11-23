@@ -38,6 +38,7 @@ import { StandingsLeagueComponent } from './components/standings-league/standing
 import { StatisticsTeamComponent } from './components/statistics-team/statistics-team.component';
 import { PlayersMatchComponent } from './components/players-match/players-match.component';
 import { ViewFollowComponent } from './components/view-follow/view-follow.component';
+import { PreFixtureComponent } from './components/pre-fixture/pre-fixture.component';
 import { UpdateUserComponent } from './components/update-user/update-user.component';
 
 
@@ -72,8 +73,8 @@ import { UpdateUserComponent } from './components/update-user/update-user.compon
     StatisticsTeamComponent,
     PlayersMatchComponent,
     ViewFollowComponent,
+    PreFixtureComponent,
     UpdateUserComponent,
-
   ],
   imports: [
     BrowserModule,

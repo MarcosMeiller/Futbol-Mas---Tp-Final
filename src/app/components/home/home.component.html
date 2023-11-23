@@ -13,13 +13,13 @@
       </div>
       <div class="card-body d-flex flex-column align-items-center justify-content-center">
         <div class="d-flex align-items-center mb-3">
-          <img [src]="match.teams.home.logo" alt="{{ match.teams.home.name }} Logo" class="me-2" style="max-height: 40px;"> <!-- Ajusta el tamaño del logo según tus necesidades -->
-          <span class="fs-5 ">{{ match.teams.home.name }}</span> <!-- Ajusta el tamaño y peso del texto según tus necesidades -->
-          <span class="mx-2 fs-4">{{ match.goals.home }} - {{ match.goals.away }}</span> <!-- Ajusta el tamaño del texto según tus necesidades -->
-          <span class="fs-5 ">{{ match.teams.away.name }}</span> <!-- Ajusta el tamaño y peso del texto según tus necesidades -->
-          <img [src]="match.teams.away.logo" alt="{{ match.teams.away.name }} Logo" class="ms-2" style="max-height: 40px;"> <!-- Ajusta el tamaño del logo según tus necesidades -->
+          <img [src]="match.teams.home.logo" alt="{{ match.teams.home.name }} Logo" class="me-2" style="max-height: 40px;"> 
+          <span class="fs-5 ">{{ match.teams.home.name }}</span> 
+          <span class="mx-2 fs-4">{{ match.goals.home }} - {{ match.goals.away }}</span>
+          <span class="fs-5 ">{{ match.teams.away.name }}</span> 
+          <img [src]="match.teams.away.logo" alt="{{ match.teams.away.name }} Logo" class="ms-2" style="max-height: 40px;"> 
         </div>
-        <p class="text-muted fs-6">{{ formatMatchTime(match.fixture.timestamp) }}</p> <!-- Ajusta el tamaño del texto según tus necesidades -->
+        <p class="text-muted fs-6">{{ formatMatchTime(match.fixture.timestamp) }}</p> 
       </div>
     </div>
   </div>

@@ -65,6 +65,16 @@ export class FootballApiService {
     return this.http.get<any[]>(`${this.apiUrl}/fixtures?league=${id}&season=${season}`,this.options);
 
   }
+
+  getfeaxtureForiD(id:number):Observable <any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/fixtures?id=${id}`,this.options);
+
+  }
+
+  getPreFixture(id:number, season:string):Observable <any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/odds?league=${id}&season=${season}`,this.options);
+
+  }
   
 getStanding(id:number,season:string):Observable  <any[]> {
   return this.http.get<any[]>(`${this.apiUrl}/standings?league=${id}&season=${season}`,this.options);
