@@ -27,7 +27,7 @@ createNewFollowLeague(followData: any) {
         response => {
         },
         error => {
-          console.error('Error creating prediction', error);
+          console.error('Error creating league', error);
         }
       );
       this.http.post(this.apiUrlFollow + `/${followData.id}`,{headers})

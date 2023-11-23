@@ -18,9 +18,9 @@
         <a class="navbar-brand dropdown-toggle" href="#" role="button" id="perfilDropdown" data-bs-toggle="dropdown" aria-expanded="false">
           Perfil
         </a>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#" routerLink="/updateUser">Modificar</a></li>
-          <li><a class="dropdown-item" routerLink="/view-follow" href="#">Ver Seguidos</a></li>
+        <ul class="dropdown-menu" aria-labelledby="perfilDropdown">
+          <li><a class="dropdown-item" href="#">Modificar</a></li>
+          <li><a routerLink="/view-follow" class="dropdown-item" href="#">Ver Seguidos</a></li>
           <li><hr class="dropdown-divider"></li>
           <li><a class="dropdown-item" href="#" (click)="logout()">Cerrar Sesión</a></li>
         </ul>

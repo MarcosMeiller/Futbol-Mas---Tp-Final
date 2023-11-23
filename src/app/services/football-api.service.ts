@@ -10,7 +10,7 @@ export class FootballApiService {
   private localApiUrl='http://localhost:1234/'
   private apiUrl = 'https://v3.football.api-sports.io/'; 
   
-  private  APIKEY='06ae59572ac9e4c1659ee7af8a9247c8'
+  private  APIKEY='fe12cdcc2a20e49c60a406a8d55da9cc'
   options={headers:new HttpHeaders({
 
     'X-RapidAPI-Key': this.APIKEY,
@@ -63,6 +63,16 @@ export class FootballApiService {
   
   getFeaxture(id:number, season:string):Observable <any[]> {
     return this.http.get<any[]>(`${this.apiUrl}/fixtures?league=${id}&season=${season}`,this.options);
+
+  }
+
+  getfeaxtureForiD(id:number):Observable <any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/fixtures?id=${id}`,this.options);
+
+  }
+
+  getPreFixture(id:number, season:string):Observable <any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/odds?league=${id}&season=${season}`,this.options);
 
   }
   
