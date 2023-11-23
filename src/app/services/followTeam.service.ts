@@ -31,14 +31,7 @@ export class FollowServiceTeam {
       );
       this.http.post(this.apiUrlFollow + `/${followData.id}`,{headers})
   }
-  UnfollowTeam(followData: any){
-    const token = localStorage.getItem('token');
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': `${token}`
-    });
-      this.http.delete(this.apiUrlFollow + `/${followData.id}`,{headers})
-  }
+ 
  
   getUserFollowTeam(): Observable <any[]> {
     const token = localStorage.getItem('token');
@@ -51,6 +44,28 @@ export class FollowServiceTeam {
     return this.http.get<any[]>(url, { headers });
   }
 
+
+  
+  UnfollowTeam(followData: any) {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `${token}`
+    });
+
+    return this.http.delete(this.apiUrlFollow + `/${followData.id}`, { headers })
+      .subscribe(
+        (response) => {
+          console.log('Éxito al desuscribirse:', response);
+          // Puedes hacer algo más aquí si es necesario
+        },
+        (error) => {
+          console.error('Error al desuscribirse:', error);
+          console.log('Cuerpo de la respuesta:', error.error);
+          // Puedes manejar el error de acuerdo a tus necesidades
+        }
+      );
+  }
   
 
 }

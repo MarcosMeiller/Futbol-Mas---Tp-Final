@@ -2,8 +2,7 @@ import { Component } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { FootballApiService } from '../../services/football-api.service';
 import { FollowService } from 'src/app/services/follow-service.service';
-import { FollowLeagueService } from 'src/app/services/follow-league.service';
-import { forkJoin } from 'rxjs';
+import { Follow } from '../../models/follow.model'; 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -15,19 +14,18 @@ export class HomeComponent {
   standings:any;
   idliga:any;
   followedMatches: any[] = [];
-  leagueStandingsMap :any
-  constructor(private footballApiService: FootballApiService,private authService: AuthService,private followService : FollowService,private followleague :FollowLeagueService ){}
+  constructor(private footballApiService: FootballApiService,private authService: AuthService,private followService:FollowService) {}
   ngOnInit() {
     this.FixtureLive();
   }
   FixtureLive() {
-    
+   
     this.footballApiService.getFixtureLive().subscribe({
       next: (data: any) => {
         console.log(data);
         this.live = data.response;
 
-  
+        
         this.followService.getUserFollows().subscribe((follows: any[]) => {
           const followedTeams = new Set<number>();
 
@@ -51,43 +49,39 @@ export class HomeComponent {
     });
   }
 
-  StandingHome() {
-    
-    this.followService.getUserFollows().subscribe({
-      next: (followedMatches) => {
-        
-        follows.forEach((follow: Follow) => {
+    StandingHome() {
+      this.followService.getUserFollows().subscribe({
+        next: (follows: Follow[]) => {
           
-          this.footballApiService.getStanding(follow.id, '2023').subscribe({
-            next: (data: any) => {
-              console.log(`Clasificación para la liga ${follow.name}:`, data.response);
-              // Aquí puedes hacer algo con las clasificaciones, como almacenarlas en un array
-            },
-            error: (error: any) => {
-              console.log(error);
-            }
+          follows.forEach((follow: Follow) => {
+            
+            this.footballApiService.getStanding(follow.id, '2023').subscribe({
+              next: (data: any) => {
+                console.log(`Clasificación para la liga ${follow.name}:`, data.response);
+                
+              },
+              error: (error: any) => {
+                console.log(error);
+              }
+            });
           });
-        });
-      },
-      error: (error: any) => {
-        console.log(error);
-      }
-    });
-  }
+        },
+        error: (error: any) => {
+          console.log(error);
+        }
+      });
+    }
  
   logout(): void {
     this.authService.logout();
   }
 
-  padZero(value: number): string {
-    return value < 10 ? `0${value}` : `${value}`;
-  }
   formatMatchTime(timestamp: string): string {
     const matchDate = new Date(Number(timestamp) * 1000);
     const currentTime = new Date();
-  
+    
     const elapsedTimeInSeconds = Math.floor((currentTime.getTime() - matchDate.getTime()) / 1000);
-  
+    
     const minutes = Math.floor(elapsedTimeInSeconds / 60);
     const seconds = elapsedTimeInSeconds % 60;
   
@@ -103,11 +97,14 @@ export class HomeComponent {
       const restSeconds = (elapsedTimeInSeconds - 90 * 60) % 60;
   
       if (restMinutes >= 45) {
-        
         return `2do tiempo - ${this.padZero(restMinutes - 45)}:${this.padZero(restSeconds)}`;
       } else {
         return `Entre Tiempo - ${this.padZero(restMinutes)}:${this.padZero(restSeconds)}`;
       }
     }
   }
- }
+  
+  padZero(value: number): string {
+    return value < 10 ? `0${value}` : `${value}`;
+  }
+}

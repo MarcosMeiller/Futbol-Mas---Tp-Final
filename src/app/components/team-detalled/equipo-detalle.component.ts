@@ -3,6 +3,7 @@ import { DetalleService } from 'src/app/services/detalle.service';
 import { FootballApiService } from '../../services/football-api.service';
 import { Router } from '@angular/router'
 import { FollowPlayerService } from 'src/app/services/follow-player.service';
+import { FollowServiceTeam } from 'src/app/services/followTeam.service';
 @Component({
   selector: 'app-equipo-detalle',
   templateUrl: './equipo-detalle.component.html',
@@ -16,7 +17,7 @@ export class EquipoDetalleComponent {
   selectedPlayer: any;
 
   
-  constructor(private footballApiService: FootballApiService,private FollowServicePlayer: FollowPlayerService,private router: Router,private dataService: DetalleService) {}
+  constructor(private footballApiService: FootballApiService,private FollowServicePlayer: FollowPlayerService,private router: Router,private dataService: DetalleService,private followServiceTeam: FollowServiceTeam) {}
   ngOnInit() {
     this.equipo = this.dataService.getEquipo();
     this.footballApiService.getPlayers(this.equipo.team.id).subscribe({
@@ -45,7 +46,10 @@ export class EquipoDetalleComponent {
       this.ngOnInit();
     }
   }
- 
+  FollowTeam(dato:any){
+    console.log(dato);
+  this.followServiceTeam.createNewFollowTeam(dato);
+  }
 
   mostrarInformacionJugador(jugador: any) {
     this.dataService.setJugador(jugador);   

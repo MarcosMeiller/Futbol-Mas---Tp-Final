@@ -3,6 +3,7 @@ import { DetalleService } from 'src/app/services/detalle.service';
 import { FootballApiService } from '../../services/football-api.service';
 import { Router } from '@angular/router'
 import { FollowServiceTeam } from 'src/app/services/followTeam.service';
+import { FollowLeagueService } from 'src/app/services/follow-league.service';
 @Component({
   selector: 'app-liga-detalle',
   templateUrl: './liga-detalle.component.html',
@@ -15,7 +16,7 @@ export class LigaDetalleComponent  {
   liga: any;
   view='events'
   
-  constructor(private footballApiService: FootballApiService,private followService: FollowServiceTeam, private dataService: DetalleService,private router: Router) {}
+  constructor(private footballApiService: FootballApiService,private followService: FollowServiceTeam, private dataService: DetalleService,private router: Router,private followLeague: FollowLeagueService) {}
   ngOnInit() {
     this.liga = this.dataService.getLiga();
     if (this.liga && this.liga.league) {
@@ -34,7 +35,10 @@ export class LigaDetalleComponent  {
     console.log(dato);
   this.followService.createNewFollowTeam(dato);
   }
-
+  FollowLeague(dato:any){
+    console.log(dato);
+  this.followLeague.createNewFollowLeague(dato);
+  }
 
   searchTeams() {
     if (this.search.trim() !== '') {

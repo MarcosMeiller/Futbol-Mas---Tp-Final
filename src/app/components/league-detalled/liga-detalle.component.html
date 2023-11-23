@@ -13,8 +13,8 @@
         <img [src]="liga.country.flag" width="200" height="100" class="mt-2">
       </div>
     </div>
-    <div class="col-md-6 mt-2">
-      <button class="btn btn-danger follow-button" style="width: fit-content;"><i class="fa fa-heart" style="font-size: 20px;"></i></button>
+    <div class="d-flex justify-content-between align-items-center">
+      <i class=" text-white text-4xl absolute top-0 right-4" (click)="FollowLeague(liga.league)">&hearts;</i>
     </div>
   </div>
 
@@ -27,6 +27,9 @@
         </li>
         <li class="nav-item nav-item w-20">
           <a class="nav-link text-white text-center" href="#" (click)="setView('clasificacion',$event)">Clasificacion</a>
+        </li>
+        <li class="nav-item nav-item w-20">
+          <a class="nav-link text-white text-center" href="#" (click)="setView('PartidosProximos',$event)">Proximos Patidos</a>
         </li>
       </ul>
     </div>
@@ -43,20 +46,17 @@
         <img [src]="equipo.team.logo" class="card-img-top" alt="Logo del equipo" style="width: 55%; height: 150px; object-fit: cover;">
            <div class="card-body">
             <h5 class="card-title">{{ equipo.team.name }}</h5>
-           <div class="d-flex justify-content-between align-items-center">
-             <button (click)="FollowTeam(equipo.team)" >seguir</button>
+             <div class="d-flex justify-content-between align-items-center">
+              <i class=" text-white text-4xl absolute top-0 right-4" (click)="FollowTeam(equipo.team)">&hearts;</i>
             </div>
           </div>
-          <div class="d-flex justify-content-between align-items-center">
-            <button (click)="FollowTeam(equipo.team)" class=" btn-danger follow-button" style="width: fit-content;"><i class="fa fa-heart"></i></button>
-           </div>
-  
        </div>
        
       </div>
     </div>
     
     <app-standings-league *ngIf="view === 'clasificacion'" [id]="liga.league.name"></app-standings-league>
+    <app-pre-fixture *ngIf="view === 'proximosPartidos'" [id]="liga.league.id"></app-pre-fixture>
 </div>
 </div>
 
