@@ -15,7 +15,7 @@ export class PredictionService {
 
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': `${token}`
+      'Authorization': JSON.stringify(token)
     });
 
     this.http.post(this.apiURL, predictionData, { headers })
@@ -32,7 +32,7 @@ export class PredictionService {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': `${token}`
+      'Authorization': JSON.stringify(token)
     });
 
     const url = `${this.apiURL}/${matchId}`;
@@ -43,7 +43,7 @@ export class PredictionService {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': `${token}`
+      'Authorization': JSON.stringify(token)
     });
 
     const url = `${this.apiURL}/top/${matchId}`;

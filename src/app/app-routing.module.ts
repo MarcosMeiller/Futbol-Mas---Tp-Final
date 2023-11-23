@@ -28,7 +28,7 @@ const routes: Routes = [
   {path: 'register',component:RegisterUserComponent},
   {path: 'view-match/:id', component: MatchViewComponent, canActivate: [AuthGuard] },
   {path: 'show-predictions/:id', component: PredictionAllComponent, canActivate: [AuthGuard] },
-  {path: 'prediction-match/:id', component: PredictionComponent, canActivate: [AuthGuard] },
+  {path: 'prediction-match', component: PredictionComponent, canActivate: [AuthGuard] },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: '**', redirectTo: '/ligas' } ,
 ];

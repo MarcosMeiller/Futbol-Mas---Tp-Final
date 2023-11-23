@@ -1,5 +1,46 @@
-<form (ngSubmit)="onSubmit()">
-  <input type="number" [(ngModel)]="awayScore" name="awayScore" placeholder="Resultado visitante">
-  <input type="number" [(ngModel)]="homeScore" name="homeScore" placeholder="Resultado local">
-  <button type="submit">Enviar</button>
-</form>
+<h1 class="text-white text-2xl m-2">Send your prediction</h1>
+<div class="bg-slate-800 rounded-xl shadow-xl p-4">
+  <form class="m-0 w-full flex flex-col justify-center" (ngSubmit)="onSubmit()">
+    <div class="flex items-center justify-between w-full">
+      <p class="text-white m-2 text-right flex-1">{{homeTeam.name}}</p>
+      <div class="flex">
+        <img class="w-8 h-fit m-2" src="{{homeTeam.logo}}" alt="homeLogo">
+        <input class="w-12 bg-slate-700 ml-2 shadow-lg text-white rounded-3xl text-xl text-center" type="number" [(ngModel)]="awayScore" name="awayScore" placeholder="Resultado visitante">
+        <input class="w-12 bg-slate-700 mr-2 shadow-lg text-white rounded-3xl text-xl text-center" type="number" [(ngModel)]="homeScore" name="homeScore" placeholder="Resultado local">
+        <img class="w-fit h-8 m-2"  src="{{awayTeam.logo}}" alt="awayLogo">
+      </div>
+      <p class="text-white m-2 text-left flex-1">{{awayTeam.name}}</p>
+    </div>
+    <input class="btn btn-primary bg-blue-600 w-min m-auto pl-6 pr-6 mt-3" type="submit" value="Send">
+  </form>
+</div>
+
+
+<div  *ngIf="allPredictions.length > 0">
+  <h2 class="text-white text-2xl m-2">All Predictions</h2>
+  <div class="bg-slate-800 rounded-xl p-4 shadow-xl">
+    <ul class="list-group">
+      <li *ngFor="let prediction of allPredictions" class="list-group-item bg-slate-800 text-white">
+        Home Score: {{ prediction.homeScore }}, Away Score: {{ prediction.awayScore }}
+      </li>
+    </ul>
+  </div>
+  
+</div>
+
+<div *ngIf="topPredictions.length > 0">
+  <h2 class="text-white text-2xl m-2">Top Predictions</h2>
+  <div class="bg-slate-800 rounded-xl p-4 shadow-xl">
+    <ol class="list-group list-group-numbered shadow-xl">
+      <li *ngFor="let topPrediction of topPredictions" class="list-group-item bg-slate-800 text-white shadow-lg">
+        Home Score: {{ topPrediction.homeScore }}, Away Score: {{ topPrediction.awayScore }},
+        Percentage: {{ topPrediction.percentage }}, Count: {{ topPrediction.count }}
+      </li>
+    </ol>
+  </div>
+ 
+</div>
+<div *ngIf="allPredictions.length > 0">
+  <button class="btn btn-primary mt-4" (click)="navigateToCreatePrediction()">Crear Predicción</button>
+</div>
+
