@@ -1,19 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { PredictionService } from 'src/app/services/prediction.service';
 import { Router } from '@angular/router'
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'prediction-all-component',
+  selector: 'app-prediction-all-component',
   templateUrl: './prediction-all.component.html',
   styleUrls: ['./prediction-all.component.css']
 })
 export class PredictionAllComponent implements OnInit {
-  matchId =Number(this.route.snapshot.paramMap.get('id'));
+  @Input()
+  matchId = 0
   allPredictions: any[] = [];
   topPredictions: any[] = [];
 
-  constructor(private predictionService: PredictionService, private router: Router, private route:ActivatedRoute) { }
+  constructor(private predictionService: PredictionService, private router: Router) { }
 
   ngOnInit() {
     this.getAllPredictions();
