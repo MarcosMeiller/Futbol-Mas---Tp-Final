@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { FootballApiService } from '../../services/football-api.service';
+import { FollowService } from 'src/app/services/follow-service.service';
+import { FollowLeagueService } from 'src/app/services/follow-league.service';
+import { forkJoin } from 'rxjs';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -11,33 +14,66 @@ export class HomeComponent {
   live:any;
   standings:any;
   idliga:any;
-  constructor(private footballApiService: FootballApiService,private authService: AuthService) {}
+  followedMatches: any[] = [];
+  leagueStandingsMap :any
+  constructor(private footballApiService: FootballApiService,private authService: AuthService,private followService : FollowService,private followleague :FollowLeagueService ){}
   ngOnInit() {
     this.FixtureLive();
   }
   FixtureLive() {
-      this.footballApiService.getFixtureLive().subscribe({
-        next: (data: any) => {
-          console.log(data);
-          this.live = data.response;
-        },
-        error: (data: any) => {
-          console.log(data);
-        }
-      });
-    }
-
-    StandingHome(){
-    this.footballApiService.getStanding(this.idliga, '2023').subscribe({
+    
+    this.footballApiService.getFixtureLive().subscribe({
       next: (data: any) => {
         console.log(data);
-        this.standings=data.response;
-    },
-     error: (error: any) => {
-      console.log(error);
-     }
-   });
-    }
+        this.live = data.response;
+
+  
+        this.followService.getUserFollows().subscribe((follows: any[]) => {
+          const followedTeams = new Set<number>();
+
+          follows.forEach((follow) => {
+            followedTeams.add(follow.id); 
+          });
+
+          
+          this.followedMatches = this.live.filter((match: any) => {
+            return (
+              followedTeams.has(match.teams.home.id) ||
+              followedTeams.has(match.teams.away.id) ||
+              followedTeams.has(match.league.id)
+            );
+          });
+        });
+      },
+      error: (data: any) => {
+        console.log(data);
+      }
+    });
+  }
+
+  StandingHome() {
+    
+    this.followService.getUserFollows().subscribe({
+      next: (followedMatches) => {
+        
+        follows.forEach((follow: Follow) => {
+          
+          this.footballApiService.getStanding(follow.id, '2023').subscribe({
+            next: (data: any) => {
+              console.log(`Clasificación para la liga ${follow.name}:`, data.response);
+              // Aquí puedes hacer algo con las clasificaciones, como almacenarlas en un array
+            },
+            error: (error: any) => {
+              console.log(error);
+            }
+          });
+        });
+      },
+      error: (error: any) => {
+        console.log(error);
+      }
+    });
+  }
  
   logout(): void {
     this.authService.logout();
