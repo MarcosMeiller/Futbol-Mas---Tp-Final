@@ -19,8 +19,9 @@ export class StandingsLeagueComponent {
     if (this.liga && this.liga.league) 
   this.footballApiService.getStanding(this.liga.league.id, '2023').subscribe({
     next: (data: any) => {
-      console.log(data);
-      this.standings=data.response;
+      
+      this.standings=data.response[0].league.standings[0];
+      console.log(this.standings);
   },
    error: (error: any) => {
     console.log(error);

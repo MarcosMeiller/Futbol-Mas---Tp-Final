@@ -11,12 +11,12 @@
   
 
   <div class="d-flex flex-wrap justify-content-center">
-    <div *ngFor="let liga of ligas" class="card m-2" style="width: 18rem; cursor: pointer;"  (click)="mostrarInformacionLiga(liga)">
+    <div *ngFor="let liga of ligas" class="card m-2 bg-slate-700 p-4" style="width: 18rem; cursor: pointer;"  (click)="mostrarInformacionLiga(liga)">
       <img [src]="liga.league.logo" class="card-img-top" alt="Logo de la liga" style="max-height: 100px; object-fit: contain;">
       <div class="card-body">
-        <h5 class="card-title text-center">{{ liga.league.name }}</h5>
+        <h5 class="card-title text-center text-white">{{ liga.league.name }}</h5>
         <div class="d-flex justify-content-between align-items-center">
-          <button (click)="FollowLeague(ligas.league)"class="btn btn-danger follow-button" style="margin-right: 5px;"><i class="fa fa-heart"></i> </button>
+          <i class=" text-white text-4xl absolute top-0 right-4" (click)="FollowLeague(ligas.league)">&hearts;</i>
         </div>
       </div>
     </div>

@@ -1,17 +1,8 @@
-<header class="navbar navbar-dark bg-primary">
-  <nav class="container-fluid">
-    <button (click)="logout()" class="btn btn-light">Logout</button>
-    <ul class="nav">
-      <li class="nav-item"><a routerLink="/ligas" class="nav-link text-light">Ligas</a></li>
-      <li class="nav-item"><a routerLink="/view-match/1035151" class="nav-link text-light">View match (preview)</a></li>
-      <li class="nav-item"><a routerLink="/view-follow" class="nav-link text-light">Ver seguidos</a></li>
-    </ul>
-  </nav>
-</header>
 
-<main class="container mt-4">
-  <div *ngIf="live && live.length > 0">
-    <div *ngFor="let match of live" class="card mb-4 w-50 mx-auto">
+<main class="bg-slate-900 m-4 p-4 rounded-2xl">
+  <p class="text-white text-2xl">Partidos en vivo</p>
+  <div class=" grid grid-cols-4" *ngIf="live && live.length > 0">
+    <div *ngFor="let match of live" class="card m-4">
       <div class="card-header">
         <div class="d-flex align-items-center">
           <img [src]="match.league.logo" alt="{{ match.league.name }} Logo" class="me-2" style="max-height: 30px;">

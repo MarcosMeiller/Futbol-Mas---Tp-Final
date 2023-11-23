@@ -1,4 +1,39 @@
+<header *ngIf="!isLoginPage() && !isRegisterPage()">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <!-- Inicio -->
+      
+        <a routerLink="/home" class="nav-link text-light navbar-brand">Inicio</a>
+   
+     
+        <a routerLink="/ligas" class="nav-link text-light navbar-brand">Ligas</a>
+    
+      
+        <a routerLink="/view-match/1035151" class="nav-link text-light navbar-brand">View match (preview)</a>
+   
+     
 
-<main>
-  <router-outlet></router-outlet>
-</main>
+      <!-- Dropdown Perfil -->
+      <div class="dropdown">
+        <a class="navbar-brand dropdown-toggle" href="#" role="button" id="perfilDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+          Perfil
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="perfilDropdown">
+          <li><a class="dropdown-item" href="#">Modificar</a></li>
+          <li><a class="dropdown-item" href="#">Ver Seguidos</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item" href="#">Cerrar Sesión</a></li>
+        </ul>
+      </div>
+
+      <!-- Campo de búsqueda -->
+      <form class="d-flex ms-auto">
+        <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Buscar">
+        <button class="btn btn-outline-success" type="submit">Buscar</button>
+      </form>
+    </div>
+  </nav>
+
+</header>
+  
+<router-outlet></router-outlet>
