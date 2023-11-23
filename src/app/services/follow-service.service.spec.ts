@@ -1,8 +1,8 @@
 import { TestBed } from '@angular/core/testing';
 
-import { FollowService } from './follow.service';
+import { FollowService } from './follow-service.service';
 
-describe('FollowService', () => {
+describe('FollowServiceService', () => {
   let service: FollowService;
 
   beforeEach(() => {

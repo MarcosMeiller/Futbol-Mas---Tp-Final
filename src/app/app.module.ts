@@ -37,6 +37,7 @@ import { TeamFixtureComponent } from './components/team-fixture/team-fixture.com
 import { StandingsLeagueComponent } from './components/standings-league/standings-league.component';
 import { StatisticsTeamComponent } from './components/statistics-team/statistics-team.component';
 import { PlayersMatchComponent } from './components/players-match/players-match.component';
+import { ViewFollowComponent } from './components/view-follow/view-follow.component';
 
 
 
@@ -69,6 +70,7 @@ import { PlayersMatchComponent } from './components/players-match/players-match.
     StandingsLeagueComponent,
     StatisticsTeamComponent,
     PlayersMatchComponent,
+    ViewFollowComponent,
 
   ],
   imports: [

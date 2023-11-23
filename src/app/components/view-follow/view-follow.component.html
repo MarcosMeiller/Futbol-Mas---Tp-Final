@@ -1,0 +1,10 @@
+<div *ngIf="follows.length > 0">
+    <ul>
+      <li *ngFor="let follow of follows">
+        {{ follow.name }} (ID: {{ follow.id }})
+      </li>
+    </ul>
+  </div>
+  <div *ngIf="follows.length === 0" class="text-muted text-center">
+    No hay elementos seguidos.
+  </div>

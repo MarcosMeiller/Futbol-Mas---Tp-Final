@@ -6,7 +6,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-export class FollowService {
+export class FollowServiceTeam {
 
   private apiUrlTeam = 'http://localhost:1234/teams';
   private apiUrlFollow = 'http://localhost:1234/follows/teams';

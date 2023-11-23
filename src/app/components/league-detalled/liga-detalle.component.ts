@@ -2,7 +2,7 @@ import { Component,Input, OnInit } from '@angular/core';
 import { DetalleService } from 'src/app/services/detalle.service';
 import { FootballApiService } from '../../services/football-api.service';
 import { Router } from '@angular/router'
-import { FollowService } from 'src/app/services/follow.service';
+import { FollowServiceTeam } from 'src/app/services/followTeam.service';
 @Component({
   selector: 'app-liga-detalle',
   templateUrl: './liga-detalle.component.html',
@@ -15,7 +15,7 @@ export class LigaDetalleComponent  {
   liga: any;
   view='events'
   
-  constructor(private footballApiService: FootballApiService,private followService: FollowService, private dataService: DetalleService,private router: Router) {}
+  constructor(private footballApiService: FootballApiService,private followService: FollowServiceTeam, private dataService: DetalleService,private router: Router) {}
   ngOnInit() {
     this.liga = this.dataService.getLiga();
     if (this.liga && this.liga.league) {
