@@ -60,4 +60,7 @@ get password(){
 get email(){
   return this.registerForm.get('email')
 }
+register(){
+  this.router.navigate(['/register'])
+}
 }

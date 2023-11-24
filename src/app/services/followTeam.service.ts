@@ -20,13 +20,16 @@ export class FollowServiceTeam {
       'Content-Type': 'application/json',
       'Authorization': `${token}`
     });
-
+    console.log(followData.id);
     this.http.post(this.apiUrlTeam, followData, { headers })
       .subscribe(
-        response => {
+        (response) => {
+          console.log('Éxito al desuscribirse:', response);
         },
-        error => {
+        (error) => {
           console.error('Error creating Team', error);
+          console.log('Cuerpo de la respuesta:', error.error);
+
         }
       );
       this.http.post(this.apiUrlFollow + `/${followData.id}`,{headers})

@@ -10,7 +10,7 @@ export class FootballApiService {
   private localApiUrl='http://localhost:1234/'
   private apiUrl = 'https://v3.football.api-sports.io/'; 
   
-  private  APIKEY='fe12cdcc2a20e49c60a406a8d55da9cc'
+  private  APIKEY='5bd910d020bab78f966ec2f21625476b'
   options={headers:new HttpHeaders({
 
     'X-RapidAPI-Key': this.APIKEY,
@@ -33,7 +33,7 @@ export class FootballApiService {
   
       //'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
     })}
-    return this.http.get<any[]>(`${this.localApiUrl}leagues`,options)
+    return this.http.get<any[]>(`${this.apiUrl}leagues`,options)
   }
 
 

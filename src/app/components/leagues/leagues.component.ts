@@ -22,7 +22,7 @@ export class LeaguesComponent implements OnInit {
     this.footballApiService.getLeagues().subscribe({
       next: (data: any) => {
         console.log(data)
-        this.ligas = data;
+        this.ligas = data.response;
       },
       error: (data: any) => {
         console.log(data)

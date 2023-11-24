@@ -35,6 +35,8 @@ export class TeamFixtureComponent implements OnInit{
   }
  }
 
- 
+ mostrarInformacionPartido(idPartido:number){
+  this.router.navigate([`/view-match/${idPartido}`])
+}
  
 }
