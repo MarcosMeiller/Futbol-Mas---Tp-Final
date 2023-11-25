@@ -11,7 +11,8 @@ import { Injectable } from '@angular/core';
 export class MatchService {
 
   private url= 'http://localhost:1234/fixtures'
-  private  APIKEY='b3db8ca9c6ef70a78619374b611c75ef'
+  private  APIKEY='5bd910d020bab78f966ec2f21625476b'
+  private apiUrl = 'https://v3.football.api-sports.io/fixtures';
 
   selectedMatch:any
   
@@ -26,7 +27,7 @@ export class MatchService {
   }
   
   getMatchHystory(teamsId:string){
-    return this.http.get(this.url+`/headtohead?h2h=${teamsId}`,this.options)
+    return this.http.get(this.apiUrl+`/headtohead?h2h=${teamsId}`,this.options)
   }
 
   setMatchSelected(match:any){

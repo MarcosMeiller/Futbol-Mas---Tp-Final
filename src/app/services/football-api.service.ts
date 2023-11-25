@@ -33,7 +33,7 @@ export class FootballApiService {
   
       //'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
     })}
-    return this.http.get<any[]>(`${this.apiUrl}leagues`,options)
+    return this.http.get<any[]>(`${this.apiUrl}leagues`,this.options)
   }
 
 

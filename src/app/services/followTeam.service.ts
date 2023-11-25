@@ -59,7 +59,7 @@ export class FollowServiceTeam {
     return this.http.delete(this.apiUrlFollow + `/${followData.id}`, { headers })
       .subscribe(
         (response) => {
-          console.log('Éxito al desuscribirse:', response);
+          console.log( response);
           // Puedes hacer algo más aquí si es necesario
         },
         (error) => {

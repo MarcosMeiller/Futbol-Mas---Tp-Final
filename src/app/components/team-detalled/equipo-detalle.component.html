@@ -49,6 +49,7 @@
 
       <div class="search-bar">
       <input type="text" [(ngModel)]="search" placeholder="Buscar jugador..." class="form-control">
+      <button (click)="searchPlayer()" class="btn btn-primary">Buscar </button>
       <div class="d-flex justify-content-between align-items-center">
         <i class=" text-white text-4xl absolute top-0 right-4" (click)="FollowTeam(equipo.team)">&hearts;</i>
       </div>
@@ -80,11 +81,13 @@
                 <h5 class="card-title" style="font-size: 18px; font-weight: bold;">{{ jugador.name }}</h5>
                 <p class="card-text" style="font-size: 14px; ">Edad: {{ jugador.age }}</p>
                 <p class="card-text" style="font-size: 14px; ">Número: {{ jugador.number }}</p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <i class=" text-white text-4xl absolute top-0 right-4" (click)="FollowPlayer(jugador)">&hearts;</i>
-                </div>
+               
+                
+                
             </div>
+            
           </div>
+          <button class=" " (click)="FollowPlayer(jugador)">Seguir</button>
         </div>
       </div>
     </div>  

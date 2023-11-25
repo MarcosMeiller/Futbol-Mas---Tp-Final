@@ -3,25 +3,28 @@
   <p class="text-white text-2xl">Partidos en vivo</p>
   <div class=" grid grid-cols-4" *ngIf="live && live.length > 0">
     <div *ngFor="let match of live" class="card m-4">
-      <div class="card-header">
-        <div class="d-flex align-items-center">
-          <img [src]="match.league.logo" alt="{{ match.league.name }} Logo" class="me-2" style="max-height: 30px;">
-          <h2 class="fs-5 fw-bold">{{ match.league.name }}</h2>
-        
-          <span class="ms-2 text-danger" *ngIf="match.fixture.status.short === 'LIVE'">Live</span>
+      <div (click)="mostrarInfoPartido(match.fixture.id)">
+        <div class="card-header">
+          <div class="d-flex align-items-center">
+            <img [src]="match.league.logo" alt="{{ match.league.name }} Logo" class="me-2" style="max-height: 30px;">
+            <h2 class="fs-5 fw-bold">{{ match.league.name }}</h2>
+          
+            <span class="ms-2 text-red-500" >Live</span>
+          </div>
+        </div>
+        <div class="card-body d-flex flex-column align-items-center justify-content-center">
+          <div class="d-flex align-items-center mb-3">
+            <img [src]="match.teams.home.logo" alt="{{ match.teams.home.name }} Logo" class="me-2" style="max-height: 40px;"> 
+            <span class="fs-5 ">{{ match.teams.home.name }}</span> 
+            <span class="mx-2 fs-4">{{ match.goals.home }} - {{ match.goals.away }}</span>
+            <span class="fs-5 ">{{ match.teams.away.name }}</span> 
+            <img [src]="match.teams.away.logo" alt="{{ match.teams.away.name }} Logo" class="ms-2" style="max-height: 40px;"> 
+          </div>
+          <p class="text-muted fs-6">{{ formatMatchTime(match.fixture.timestamp) }}</p> 
         </div>
       </div>
-      <div class="card-body d-flex flex-column align-items-center justify-content-center">
-        <div class="d-flex align-items-center mb-3">
-          <img [src]="match.teams.home.logo" alt="{{ match.teams.home.name }} Logo" class="me-2" style="max-height: 40px;"> 
-          <span class="fs-5 ">{{ match.teams.home.name }}</span> 
-          <span class="mx-2 fs-4">{{ match.goals.home }} - {{ match.goals.away }}</span>
-          <span class="fs-5 ">{{ match.teams.away.name }}</span> 
-          <img [src]="match.teams.away.logo" alt="{{ match.teams.away.name }} Logo" class="ms-2" style="max-height: 40px;"> 
-        </div>
-        <p class="text-muted fs-6">{{ formatMatchTime(match.fixture.timestamp) }}</p> 
       </div>
-    </div>
+      
   </div>
   <div *ngIf="live && live.length === 0" class="text-muted">
     No hay partidos en vivo.

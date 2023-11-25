@@ -3,6 +3,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { FootballApiService } from '../../services/football-api.service';
 import { FollowService } from 'src/app/services/follow-service.service';
 import { Follow } from '../../models/follow.model'; 
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -14,7 +15,7 @@ export class HomeComponent {
   standings:any;
   idliga:any;
   followedMatches: any[] = [];
-  constructor(private footballApiService: FootballApiService,private authService: AuthService,private followService:FollowService) {}
+  constructor(private footballApiService: FootballApiService,private authService: AuthService,private followService:FollowService, private route: Router) {}
   ngOnInit() {
     this.FixtureLive();
   }
@@ -106,5 +107,8 @@ export class HomeComponent {
   
   padZero(value: number): string {
     return value < 10 ? `0${value}` : `${value}`;
+  }
+  mostrarInfoPartido(id:number){
+    this.route.navigate([`/view-match/${id}`])
   }
 }
