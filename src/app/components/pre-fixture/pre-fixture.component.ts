@@ -23,7 +23,7 @@ export class PreFixtureComponent implements OnInit {
 
         
         this.fixtures.forEach((fixture: any) => {
-          this.footballApiService.getfeaxtureForiD(fixture.id).subscribe({
+          this.footballApiService.getfeaxtureForiD(fixture.fixture.id).subscribe({
             next: (fixtureDetails: any) => {
               console.log('Detalles del partido:', fixtureDetails);
               this.fixtureD=fixtureDetails;
