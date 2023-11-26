@@ -16,7 +16,7 @@
   </div>
 
  
-  <i class="text-white text-4xl mt-2 mb-2" (click)="FollowLeague(liga.league)">&hearts;</i>
+  <i class="text-white text-4xl mt-2 mb-2" (click)="toggleFollowLeague(liga.league)" [ngClass]="{'text-red-500': isFollowingLeague}">&hearts;</i>
 
   <div class="bg-slate-800 rounded-2xl m-4 p-4  shadow-2xl flex-col justify-center items-center">
     <div class="flex shadow-xl justify-center">
@@ -47,13 +47,13 @@
             <div class="card-body">
               <h5 class="card-title text-white">{{ equipo.team.name }}</h5>
             </div>
-            <i class="text-white text-4xl absolute bottom-0 end-0 p-3" (click)="FollowTeam(equipo.team)">&hearts;</i>
+            <i class="text-white text-4xl absolute bottom-0 end-0 p-3" (click)="toggleFollowTeam(equipo.team)" [ngClass]="{'text-red-500': isFollowingTeam[equipo.team.id]}">&hearts;</i>
           </div>
         </div>
       </div>
     
       <app-standings-league *ngIf="view === 'clasificacion'" [id]="liga.league.name"></app-standings-league>
-      <app-pre-fixture *ngIf="view === 'proximosProximos'" [id]="liga.league.id"></app-pre-fixture>
+      <app-pre-fixture *ngIf="view === 'PartidosProximos'" [id]="liga.league.id"></app-pre-fixture>
     </div>
   </div>
 </div>

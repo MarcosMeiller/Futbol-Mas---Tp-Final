@@ -16,7 +16,7 @@
       <div class="card-body">
         <h5 class="card-title text-center text-white">{{ liga.league.name }}</h5>
         <div class="d-flex justify-content-between align-items-center">
-          <i class=" text-white text-4xl absolute top-0 right-4" (click)="FollowLeague(ligas.league)">&hearts;</i>
+          <i class="text-white text-4xl absolute bottom-0 end-0 p-3" (click)="toggleFollowLeague(liga.league)" [ngClass]="{'text-red-500': isFollowingLeague[liga.league.id]}">&hearts;</i>
         </div>
       </div>
     </div>

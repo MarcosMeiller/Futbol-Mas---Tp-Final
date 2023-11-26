@@ -15,7 +15,7 @@ export class LeaguesComponent implements OnInit {
   search='';
   ligasYEquipos:any;
   view='events';
-  
+  isFollowingLeague: { [leagueId: string]: boolean } = {};
   constructor(private footballApiService: FootballApiService,private followLeague: FollowLeagueService,private router: Router,private dataService: DetalleService) {}
 
   ngOnInit() {
@@ -29,9 +29,16 @@ export class LeaguesComponent implements OnInit {
       }
     });
   }
-  FollowLeague(dato:any){
-    console.log(dato);
-  this.followLeague.createNewFollowLeague(dato);
+  toggleFollowLeague(liga: any) {
+    const leagueId = liga.id;
+
+    if (this.isFollowingLeague[leagueId]) {
+      this.followLeague.UnfollowLeague(liga)
+    } else {
+     this.followLeague.createNewFollowLeague(liga);
+    }
+
+    this.isFollowingLeague[leagueId] = !this.isFollowingLeague[leagueId];
   }
   searchLeagues() {
     if (this.search.trim() !== '') {

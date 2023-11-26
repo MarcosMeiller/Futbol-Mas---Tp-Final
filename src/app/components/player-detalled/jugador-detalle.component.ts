@@ -12,7 +12,7 @@ import { FollowPlayerService } from 'src/app/services/follow-player.service';
 export class JugadorDetalleComponent {
   @Input()
  jugador: any;
-
+ isFollowing: boolean = false;
   player:any;
   constructor(private footballApiService: FootballApiService,private dataService: DetalleService,private route:ActivatedRoute,private FollowServicePlayer: FollowPlayerService) {}
   ngOnInit() {
@@ -29,10 +29,16 @@ export class JugadorDetalleComponent {
     });
    }
 
-   FollowPlayer(dato:any){
-    console.log(dato);
-  this.FollowServicePlayer.createNewFollowPlayer(dato);
+   toggleFollowPlayer(dato:any) {
+    if (this.isFollowing) {
+      this.FollowServicePlayer.UnfollowPlayer(dato);
+    } else {
+      this.FollowServicePlayer.createNewFollowPlayer(dato);
+    }
+
+    this.isFollowing = !this.isFollowing;
   }
+
   }
 
 

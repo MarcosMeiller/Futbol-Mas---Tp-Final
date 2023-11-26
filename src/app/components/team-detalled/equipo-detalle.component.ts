@@ -15,7 +15,8 @@ export class EquipoDetalleComponent {
   equipo: any;
   view='events'
   selectedPlayer: any;
-
+  isFollowingTeam: boolean = false;
+  isFollowingPlayer: { [playerId: string]: boolean } = {};
   
   constructor(private footballApiService: FootballApiService,private FollowServicePlayer: FollowPlayerService,private router: Router,private dataService: DetalleService,private followServiceTeam: FollowServiceTeam) {}
   ngOnInit() {
@@ -31,10 +32,7 @@ export class EquipoDetalleComponent {
     });
    }
   
-   FollowPlayer(dato:any){
-    console.log(dato);
-  this.FollowServicePlayer.createNewFollowPlayer(dato);
-  }
+  
    searchPlayer() {
     if (this.search.trim() !== '') {
       this.footballApiService.searchPlayersByName(this.equipo.team.id,this.search).subscribe((res: any) => {
@@ -46,10 +44,7 @@ export class EquipoDetalleComponent {
       this.ngOnInit();
     }
   }
-  FollowTeam(dato:any){
-    console.log(dato);
-  this.followServiceTeam.createNewFollowTeam(dato);
-  }
+  
 
   mostrarInformacionJugador(jugador: any) {
     this.dataService.setJugador(jugador);   
@@ -60,4 +55,25 @@ export class EquipoDetalleComponent {
     event.preventDefault();
     this.view=name
    }
+   toggleFollowTeam(dato:any) {
+    if (this.isFollowingTeam) {
+      this.followServiceTeam.UnfollowTeam(dato);
+    } else {
+      this.followServiceTeam.createNewFollowTeam(dato);
+    }
+
+    this.isFollowingTeam = !this.isFollowingTeam;
+  }
+
+  toggleFollowPlayer(jugador: any) {
+    const playerId = jugador.id;
+
+    if (this.isFollowingPlayer[playerId]) {
+      this.FollowServicePlayer.UnfollowPlayer(jugador)
+    } else {
+     this.FollowServicePlayer.createNewFollowPlayer(jugador);
+    }
+
+    this.isFollowingPlayer[playerId] = !this.isFollowingPlayer[playerId];
+  }
 }

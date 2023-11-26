@@ -12,7 +12,7 @@
   </div>
 
   <!-- Corazón de seguir equipo -->
-  <i class="text-white text-4xl mt-2 mb-2" (click)="FollowTeam(equipo.team)">&hearts;</i>
+  <i class="text-white text-4xl mt-2 mb-2" (click)="toggleFollowTeam(equipo.team)" [ngClass]="{'text-red-500': isFollowingTeam}">&hearts;</i>
 
 
 <!-- Opciones: Información del estadio y Jugadores -->
@@ -50,7 +50,6 @@
       <div class="search-bar">
       <input type="text" [(ngModel)]="search" placeholder="Buscar jugador..." class="form-control">
       <button (click)="searchPlayer()" class="btn btn-primary">Buscar </button>
-      <i class="text-white text-4xl absolute top-0 end-0 p-3" (click)="FollowTeam(equipo.team)">&hearts;</i>
       </div>
 
       <div *ngIf="selectedPlayer && selectedPlayer.length> 0 ; else playerList" class="mb-4 col-md-12">
@@ -62,7 +61,7 @@
                 <h5 class="card-title" style="font-size: 18px; font-weight: bold;">{{ selectedPlayer[0].player.name }}</h5>
                 
               </div>
-              <i class="text-white text-4xl absolute top-0 end-0 p-3" (click)="FollowPlayer(selectedPlayer[0].player)">&hearts;</i>
+              <i class="text-white text-4xl absolute bottom-0 end-0 p-3" (click)="toggleFollowPlayer(selectedPlayer[0].player)" [ngClass]="{'text-red-500': isFollowingPlayer[selectedPlayer[0].player.id]}">&hearts;</i>
             </div>
         </div>
       </div>
@@ -84,7 +83,7 @@
                 
                 
             </div>
-            <i class="text-white text-4xl absolute top-0 end-0 p-3" (click)="FollowPlayer(jugador)">&hearts;</i>
+            <i class="text-white text-4xl absolute bottom-0 end-0 p-3" (click)="toggleFollowPlayer(jugador)" [ngClass]="{'text-red-500': isFollowingPlayer[jugador.id]}">&hearts;</i>
           </div>
 
         </div>

@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FootballApiService } from '../../services/football-api.service';
 import { Router } from '@angular/router';
-
+import { forkJoin } from 'rxjs';
 @Component({
   selector: 'app-pre-fixture',
   templateUrl: './pre-fixture.component.html',
@@ -10,28 +10,32 @@ import { Router } from '@angular/router';
 export class PreFixtureComponent implements OnInit {
   liga:any;
   fixtures:any;
-  fixtureD:any;
+  fixtureD :any[]=[];
   @Input ()
   id:any;
   constructor(private footballApiService: FootballApiService,private router: Router) {}
 
   ngOnInit() {
-    this.footballApiService.getPreFixture(this.liga.league.id, '2023').subscribe({
+    this.footballApiService.getPreFixture(this.id, '2023').subscribe({
       next: (data: any) => {
         console.log(data);
         this.fixtures = data.response;
 
-        
-        this.fixtures.forEach((fixture: any) => {
-          this.footballApiService.getfeaxtureForiD(fixture.fixture.id).subscribe({
-            next: (fixtureDetails: any) => {
-              console.log('Detalles del partido:', fixtureDetails);
-              this.fixtureD=fixtureDetails;
-            },
-            error: (error: any) => {
-              console.log('Error al obtener detalles del partido:', error);
+       
+        const requests = this.fixtures.map((fixture: any) =>
+          this.footballApiService.getfeaxtureForiD(fixture.fixture.id)
+        );
+
+        forkJoin(requests).subscribe((responses: any) => {
+          console.log('Respuestas de los partidos:', responses);
+
+          responses.forEach((response: any) => {
+            if (response && response.response) {
+              this.fixtureD = [...this.fixtureD, ...response.response];
             }
           });
+        }, (error: any) => {
+          console.log('Error al obtener detalles del partido:', error);
         });
       },
       error: (error: any) => {

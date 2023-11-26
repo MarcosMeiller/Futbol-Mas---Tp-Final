@@ -11,7 +11,7 @@
           <p class="card-text">Edad: {{ player[0].player.age }}</p>
           <p class="card-text">Altura: {{ player[0].player.height }}</p>
           <p class="card-text">Peso: {{ player[0].player.weight }}</p>
-          <i class="text-danger text-4xl ml-auto" (click)="FollowPlayer(player[0].player)">&hearts;</i>
+          <i class="text-white text-4xl mt-2 mb-2" (click)="toggleFollowPlayer(player[0].player)" [ngClass]="{'text-red-500': isFollowing}">&hearts;</i>
         </div>
       </div>  
     </div> 
