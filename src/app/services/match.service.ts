@@ -11,7 +11,7 @@ import { Injectable } from '@angular/core';
 export class MatchService {
 
   private url= 'http://localhost:1234/fixtures'
-  private  APIKEY='5bd910d020bab78f966ec2f21625476b'
+  private  APIKEY='de4983f33aa715b8de21736f65cf9cf7'
   private apiUrl = 'https://v3.football.api-sports.io/fixtures';
 
   selectedMatch:any

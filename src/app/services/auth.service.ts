@@ -32,7 +32,6 @@ export class AuthService {
   }
 
   isLoggedIn(): boolean {
-    console.log("esta activado? " + !!localStorage.getItem('token'));
     return !!localStorage.getItem('token');
   }
 

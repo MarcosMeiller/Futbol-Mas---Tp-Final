@@ -1,33 +1,12 @@
+<!-- eslint-disable @angular-eslint/template/interactive-supports-focus -->
+<!-- eslint-disable @angular-eslint/template/click-events-have-key-events -->
 <main class="bg-slate-900 m-4 p-4 rounded-2xl">
   <p class="text-white text-2xl mb-4">Partidos en vivo</p>
   <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" *ngIf="live && live.length > 0">
-    <div *ngFor="let match of live" class="card">
-      <div (click)="mostrarInfoPartido(match.fixture.id)" class="cursor-pointer">
-        <div class="card-header">
-          <div class="d-flex align-items-center justify-between">
-            <div class="flex items-center">
-              <img [src]="match.league.logo" alt="{{ match.league.name }} Logo" class="league-logo me-2" style="max-height: 30px;">
-              <h2 class="fs-5 fw-bold">{{ match.league.name }}</h2>
-            </div>
-            <span class="text-red-500">Live</span>
-          </div>
-        </div>
-        <div class="card-body text-center">
-          <div class="team-info mb-2">
-            <img [src]="match.teams.home.logo" alt="{{ match.teams.home.name }} Logo" class="team-logo" style="max-height: 40px;">
-            <span class="fs-5">{{ match.teams.home.name }}</span>
-          </div>
-          <div class="score-info mb-2">
-            <span class="fs-4">{{ match.goals.home }} - {{ match.goals.away }}</span>
-          </div>
-          <div class="team-info">
-            <span class="fs-5">{{ match.teams.away.name }}</span>
-            <img [src]="match.teams.away.logo" alt="{{ match.teams.away.name }} Logo" class="team-logo" style="max-height: 40px;">
-          </div>
-          <p class="text-muted fs-6 mt-2">{{ formatMatchTime(match.fixture.timestamp) }}</p>
-        </div>
-      </div>
-    </div>
+    <ng-container *ngFor="let match of live" >
+      <app-card-match [match]="match"></app-card-match>
+    </ng-container>
+    
   </div>
   <div *ngIf="live && live.length === 0" class="text-muted">
     No hay partidos en vivo.
