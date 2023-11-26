@@ -23,7 +23,7 @@ export class LigaDetalleComponent  {
       this.footballApiService.getTeams('2023', this.liga.league.id).subscribe({
         next: (data: any) => {
           console.log(data);
-          this.equipos = data.response
+          this.equipos = data
         },
         error: (data: any) => {
           console.log(data);
@@ -43,8 +43,9 @@ export class LigaDetalleComponent  {
   searchTeams() {
     if (this.search.trim() !== '') {
       this.footballApiService.searchTeamsByName(this.search).subscribe((res: any) => {
-        console.log(res);
-        this.equipos = res.response;
+        
+        this.equipos = res;
+        console.log(this.equipos);
       });
     } else {
       this.ngOnInit();

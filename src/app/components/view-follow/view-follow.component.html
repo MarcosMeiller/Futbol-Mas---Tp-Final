@@ -13,7 +13,7 @@
                 <li class="list-group-item" *ngFor="let follow of follows">
                   <div class="d-flex align-items-center">
                     <!-- Mostrar photo si existe, de lo contrario, mostrar logo -->
-                    <img [src]="follow.photo || follow.logo" alt="{{ follow.name }}" class="me-2" style="max-height: 40px;">
+                    <img [src]="follow.photo" alt="{{ follow.name }}" class="me-2" style="max-height: 40px;">
                     <span>{{ follow.name }}</span>
                     <button (click)="UnfollowTeam(follow)" class="btn btn-danger ml-auto">Dejar de seguir</button>
                   </div>

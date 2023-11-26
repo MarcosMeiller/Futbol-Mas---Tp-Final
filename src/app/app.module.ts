@@ -40,6 +40,7 @@ import { PlayersMatchComponent } from './components/players-match/players-match.
 import { ViewFollowComponent } from './components/view-follow/view-follow.component';
 import { PreFixtureComponent } from './components/pre-fixture/pre-fixture.component';
 import { UpdateUserComponent } from './components/update-user/update-user.component';
+import { CardMatchComponent } from './components/card-match/card-match.component';
 
 
 
@@ -75,6 +76,7 @@ import { UpdateUserComponent } from './components/update-user/update-user.compon
     ViewFollowComponent,
     PreFixtureComponent,
     UpdateUserComponent,
+    CardMatchComponent,
   ],
   imports: [
     BrowserModule,

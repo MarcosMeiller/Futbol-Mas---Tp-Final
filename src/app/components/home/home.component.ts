@@ -4,20 +4,37 @@ import { FootballApiService } from '../../services/football-api.service';
 import { FollowService } from 'src/app/services/follow-service.service';
 import { Follow } from '../../models/follow.model'; 
 import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
+  
 })
 export class HomeComponent {
+  estadoParpadeo = 'visible';
+  matches: string | any[]=[]
   title = 'futbol-mas';
   live:any;
   standings:any;
   idliga:any;
   followedMatches: any[] = [];
+  // isMouseDown = false;
+  // startX: number;
+  // scrollLeft: number;
   constructor(private footballApiService: FootballApiService,private authService: AuthService,private followService:FollowService, private route: Router) {}
   ngOnInit() {
     this.FixtureLive();
+  }
+
+
+  currentIndex = 0;
+
+  scroll(direction: number): void {
+    const newIndex = this.currentIndex + direction;
+    if (newIndex >= 0 && newIndex < this.matches.length) {
+      this.currentIndex = newIndex;
+    }
   }
   FixtureLive() {
    
@@ -78,6 +95,7 @@ export class HomeComponent {
   }
 
   formatMatchTime(timestamp: string): string {
+    console.log(Math.floor(Number(timestamp)/60000))
     const matchDate = new Date(Number(timestamp) * 1000);
     const currentTime = new Date();
     
@@ -108,7 +126,5 @@ export class HomeComponent {
   padZero(value: number): string {
     return value < 10 ? `0${value}` : `${value}`;
   }
-  mostrarInfoPartido(id:number){
-    this.route.navigate([`/view-match/${id}`])
-  }
+  
 }
