@@ -5,8 +5,8 @@
   </div>
 
   <div class="search-bar">
-    <input type="text" [(ngModel)]="search" placeholder="Buscar liga..." class="form-control " style="width: 200px" >
-    <button (click)="searchLeagues()" class="btn btn-primary">Buscar </button>
+    <input type="text" [(ngModel)]="search" placeholder="Buscar liga..." class="form-control" style="width: 200px" (input)="handleSearch()">
+    <button (click)="searchLeagues()" class="btn btn-primary">Buscar</button>
   </div>
   
 
