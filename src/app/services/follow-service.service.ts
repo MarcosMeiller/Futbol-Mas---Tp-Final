@@ -29,7 +29,6 @@ export class FollowService {
         return forkJoin([leagueObservable, playerObservable]).pipe(
           mergeMap((data: Follow[][]) => {
             const [leagues, players] = data;
-            console.log(leagues)
 
             // Normalizar los datos para asegurarte de que todos tengan la propiedad 'name'
             const normalizedTeams = this.normalizeData(teams, 'name');
@@ -46,7 +45,6 @@ export class FollowService {
 
   private normalizeLeague(data: any[]){
     return data.map(item => {
-      console.log(item[0])
       const followItem: Follow = {
         id: item[0].league.id, 
         name: item[0].league.name,
@@ -59,7 +57,6 @@ export class FollowService {
   }
 
   private normalizeData(data: any[], commonProperty: string): Follow[] {
-    console.log(data)
     return data.map(item => {
       const followItem: Follow = {
         id: item.id, 
