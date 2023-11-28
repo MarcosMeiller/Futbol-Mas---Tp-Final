@@ -1,0 +1,11 @@
+<div class="flex">
+    <button class="text-white text-5xl h-auto m-3 text-center rounded shadow-2xl" (click)="leftSlide()" [disabled]="start"><</button>
+    <div class="flex-1 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 auto-rows-min" [@fadeAnimation]="'in'">
+        <ng-container *ngFor="let item of dataSlider">
+            <ng-container *ngTemplateOutlet="contentTemplate; context: { $implicit: item }" [@fadeAnimation]="'in'"></ng-container>
+          </ng-container>
+    </div>
+    
+<button class="text-white text-5xl h-auto m-3 text-center rounded shadow-2xl" [disabled]="end" (click)="rigthSlide()">></button>
+
+</div>

@@ -41,6 +41,8 @@ import { ViewFollowComponent } from './components/view-follow/view-follow.compon
 import { PreFixtureComponent } from './components/pre-fixture/pre-fixture.component';
 import { UpdateUserComponent } from './components/update-user/update-user.component';
 import { CardMatchComponent } from './components/card-match/card-match.component';
+import { SliderComponent } from './components/slider/slider.component';
+import { CardLeagueComponent } from './components/card-league/card-league.component';
 
 
 
@@ -77,6 +79,8 @@ import { CardMatchComponent } from './components/card-match/card-match.component
     PreFixtureComponent,
     UpdateUserComponent,
     CardMatchComponent,
+    SliderComponent,
+    CardLeagueComponent,
   ],
   imports: [
     BrowserModule,

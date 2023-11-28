@@ -1,17 +1,17 @@
 <!-- eslint-disable @angular-eslint/template/interactive-supports-focus -->
 <!-- eslint-disable @angular-eslint/template/click-events-have-key-events -->
 
-    <div (click)="mostrarInfoPartido(match.fixture.id)" class="cursor-pointer bg-slate-800 shadow-2xl rounded-md h-40">
+    <div (click)="mostrarInfoPartido(match.fixture.id)" class="cursor-pointer bg-slate-800 shadow-2xl rounded-md h-48">
       <div class="shadow-lg p-2">
         <div class="d-flex align-items-center justify-between">
           <div class="flex items-center">
             <img [src]="match.league.logo" alt="{{ match.league.name }} Logo" class="league-logo me-2" style="max-height: 30px;">
             <h2 class="fs-5 fw-bold text-white">{{ match.league.name }}</h2>
           </div>
-          <span class="text-green-500 min-w-max ">Live <span class="parpadeante text-green-500">●</span></span>
+          <span *ngIf="live" class="text-green-500 min-w-max ">Live <span class="parpadeante text-green-500">●</span></span>
         </div>
       </div>
-      <div class="card-body text-center flex justify-between">
+      <div class="card-body text-center flex content-center mt-4 justify-center items-center">
         <div class="team-info mb-2 flex-1 flex flex-col items-center justify-center">
             <img [src]="match.teams.home.logo" alt="{{ match.teams.home.name }} Logo" class="team-logo" style="max-height: 40px;">
             <span class="fs-5 text-white">{{ match.teams.home.name }}</span>
@@ -21,8 +21,8 @@
           <p class="fs-6 mt-2 text-slate-300">{{ match.fixture.status.long}} {{match.fixture.status.elapsed!== undefined?match.fixture.status.elapsed: '' }}'</p>
         </div>
         <div class="team-info mb-2 flex-1 flex flex-col items-center justify-center">
-            <img [src]="match.teams.home.logo" alt="{{ match.teams.away.name }} Logo" class="team-logo" style="max-height: 40px;">
-            <span class="fs-5 text-white">{{ match.teams.away.name }}</span>
+            <img [src]="match.teams.away.logo" alt="{{ match.teams.away.name }} Logo" class="team-logo" style="max-height: 40px;">
+            <span class="fs-5 text-white h-min shrink">{{ match.teams.away.name }}</span>
           </div>
         
       </div>

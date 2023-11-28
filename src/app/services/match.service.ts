@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 // Accede a los datos del JSON como cualquier objeto
 
@@ -9,6 +10,32 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class MatchService {
+
+  statusCodes = [
+    { short: 'TBD', type: 'Scheduled' },
+    { short: 'NS', type: 'Scheduled' },
+    { short: '1H', type: 'In Play' },
+    { short: 'HT', type: 'In Play' },
+    { short: '2H', type: 'In Play' },
+    { short: 'ET', type: 'In Play' },
+    { short: 'BT', type: 'In Play' },
+    { short: 'P', type: 'In Play' },
+    { short: 'SUSP', type: 'In Play' },
+    { short: 'INT', type: 'In Play' },
+    { short: 'FT', type: 'Finished' },
+    { short: 'AET', type: 'Finished' },
+    { short: 'PEN', type: 'Finished' },
+    { short: 'PST', type: 'Postponed' },
+    { short: 'CANC', type: 'Cancelled' },
+    { short: 'ABD', type: 'Abandoned' },
+    { short: 'AWD', type: 'Not Played' },
+    { short: 'WO', type: 'Not Played' },
+    { short: 'LIVE', type: 'In Play' },
+  ];
+  
+  
+  
+  
 
   private url= 'http://localhost:1234/fixtures'
   private  APIKEY='5bd910d020bab78f966ec2f21625476b'
@@ -24,6 +51,19 @@ export class MatchService {
   }
   getMatch({matchId}:any){
     return this.http.get(this.url+`?id=${matchId}`,this.options)
+  }
+  getMatchByLeague(league: string,round:string){
+    return this.http.get(this.url+`?league=${league}&season=${'2023'}&round=${round}`,this.options)
+    // let round
+
+    // result.then(res=>{
+    //   round=res
+    // }).catch(err=>{console.log(err)})
+  }
+  getStatusInPlay()
+  {return this.statusCodes.filter(status => status.type === 'In Play').map(status => status.short);}
+  getCurrentRoundByLague(id:string, season:string){
+    return this.http.get<any[]>(`${this.apiUrl}/rounds?league=${id}&season=${season}&current=true`,this.options)
   }
   
   getMatchHystory(teamsId:string){

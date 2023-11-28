@@ -17,11 +17,12 @@ export class FollowLeagueService {
     'Authorization' : `${localStorage.getItem('token')}`
     //'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
   })}
+  leaguesFollowed=[]
   constructor(private http: HttpClient, private router: Router) { }
 
-createNewFollowLeague(followData: any) {
-  
 
+  createNewFollowLeague(followData: any) {
+    console.log('creando follow')
     this.http.post(this.apiUrlFollow+followData,'',this.options)
       .subscribe(
         response => {
@@ -37,8 +38,9 @@ createNewFollowLeague(followData: any) {
       'Content-Type': 'application/json',
       'Authorization': `${token}`
     });
-      this.http.delete(this.apiUrlFollow + `/${followData.id}`,this.options)
+    return  this.http.delete(this.apiUrlFollow + `${followData}`,this.options)
   }
+  
   getUserFollowLeague(): Observable <any[]> {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders({

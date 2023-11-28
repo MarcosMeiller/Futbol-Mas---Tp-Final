@@ -17,7 +17,8 @@ export class LeaguesComponent implements OnInit {
   search='';
   ligasYEquipos:any;
   view='events';
-  isFollowingLeague: { [leagueId: string]: boolean } = {};
+  followedLeagues: any=[]
+  loading=true
   private searchSubject = new Subject<string>();
   constructor(private footballApiService: FootballApiService,private followLeague: FollowLeagueService,private router: Router,private dataService: DetalleService) {}
  
@@ -25,23 +26,14 @@ export class LeaguesComponent implements OnInit {
     this.footballApiService.getLeagues().subscribe({
       next: (data: any) => {
         this.ligas = data;
+        console.log(data)
       },
       error: (data: any) => {
         
       }
     });
-    this.setupSearchListener();
-  }
-  toggleFollowLeague(liga: any) {
-    const leagueId = liga.id;
+    this.getLeagueFollowed()
 
-    if (this.isFollowingLeague[leagueId]) {
-      this.followLeague.UnfollowLeague(liga)
-    } else {
-     this.followLeague.createNewFollowLeague(liga);
-    }
-
-    this.isFollowingLeague[leagueId] = !this.isFollowingLeague[leagueId];
   }
   searchLeagues() {
     if (this.search.trim() !== '') {
@@ -72,9 +64,18 @@ export class LeaguesComponent implements OnInit {
     this.searchSubject.next(this.search);
   }
 
-  mostrarInformacionLiga(liga: any) {
-    this.dataService.setLiga(liga);
-    this.router.navigate(['/detalleliga']);
+ 
+
+  getLeagueFollowed(){
+    this.followLeague.getUserFollowLeague().subscribe({next: res=>{
+      this.followedLeagues=res.map(item=>{return item[0].league.id})
+      this.loading=false
+    },error: (err)=>{console.log(err)}}
+    )
+  }
+  validateFollow(id:string){
+    console.log( this.followedLeagues.includes(id))
+    return this.followedLeagues.includes(id)
   }
   
 }
