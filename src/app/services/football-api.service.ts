@@ -112,10 +112,10 @@ getStatisticsTeam(idTeam:number, idLeague:number, season:string):Observable  <an
     return this.http.get<any[]>(`${this.apiUrl}fixtures?live=${'all'}`,this.optionsApi);
    }
   searchLeagueByName(name: string): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}leagues?name=${name}`, this.options)
+    return this.http.get<any[]>(`${this.apiUrl}leagues?name=${name}`, this.optionsApi)
     .pipe(
-      map((leagues: any[]) => {
-        return leagues.filter(league => league.name.toLowerCase().includes(name.toLowerCase()));
+      map((leagues: any) => {
+        return leagues.response.filter((league: any) => league.league.toLowerCase().includes(name.toLowerCase()));
       })
     );
   }

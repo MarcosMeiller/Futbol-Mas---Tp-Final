@@ -10,18 +10,17 @@ export class FollowServiceTeam {
 
   private apiUrlTeam = 'http://localhost:1234/teams';
   private apiUrlFollow = 'http://localhost:1234/follows/teams';
+  options={headers:new HttpHeaders({
+
+    'Content-Type': 'application/json',
+    'Authorization' : `${localStorage.getItem('token')}`
+    //'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
+  })}
   constructor(private http: HttpClient, private router: Router) { }
 
   createNewFollowTeam(followData: any) {
-    const token = localStorage.getItem('token');
-  console.log(followData);
     
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': `${token}`
-    });
-    console.log(followData.id);
-    this.http.post(this.apiUrlTeam, followData, { headers })
+    this.http.post(this.apiUrlTeam, followData,this.options)
       .subscribe(
         (response) => {
           console.log('Éxito al desuscribirse:', response);
@@ -32,7 +31,7 @@ export class FollowServiceTeam {
 
         }
       );
-      this.http.post(this.apiUrlFollow + `/${followData.id}`,{headers})
+      this.http.post(this.apiUrlFollow + `/${followData.id}`,this.options)
   }
  
  

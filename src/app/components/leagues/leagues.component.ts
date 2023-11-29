@@ -33,14 +33,16 @@ export class LeaguesComponent implements OnInit {
       }
     });
     this.getLeagueFollowed()
-    this.setupSearchListener();
+    //this.setupSearchListener();
   }
   searchLeagues() {
+    console.log(this.search)
     if (this.search.trim() !== '') {
+      console.log('hola')
       this.footballApiService.searchLeagueByName(this.search).subscribe({next: (res: any) => {
         console.log(res);
         this.ligas = res.response;
-      },error: console.log()
+      }
      });
     } else {
       this.ngOnInit();
@@ -75,7 +77,6 @@ export class LeaguesComponent implements OnInit {
     )
   }
   validateFollow(id:string){
-    console.log( this.followedLeagues.includes(id))
     return this.followedLeagues.includes(id)
   }
   
