@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, forkJoin } from 'rxjs';
-import { switchMap, of } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { Observable, forkJoin, map } from 'rxjs';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -113,7 +112,12 @@ getStatisticsTeam(idTeam:number, idLeague:number, season:string):Observable  <an
     return this.http.get<any[]>(`${this.apiUrl}fixtures?live=${'all'}`,this.optionsApi);
    }
   searchLeagueByName(name: string): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}leagues?name=${name}`, this.options);
+    return this.http.get<any[]>(`${this.apiUrl}leagues?name=${name}`, this.options)
+    .pipe(
+      map((leagues: any[]) => {
+        return leagues.filter(league => league.name.toLowerCase().includes(name.toLowerCase()));
+      })
+    );
   }
 searchTeamsByName(name: string): Observable<any[]> {
   return this.http.get<any[]>(`${this.apiUrl}teams?name=${name}`, this.options);
