@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms'; // Importa FormsModule para el uso
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module'; // Importa el módulo de enrutamiento
 
+
 import { AppComponent } from './app.component';
 import { RegisterUserComponent } from './components/register-user/register-user.component';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -19,7 +20,6 @@ import { MatchEventsComponent } from './components/match-events/match-events.com
 import { EventIconDirective } from './directives/event-icon.directive';
 import { Routes,RouterModule } from '@angular/router';
 import { LeaguesComponent } from './components/leagues/leagues.component';
-
 
 import { SearchComponent } from './components/search/search.component';
 import { LigaDetalleComponent } from './components/league-detalled/liga-detalle.component';
@@ -38,8 +38,12 @@ import { StandingsLeagueComponent } from './components/standings-league/standing
 import { StatisticsTeamComponent } from './components/statistics-team/statistics-team.component';
 import { PlayersMatchComponent } from './components/players-match/players-match.component';
 import { ViewFollowComponent } from './components/view-follow/view-follow.component';
-import { PreFixtureComponent } from './components/pre-fixture/pre-fixture.component';
+
+
 import { UpdateUserComponent } from './components/update-user/update-user.component';
+import { CardMatchComponent } from './components/card-match/card-match.component';
+import { SliderComponent } from './components/slider/slider.component';
+import { CardLeagueComponent } from './components/card-league/card-league.component';
 
 
 
@@ -68,19 +72,22 @@ import { UpdateUserComponent } from './components/update-user/update-user.compon
     PredictionAllComponent,
     MatchHistoryComponent,
     HomeComponent,
-    TeamFixtureComponent,
     StandingsLeagueComponent,
     StatisticsTeamComponent,
     PlayersMatchComponent,
     ViewFollowComponent,
-    PreFixtureComponent,
     UpdateUserComponent,
+    CardMatchComponent,
+    SliderComponent,
+    CardLeagueComponent,
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
+    TeamFixtureComponent,
     HttpClientModule,
     BrowserAnimationsModule,
   ],

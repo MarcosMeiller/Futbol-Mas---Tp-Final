@@ -1,46 +1,68 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, forkJoin } from 'rxjs';
-import { switchMap, of } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { Observable, forkJoin, map } from 'rxjs';
+
 @Injectable({
   providedIn: 'root'
 })
 export class FootballApiService {
   private localApiUrl='http://localhost:1234/'
   private apiUrl = 'https://v3.football.api-sports.io/'; 
-  
-  private  APIKEY='5bd910d020bab78f966ec2f21625476b'
+
+private  APIKEY='67767856d9121ae7b46593a39167d9ac'
+
+
   options={headers:new HttpHeaders({
 
-    'X-RapidAPI-Key': this.APIKEY,
-    //'Authorization' : JSON.stringify(localStorage.getItem('token'))
+    'x-apisports-key': this.APIKEY,
+    'Authorization' :localStorage.getItem('token') || ''
+    //'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
+  })}
+  optionsApi={headers:new HttpHeaders({
+
+    'x-apisports-key': this.APIKEY,
     //'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
   })}
   constructor(private http: HttpClient) {
   }
 
-  getLeagues(): Observable<any[]> {
+  getLeagues(index: {startIndex: number, endIndex: number}): Observable<any[]> {
 
      // return this.http.get<any[]>(`${this.apiUrl}/leagues`,this.options);
     
 
-    const index: {startIndex: number, endIndex:number} = {startIndex : 0, endIndex: 5}
     const options={headers:new HttpHeaders({
 
-      'X-RapidAPI-Key': this.APIKEY,
-      'Index': JSON.stringify(index)
+      'x-apisports-key': this.APIKEY,
+      'Index': JSON.stringify(index),
+      'Authorization' :localStorage.getItem('token') || ''
   
       //'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
     })}
     return this.http.get<any[]>(`${this.localApiUrl}leagues`,options)
   }
 
+  getLeagueById(id:string): Observable<any[]> {
+
+    // return this.http.get<any[]>(`${this.apiUrl}/leagues`,this.options);
+   
+
+   const index: {startIndex: number, endIndex:number} = {startIndex : 0, endIndex: 5}
+   const options={headers:new HttpHeaders({
+
+     'x-apisports-key': this.APIKEY,
+     'Index': JSON.stringify(index)
+ 
+     //'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
+   })}
+   return this.http.get<any[]>(`${this.localApiUrl}leagues/${id}`,this.options)
+ }
+
 
   getTeams(season: string, leagueId: number): Observable<any[]> {
+    console.log(typeof localStorage.getItem('token'))
 
-
-    return this.http.get<any[]>(`${this.apiUrl}/teams?league=${leagueId}&season=${season}`,this.options);
+    return this.http.get<any[]>(`${this.localApiUrl}teams?league=${leagueId}&season=${season}`,this.options);
 
     /*const header={headers:new HttpHeaders({
       'Authorization' : JSON.stringify(localStorage.getItem('token'))
@@ -50,52 +72,47 @@ export class FootballApiService {
     return this.http.get<any[]>(`${this.localApiUrl}teams?season=${season}&league=${leagueId}`,header);
 */
   }
+
+  
   
 
   getPlayers(team: number): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/players/squads?team=${team}`,this.options);
+    return this.http.get<any[]>(`${this.apiUrl}players/squads?team=${team}`,this.optionsApi);
   }
 
   getPlayerStatistic(id: number,season: string): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/players?id=${id}&season=${season}`,this.options);
+    return this.http.get<any[]>(`${this.apiUrl}players?id=${id}&season=${season}`,this.optionsApi);
 
   }
   
-  getFeaxture(id:number, season:string):Observable <any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/fixtures?league=${id}&season=${season}`,this.options);
+  getFeaxture(id:number, season:string, fromdate:string , todate:string):Observable <any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}fixtures?team=${id}&season=${season}&from=${fromdate}&to=${todate}`,this.optionsApi);
 
   }
 
-  getfeaxtureForiD(id:number):Observable <any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/fixtures?id=${id}`,this.options);
+ 
 
-  }
-
-  getPreFixture(id:number, season:string):Observable <any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/odds?league=${id}&season=${season}`,this.options);
-
-  }
   
 getStanding(id:number,season:string):Observable  <any[]> {
-  return this.http.get<any[]>(`${this.apiUrl}/standings?league=${id}&season=${season}`,this.options);
+  return this.http.get<any[]>(`${this.apiUrl}standings?league=${id}&season=${season}`,this.optionsApi);
 
 }
 getStatisticsTeam(idTeam:number, idLeague:number, season:string):Observable  <any[]> {
 
-  return this.http.get<any[]>(`${this.apiUrl}/teams/statistics?league=${idLeague}&team=${idTeam}&season=${season}`,this.options);
+  return this.http.get<any[]>(`${this.apiUrl}teams/statistics?league=${idLeague}&team=${idTeam}&season=${season}`,this.optionsApi);
  }
   getFixtureLive():Observable  <any[]> {
 
-    return this.http.get<any[]>(`${this.apiUrl}/fixtures?live=${'all'}`,this.options);
+    return this.http.get<any[]>(`${this.apiUrl}fixtures?live=${'all'}`,this.optionsApi);
    }
   searchLeagueByName(name: string): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/leagues?name=${name}`, this.options);
+    return this.http.get<any[]>(`${this.apiUrl}leagues?search=${name}`, this.optionsApi)
   }
 searchTeamsByName(name: string): Observable<any[]> {
-  return this.http.get<any[]>(`${this.apiUrl}/teams?name=${name}`, this.options);
+  return this.http.get<any[]>(`${this.apiUrl}teams?search=${name}`, this.optionsApi);
 }
 
 searchPlayersByName(teamId: number, playerName: string): Observable<any[]> {
-  return this.http.get<any[]>(`${this.apiUrl}/players?team=${teamId}&search=${playerName}`, this.options);
+  return this.http.get<any[]>(`${this.apiUrl}players?team=${teamId}&search=${playerName}`, this.optionsApi);
 }
  }

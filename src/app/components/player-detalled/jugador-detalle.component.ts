@@ -3,7 +3,7 @@ import { DetalleService } from 'src/app/services/detalle.service';
 
 import { FootballApiService } from '../../services/football-api.service';
 import {ActivatedRoute} from '@angular/router';
-
+import { FollowPlayerService } from 'src/app/services/follow-player.service';
 @Component({
   selector: 'app-jugador-detalle',
   templateUrl: './jugador-detalle.component.html',
@@ -12,9 +12,9 @@ import {ActivatedRoute} from '@angular/router';
 export class JugadorDetalleComponent {
   @Input()
  jugador: any;
-
+ isFollowing: boolean = false;
   player:any;
-  constructor(private footballApiService: FootballApiService,private dataService: DetalleService,private route:ActivatedRoute) {}
+  constructor(private footballApiService: FootballApiService,private dataService: DetalleService,private route:ActivatedRoute,private FollowServicePlayer: FollowPlayerService) {}
   ngOnInit() {
 
     this.jugador = this.dataService.getJugador();
@@ -28,6 +28,17 @@ export class JugadorDetalleComponent {
       }
     });
    }
+
+   toggleFollowPlayer(dato:any) {
+    if (this.isFollowing) {
+      this.FollowServicePlayer.UnfollowPlayer(dato);
+    } else {
+      this.FollowServicePlayer.createNewFollowPlayer(dato);
+    }
+
+    this.isFollowing = !this.isFollowing;
+  }
+
   }
 
 

@@ -24,8 +24,8 @@ export class LineupComponent  implements OnInit{
   
 
   ngOnInit(): void {
-    this.formation=this.lineups[0].formation.split('-')
-   this.numberRows=this.formation.length+1
+    this.formation=this.lineups[0].formation?.split('-')
+   this.numberRows=this.formation?.length+1
     this.homeLineup.startXl=this.lineups[0].startXI.map((item: any)=>{
       return {...this.playerXI, ...item.player}
     })

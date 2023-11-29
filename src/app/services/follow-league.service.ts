@@ -10,19 +10,20 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class FollowLeagueService {
 
   private apiUrlTeam = 'http://localhost:1234/leagues';
-  private apiUrlFollow = 'http://localhost:1234/follows/leagues';
+  private apiUrlFollow = 'http://localhost:1234/follows/leagues/';
+  options={headers:new HttpHeaders({
+
+    'Content-Type': 'application/json',
+    'Authorization' : `${localStorage.getItem('token')}`
+    //'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
+  })}
+  leaguesFollowed=[]
   constructor(private http: HttpClient, private router: Router) { }
 
-createNewFollowLeague(followData: any) {
-    const token = localStorage.getItem('token');
-  console.log(followData);
-    
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': `${token}`
-    });
 
-    this.http.post(this.apiUrlTeam, followData, { headers })
+  createNewFollowLeague(followData: any) {
+    console.log('creando follow')
+    this.http.post(this.apiUrlFollow+followData,'',this.options)
       .subscribe(
         response => {
         },
@@ -30,7 +31,6 @@ createNewFollowLeague(followData: any) {
           console.error('Error creating league', error);
         }
       );
-      this.http.post(this.apiUrlFollow + `/${followData.id}`,{headers})
   }
   UnfollowLeague(followData: any){
     const token = localStorage.getItem('token');
@@ -38,17 +38,18 @@ createNewFollowLeague(followData: any) {
       'Content-Type': 'application/json',
       'Authorization': `${token}`
     });
-      this.http.delete(this.apiUrlFollow + `/${followData.id}`,{headers})
+    return  this.http.delete(this.apiUrlFollow + `${followData}`,this.options)
   }
+  
   getUserFollowLeague(): Observable <any[]> {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': `${token}`
+      'Authorization': JSON.stringify(token)
     });
 
     const url = `${this.apiUrlFollow}`;
-    return this.http.get<any[]>(url, { headers });
+    return this.http.get<any[]>(url,this.options);
   }
 
 }

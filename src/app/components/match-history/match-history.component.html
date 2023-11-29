@@ -3,7 +3,7 @@
     <div class="flex items-center justify-between ml-auto mr-auto">
       <ul *ngIf="history.length > 0" class="list-none p-0">
         <li *ngFor="let match of history" class="flex bg-slate-600 mb-4 p-4 rounded-md">
-          <div class="flex items-center">
+          <div class="flex items-center" (click)="mostrarInformacionPartido(match.fixture.id)">
             <div class="flex items-center">
               <img src="{{ match.teams.home.logo }}" class="m-3 h-28 w-auto" alt="{{ match.teams.home.name }} Logo">
               <span class="text-white text-4xl">{{ match.teams.home.name }}</span>

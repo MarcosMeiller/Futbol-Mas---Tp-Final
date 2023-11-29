@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Route, Router, RouterLink } from '@angular/router';
 import { MatchService } from 'src/app/services/match.service';
 
 @Component({
@@ -14,7 +15,7 @@ idLocal='';
 idVisit='';
 
 history:any;
-constructor(private matchService : MatchService){}
+constructor(private matchService : MatchService, private router:Router){}
 ngOnInit(): void {
 this.loadMatchHistory();
 }
@@ -24,5 +25,9 @@ loadMatchHistory()
       next: (res:any)=> {this.history=res.response;console.log(this.history)},
       error: (res)=>{this.history=null; console.log(res)}
     })
+  }
+
+  mostrarInformacionPartido(idPartido:number){
+    this.router.navigate([`/view-match/${idPartido}`])
   }
 }

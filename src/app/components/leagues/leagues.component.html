@@ -1,25 +1,21 @@
-<div *ngIf="ligas" class="bg-slate-800 rounded-2xl m-4 p-4 shadow-2xl flex-col justify-center items-center">
+<!-- eslint-disable @angular-eslint/template/interactive-supports-focus -->
+<!-- eslint-disable @angular-eslint/template/click-events-have-key-events -->
+<section *ngIf="ligas" class="bg-slate-800 rounded-2xl m-4 p-4 shadow-2xl flex-col justify-center items-center">
   <h1 class="text-center" style="font-size: 32px; font-weight: bold; color: #ffffff;">Ligas</h1>
   <div>
     <h2 class="text-center ligas-title">Ligas</h2>
   </div>
 
   <div class="search-bar">
-    <input type="text" [(ngModel)]="search" placeholder="Buscar liga..." class="form-control " style="width: 200px" >
-    <button (click)="searchLeagues()" class="btn btn-primary">Buscar </button>
+    <input type="text" [(ngModel)]="search" placeholder="Buscar liga..." class="form-control" style="width: 200px">
+    <button (click)="searchLeagues()" class="btn btn-primary">Buscar</button>
   </div>
   
 
-  <div class="d-flex flex-wrap justify-content-center">
-    <div *ngFor="let liga of ligas" class="card m-2 bg-slate-700 p-4" style="width: 18rem; cursor: pointer;"  (click)="mostrarInformacionLiga(liga)">
-      <img [src]="liga.league.logo" class="card-img-top" alt="Logo de la liga" style="max-height: 100px; object-fit: contain;">
-      <div class="card-body">
-        <h5 class="card-title text-center text-white">{{ liga.league.name }}</h5>
-        <div class="d-flex justify-content-between align-items-center">
-          <i class=" text-white text-4xl absolute top-0 right-4" (click)="FollowLeague(ligas.league)">&hearts;</i>
-        </div>
-      </div>
+  <div  class="d-flex flex-wrap justify-content-center">
+    <div *ngFor="let liga of ligas" class="card m-2 bg-slate-700 p-4" style="width: 18rem; cursor: pointer;" >
+      <app-card-league [league]="liga" [follow]="validateFollow(liga.league.id)"></app-card-league>
     </div>
   </div>
-</div>
+</section>
 

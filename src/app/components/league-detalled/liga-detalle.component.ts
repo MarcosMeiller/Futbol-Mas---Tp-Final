@@ -15,7 +15,8 @@ export class LigaDetalleComponent  {
  
   liga: any;
   view='events'
-  
+  isFollowingLeague: boolean = false;
+  isFollowingTeam: { [teamId: string]: boolean } = {};
   constructor(private footballApiService: FootballApiService,private followService: FollowServiceTeam, private dataService: DetalleService,private router: Router,private followLeague: FollowLeagueService) {}
   ngOnInit() {
     this.liga = this.dataService.getLiga();
@@ -23,7 +24,7 @@ export class LigaDetalleComponent  {
       this.footballApiService.getTeams('2023', this.liga.league.id).subscribe({
         next: (data: any) => {
           console.log(data);
-          this.equipos = data.response
+          this.equipos = data
         },
         error: (data: any) => {
           console.log(data);
@@ -31,20 +32,14 @@ export class LigaDetalleComponent  {
       });
     }
   }
-  FollowTeam(dato:any){
-    console.log(dato);
-  this.followService.createNewFollowTeam(dato);
-  }
-  FollowLeague(dato:any){
-    console.log(dato);
-  this.followLeague.createNewFollowLeague(dato);
-  }
+
 
   searchTeams() {
     if (this.search.trim() !== '') {
       this.footballApiService.searchTeamsByName(this.search).subscribe((res: any) => {
-        console.log(res);
+        
         this.equipos = res.response;
+        console.log(this.equipos);
       });
     } else {
       this.ngOnInit();
@@ -60,6 +55,29 @@ export class LigaDetalleComponent  {
     event.preventDefault();
     this.view=name
    }
+
+   toggleFollowLeague(dato:any) {
+    if (this.isFollowingLeague) {
+      this.followLeague.UnfollowLeague(dato);
+    } else {
+      this.followLeague.createNewFollowLeague(dato);
+    }
+
+    this.isFollowingLeague = !this.isFollowingLeague;
+  }
+
+  toggleFollowTeam(equipo: any) {
+    console.log(equipo)
+    if (this.isFollowingTeam[equipo]) {
+      this.followService.UnfollowTeam(equipo)
+    } else {
+     this.followService.createNewFollowTeam(equipo);
+    }
+
+    this.isFollowingTeam[equipo] = !this.isFollowingTeam[equipo];
+  }
+
+  
 }
   
 
