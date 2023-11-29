@@ -13,6 +13,7 @@ export class ViewFollowComponent implements OnInit {
   constructor(private followService: FollowService,private followTeam: FollowServiceTeam) {}
 
   ngOnInit(): void {
+    this.followService.getFollows().subscribe({next: data=>{console.log(data)}})
     this.followService.getUserFollows().subscribe((data) => {
       this.follows = data;
       console.log(this.follows)

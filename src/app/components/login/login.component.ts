@@ -41,7 +41,13 @@ export class LoginComponent {
       },
       (error) => {
         console.error('Error en el inicio de sesión:', error);
-        this.error = 'Error en el inicio de sesión. Verifique sus credenciales.';
+        this.error = 'Error en el inicio de sesión. Verifique sus credenciales.';     
+        this.msg = 'Error en el inicio de sesión. Verifique sus credenciales.';
+        this.bg = 'bg-red-500';
+        this.showSnack='hide'
+        setTimeout(()=>{
+          this.showSnack='hidden'
+        },3000)
       }
     );
   }
