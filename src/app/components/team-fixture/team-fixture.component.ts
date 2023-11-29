@@ -8,35 +8,39 @@ import { Router } from '@angular/router'
   styleUrls: ['./team-fixture.component.css']
 })
 export class TeamFixtureComponent implements OnInit{
-  partidosDelEquipo: any[] = [];
-  liga:any;
+ 
   fixture:any;
   @Input ()
   id:any;
-  
+  fromDate: Date = new Date(); 
+  toDate: Date = new Date(); 
 
   constructor(private footballApiService: FootballApiService,private router: Router,private dataService: DetalleService) {}
   ngOnInit() {
-    this.liga = this.dataService.getLiga();
-    if (this.liga && this.liga.league) {
-  this.footballApiService.getFeaxture(this.liga.league.id, '2023').subscribe({
-    next: (data: any) => {
-      console.log(data);
-      this.fixture=data.response;
-      
-      this.partidosDelEquipo = this.fixture.filter((fixture: any) => {
-        return fixture.teams.home.id === this.id || fixture.teams.away.id === this.id;
-      });
-    },
-    error: (error: any) => {
-      console.log(error);
-    }
-  });
+   
   }
- }
+  onSearchClick() {
+    
+    if (this.fromDate && this.toDate) {
+      const fromDateString = this.fromDate.toISOString().split('T')[0]; 
+      const toDateString = this.toDate.toISOString().split('T')[0];  
+      this.footballApiService.getFeaxture(this.id, '2023', fromDateString, toDateString).subscribe({
+        next: (data: any) => {
+          console.log(data);
+          this.fixture = data.response;
+        },
+        error: (error: any) => {
+          console.log(error);
+        }
+      });
+    } else {
+      console.log('Seleccione ambas fechas');
+    }
+  }
 
  mostrarInformacionPartido(idPartido:number){
   this.router.navigate([`/view-match/${idPartido}`])
 }
  
-}
+
+  }

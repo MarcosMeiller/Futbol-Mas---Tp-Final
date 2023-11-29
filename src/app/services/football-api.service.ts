@@ -9,8 +9,8 @@ export class FootballApiService {
   private localApiUrl='http://localhost:1234/'
   private apiUrl = 'https://v3.football.api-sports.io/'; 
   
-  private  APIKEY='b65eb04d11125bddb886fa37cb9d0251'
-  
+private  APIKEY='b65eb04d11125bddb886fa37cb9d0251'
+
   options={headers:new HttpHeaders({
 
     'x-apisports-key': this.APIKEY,
@@ -84,20 +84,13 @@ export class FootballApiService {
 
   }
   
-  getFeaxture(id:number, season:string):Observable <any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}fixtures?league=${id}&season=${season}`,this.options);
+  getFeaxture(id:number, season:string, fromdate:string , todate:string):Observable <any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}fixtures?team=${id}&season=${season}&from=${fromdate}&to=${todate}`,this.options);
 
   }
 
-  getfeaxtureForiD(id:number):Observable <any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}fixtures?id=${id}`,this.options);
+ 
 
-  }
-
-  getPreFixture(id:number, season:string):Observable <any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}odds?league=${id}&season=${season}`,this.options);
-
-  }
   
 getStanding(id:number,season:string):Observable  <any[]> {
   return this.http.get<any[]>(`${this.apiUrl}standings?league=${id}&season=${season}`,this.options);
@@ -112,15 +105,10 @@ getStatisticsTeam(idTeam:number, idLeague:number, season:string):Observable  <an
     return this.http.get<any[]>(`${this.apiUrl}fixtures?live=${'all'}`,this.optionsApi);
    }
   searchLeagueByName(name: string): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}leagues?name=${name}`, this.optionsApi)
-    .pipe(
-      map((leagues: any) => {
-        return leagues.response.filter((league: any) => league.league.toLowerCase().includes(name.toLowerCase()));
-      })
-    );
+    return this.http.get<any[]>(`${this.apiUrl}leagues?search=${name}`, this.options)
   }
 searchTeamsByName(name: string): Observable<any[]> {
-  return this.http.get<any[]>(`${this.apiUrl}teams?name=${name}`, this.options);
+  return this.http.get<any[]>(`${this.apiUrl}teams?search=${name}`, this.options);
 }
 
 searchPlayersByName(teamId: number, playerName: string): Observable<any[]> {
