@@ -1,0 +1,9 @@
+<div class="flex justify-between">
+    <div class="flex flex-col" >
+        <app-player-lineup *ngFor="let player of homeLineup.startXl" [player]="player" [home]="1"></app-player-lineup>
+    </div>
+    <div>
+        <app-player-lineup *ngFor="let player of awayLineUp.startXl" [player]="player" [home]="0"></app-player-lineup>
+    </div>
+    
+</div>

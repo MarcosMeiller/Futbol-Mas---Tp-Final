@@ -1,0 +1,58 @@
+<h1 class="text-center mb-4" style="color: #ffffff; font-size: 28px;">Estadísticas de temporada</h1>
+
+
+<div class="flex statistics-container">
+  <div class="team-info">
+    <img [src]="statistic.team.logo" alt="Logo del equipo" class="team-logo">
+    <h2 class="team-name" style="color: #ffffff; font-size: 24px; margin-top: 10px;">{{ statistic.team.name }}</h2>
+  </div>
+
+  <div class="stats">
+    <div class="stat-item">
+      <div class="stat-label" style="color: #ffffff; font-size: 16px;">Partidos Jugados</div>
+      <div class="stat-value" style="color: #ffffff; font-size: 20px;">{{ statistic.fixtures.played.total }}</div>
+    </div>
+
+    <div class="stat-item">
+      <div class="stat-label" style="color: #ffffff; font-size: 16px;">Victorias</div>
+      <div class="stat-value" style="color: #ffffff; font-size: 20px;">{{ statistic.fixtures.wins.total }}</div>
+    </div>
+
+    <div class="stat-item">
+      <div class="stat-label" style="color: #ffffff; font-size: 16px;">Empates</div>
+      <div class="stat-value" style="color: #ffffff; font-size: 20px;">{{ statistic.fixtures.draws.total }}</div>
+    </div>
+
+    <div class="stat-item">
+      <div class="stat-label" style="color: #ffffff; font-size: 16px;">Derrotas</div>
+      <div class="stat-value" style="color: #ffffff; font-size: 20px;">{{ statistic.fixtures.loses.total }}</div>
+    </div>
+
+    <div class="stat-item">
+      <div class="stat-label" style="color: #ffffff; font-size: 16px;">Goles a favor (local)</div>
+      <div class="stat-value" style="color: #ffffff; font-size: 20px;">{{ statistic.goals.for.total.home }}</div>
+    </div>
+
+    <div class="stat-item">
+      <div class="stat-label" style="color: #ffffff; font-size: 16px;">Goles a favor (visitante)</div>
+      <div class="stat-value" style="color: #ffffff; font-size: 20px;">{{ statistic.goals.for.total.away }}</div>
+    </div>
+
+    <div class="stat-item">
+      <div class="stat-label" style="color: #ffffff; font-size: 16px;">Goles a favor (total)</div>
+      <div class="stat-value" style="color: #ffffff; font-size: 20px;">{{ statistic.goals.for.total.total }}</div>
+    </div>
+  </div>
+</div>
+  
+<div class="flex formations-container">
+    <h2 class="text-center mb-4" style="color: #ffffff; font-size: 24px;">Formaciones</h2>
+  
+    <div *ngFor="let formation of statistic.lineups" class="formation-item">
+      <div class="formation-info">
+        <div class="formation-label" style="color: #ffffff; font-size: 16px;">{{ formation.formation }}</div>
+        <div class="formation-played" style="color: #ffffff; font-size: 16px;">Jugada {{ formation.played }} {{ formation.played === 1 ? 'vez' : 'veces' }}</div>
+      </div>
+  
+    </div>
+  </div>

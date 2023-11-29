@@ -1,0 +1,106 @@
+<!-- eslint-disable @angular-eslint/template/alt-text -->
+<!-- eslint-disable @angular-eslint/template/interactive-supports-focus -->
+<!-- eslint-disable @angular-eslint/template/click-events-have-key-events -->
+<div *ngIf="equipo" class="bg-slate-800 rounded-2xl m-4 p-4 shadow-2xl flex-col justify-center items-center">
+  <h1 class="text-center" style="font-size: 32px; font-weight: bold; color: #ffffff;">Detalles de equipo</h1>
+
+  <!-- Información del equipo y logo -->
+  <div class="row">
+    <div class="col-md-6">
+      <p style="font-size: 18px; font-weight: bold; color: #ffffff;">Nombre: {{ equipo.team.name }}</p>
+      <p style="color: #ffffff;">País: {{ equipo.team.country }}</p>
+      <p style="color: #ffffff;">Año de creación: {{ equipo.team.founded }}</p>
+      <img [src]="equipo.team.logo" width="200" height="100" style="max-width: 100%; border-radius: 8px; margin-bottom: 15px;">
+    </div>
+  </div>
+
+  <!-- Corazón de seguir equipo -->
+  <i class="text-white text-4xl mt-2 mb-2" (click)="toggleFollowTeam(equipo.team)" [ngClass]="{'text-red-500': isFollowingTeam}">&hearts;</i>
+
+
+<!-- Opciones: Información del estadio y Jugadores -->
+<div class="bg-slate-800 rounded-2xl m-4 p-4  shadow-2xl flex-col justify-center items-center">
+  <div class="flex shadow-xl justify-center">
+    <ul class="nav nav-underline">
+
+      <li class="nav-item nav-item w-20 ">
+        <a class="nav-link text-white text-center" href="#" (click)="setView('estadio',$event)">Estadio</a>
+      </li>
+      <li class="nav-item nav-item w-20">
+        <a class="nav-link text-white text-center" href="#" (click)="setView('jugadores',$event)">Jugadores</a>
+      </li>
+      <li class="nav-item nav-item w-20">
+        <a class="nav-link text-white text-center" href="#" (click)="setView('fixture',$event)">Partidos</a>
+      </li>
+      <li class="nav-item nav-item w-20">
+        <a class="nav-link text-white text-center" href="#" (click)="setView('statistics',$event)">Estadisticas</a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="mt-3">
+    <!-- Contenido dinámico según la opción seleccionada -->
+    <div *ngIf="view === 'estadio'">
+      <h2 style="font-size: 34px; font-weight: bold; color: #ffffff;">Estadio</h2>
+      <p style="color: #ffffff;">Nombre: {{ equipo.venue.name }}</p>
+      <p style="color: #ffffff;">Ciudad: {{ equipo.venue.city }}</p>
+      <p style="color: #ffffff;">Capacidad: {{ equipo.venue.capacity }}</p>
+      <img [src]="equipo.venue.image" width="300" height="200" style="max-width: 200%; border-radius: 16px; margin-bottom: 30px;">
+    </div>
+
+    <div *ngIf="view === 'jugadores'" class="d-flex flex-wrap">
+
+      <div class="search-bar">
+      <input type="text" [(ngModel)]="search" placeholder="Buscar jugador..." class="form-control">
+      <button (click)="searchPlayer()" class="btn btn-primary">Buscar </button>
+      </div>
+
+      <div *ngIf="selectedPlayer && selectedPlayer.length> 0 ; else playerList" class="mb-4 col-md-12">
+        
+        <div class="row">
+            <div class="card m-2 bg-slate-700 p-4" style="width: 18rem; cursor: pointer;" (click)="mostrarInformacionJugador(selectedPlayer[0].player)">
+              <img [src]="selectedPlayer[0].player.photo" class="card-img-top" alt="Foto del jugador" style="width: 55%; height: 150px; object-fit: cover;">
+              <div class="card-body">
+                <h5 class="card-title" style="font-size: 18px; font-weight: bold;">{{ selectedPlayer[0].player.name }}</h5>
+                
+              </div>
+              <i class="text-white text-4xl absolute bottom-0 end-0 p-3" (click)="toggleFollowPlayer(selectedPlayer[0].player)" [ngClass]="{'text-red-500': isFollowingPlayer[selectedPlayer[0].player.id]}">&hearts;</i>
+            </div>
+        </div>
+      </div>
+      
+    </div>
+
+    <ng-template #playerList>
+      <div *ngFor="let item of jugadores" class="mb-4 col-md-12">
+        <h2 class="mb-3" style="font-size: 20px; font-weight: bold; color: #ffffff;">{{ item.category }}</h2>
+        <div class="row">
+          <div *ngFor="let jugador of item.players" class="col-md-4 mb-3">
+            <div class="card m-2 bg-slate-700 p-4" style="width: 18rem; cursor: pointer;"  (click)="mostrarInformacionJugador(jugador)">
+              <img [src]="jugador.photo" class="card-img-top" alt="Foto del jugador"  style="width: 55%; height: 150px; object-fit: cover;">
+              <div class="card-body">
+                <h5 class="card-title text-white" style=" font-size: 18px; font-weight: bold;  ">{{ jugador.name }}</h5>
+                <p class="card-text text-white" style="font-size: 14px; ">Edad: {{ jugador.age }}</p>
+                <p class="card-text text-white" style="font-size: 14px; ">Número: {{ jugador.number }}</p>
+               
+                
+                
+            </div>
+            <i class="text-white text-4xl absolute bottom-0 end-0 p-3" (click)="toggleFollowPlayer(jugador.id)" [ngClass]="{'text-red-500': isFollowingPlayer[jugador.id]}">&hearts;</i>
+          </div>
+
+        </div>
+      </div>
+    </div>  
+  
+    </ng-template>
+  
+      <app-team-fixture *ngIf="view === 'fixture'" [id]="equipo.team.id"></app-team-fixture>
+      <app-statistics-team *ngIf="view === 'statistics'" [id]="equipo.team.id"></app-statistics-team>
+  </div>
+</div>
+
+
+  
+ 
+

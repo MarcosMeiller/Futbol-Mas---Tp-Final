@@ -1,0 +1,31 @@
+<!-- view-follow.component.html -->
+
+<div class="container mt-4">
+    <div *ngIf="follows.length > 0">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card mb-4">
+            <div class="card-header">
+              <h4 class="mb-0">Tus Seguimientos</h4>
+            </div>
+            <div class="card-body">
+              <ul class="list-group">
+                <li class="list-group-item" *ngFor="let follow of follows">
+                  <div class="d-flex align-items-center">
+                    <!-- Mostrar photo si existe, de lo contrario, mostrar logo -->
+                    <img [src]="follow.photo" alt="{{ follow.name }}" class="me-2" style="max-height: 40px;">
+                    <span>{{ follow.name }}</span>
+                    <button (click)="UnfollowTeam(follow)" class="btn btn-danger ml-auto">Dejar de seguir</button>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="follows.length === 0" class="text-muted text-center">
+      No sigues ninguna liga, equipo o jugador.
+    </div>
+  </div>
+  

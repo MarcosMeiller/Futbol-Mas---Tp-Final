@@ -1,0 +1,25 @@
+<!-- eslint-disable @angular-eslint/template/interactive-supports-focus -->
+<!-- eslint-disable @angular-eslint/template/click-events-have-key-events -->
+
+<main *ngIf="!loaded" class="bg-slate-900 m-4 p-4 rounded-2xl">
+  <p class="text-white text-2xl mb-4">Partidos en vivo</p>
+
+  <app-slider *ngIf="live && live.length>0" [data]="live">
+    <ng-template #contentTemplate let-item>
+      <app-card-match [match]="item"></app-card-match>
+    </ng-template>
+  </app-slider>
+  <div *ngIf="live && live.length === 0" class="text-muted">
+    No hay partidos en vivo.
+  </div>
+
+  <div class="mb-4" *ngFor="let league of followedLeagues" >
+    <p class="text-white text-2xl mb-4">{{league.name}} <span class="text-slate-300">({{league.round}})</span></p>
+    
+      <app-slider [data]="league.matches">
+        <ng-template #contentTemplate let-item>
+          <app-card-match [match]="item"></app-card-match>
+        </ng-template>
+      </app-slider>
+  </div>
+</main>

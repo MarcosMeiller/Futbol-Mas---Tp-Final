@@ -1,0 +1,19 @@
+<div>
+    <ul>
+        <li *ngFor="let stat of statics" class="mb-3  bg-slate-800 shadow-lg rounded-lg p-2">
+            
+                <p class="text-white flex-1 text-center">{{stat.type}}</p>
+                <div class="flex flex-1  items-center">
+                    <p class="text-slate-300 flex-1 text-center">{{stat.homeValue === null ? 0 : stat.homeValue}}</p>
+                    <!-- <div class="progress flex-1 bg-slate-700 -scale-x-100" role="progressbar" aria-label="Example 12px high" [attr.aria-valuenow]="stat.homeValue" aria-valuemin="0" aria-valuemax="100" style="height: 12px">
+                        <div class="progress-bar bg-slate-300" style="width: 25%"></div>
+                    </div> -->
+                      <!-- <div class="progress flex-1 bg-slate-700" role="progressbar" aria-label="Example 12px high" [attr.aria-valuenow]="stat.awayValue" aria-valuemin="0" [attr.aria-valuemax]="stat.homeValue+stat.awayValue" style="height: 12px">
+                        <div class="progress-bar bg-slate-300" [style.width.%]="stat.awayValue"></div>
+                      </div> -->
+                    <p class="text-slate-300 flex-1 text-center">{{stat.awayValue === null ? 0 : stat.awayValue}}</p>
+                </div>
+        </li>
+    </ul>
+    
+</div>

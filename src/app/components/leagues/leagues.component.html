@@ -1,0 +1,21 @@
+<!-- eslint-disable @angular-eslint/template/interactive-supports-focus -->
+<!-- eslint-disable @angular-eslint/template/click-events-have-key-events -->
+<section *ngIf="ligas" class="bg-slate-800 rounded-2xl m-4 p-4 shadow-2xl flex-col justify-center items-center">
+  <h1 class="text-center" style="font-size: 32px; font-weight: bold; color: #ffffff;">Ligas</h1>
+  <div>
+    <h2 class="text-center ligas-title">Ligas</h2>
+  </div>
+
+  <div class="search-bar">
+    <input type="text" [(ngModel)]="search" placeholder="Buscar liga..." class="form-control" style="width: 200px">
+    <button (click)="searchLeagues()" class="btn btn-primary">Buscar</button>
+  </div>
+  
+
+  <div  class="d-flex flex-wrap justify-content-center">
+    <div *ngFor="let liga of ligas" class="card m-2 bg-slate-700 p-4" style="width: 18rem; cursor: pointer;" >
+      <app-card-league [league]="liga" [follow]="validateFollow(liga.league.id)"></app-card-league>
+    </div>
+  </div>
+</section>
+
