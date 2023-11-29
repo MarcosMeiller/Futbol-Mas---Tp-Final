@@ -8,8 +8,9 @@ import { Observable, forkJoin, map } from 'rxjs';
 export class FootballApiService {
   private localApiUrl='http://localhost:1234/'
   private apiUrl = 'https://v3.football.api-sports.io/'; 
-  
+
 private  APIKEY='67767856d9121ae7b46593a39167d9ac'
+
 
   options={headers:new HttpHeaders({
 
