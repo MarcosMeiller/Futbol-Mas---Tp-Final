@@ -77,6 +77,8 @@ export class LigaDetalleComponent  {
 
     this.isFollowingTeam[teamId] = !this.isFollowingTeam[teamId];
   }
+
+  
 }
   
 

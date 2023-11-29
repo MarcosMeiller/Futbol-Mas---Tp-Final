@@ -33,7 +33,7 @@ export class LeaguesComponent implements OnInit {
       }
     });
     this.getLeagueFollowed()
-
+    this.setupSearchListener();
   }
   searchLeagues() {
     if (this.search.trim() !== '') {
