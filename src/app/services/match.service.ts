@@ -38,7 +38,8 @@ export class MatchService {
   
 
   private url= 'http://localhost:1234/fixtures'
-  private  APIKEY='4aae6e0ae3bfc754b192636ab49e3c77'
+  private  APIKEY='b65eb04d11125bddb886fa37cb9d0251'
+
   private apiUrl = 'https://v3.football.api-sports.io/fixtures';
 
   selectedMatch:any

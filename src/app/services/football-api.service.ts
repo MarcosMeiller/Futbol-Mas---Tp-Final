@@ -9,6 +9,7 @@ export class FootballApiService {
   private localApiUrl='http://localhost:1234/'
   private apiUrl = 'https://v3.football.api-sports.io/'; 
   
+
   private  APIKEY='4603f8e2726890737cda5b87fc647eca'
   options={headers:new HttpHeaders({
 

@@ -90,7 +90,9 @@ export class HomeComponent {
                 round: round.response, // Incluir la información del round
                 matches: [],
               };
+              console.log(round)
               matches.matches=res
+              
               return matches
             })
           );
