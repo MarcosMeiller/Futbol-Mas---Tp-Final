@@ -30,9 +30,6 @@
         <li class="nav-item nav-item w-20">
           <a class="nav-link text-white text-center" href="#" (click)="setView('clasificacion',$event)">Clasificacion</a>
         </li>
-        <li class="nav-item nav-item w-20">
-          <a class="nav-link text-white text-center" href="#" (click)="setView('PartidosProximos',$event)">Proximos Patidos</a>
-        </li>
       </ul>
     </div>
     <div class="mt-3">
@@ -56,7 +53,7 @@
       </div>
     
       <app-standings-league *ngIf="view === 'clasificacion'" [id]="liga.league.name"></app-standings-league>
-      <app-pre-fixture *ngIf="view === 'PartidosProximos'" [id]="liga.league.id"></app-pre-fixture>
+    
     </div>
   </div>
 </div>

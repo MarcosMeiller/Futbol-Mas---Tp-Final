@@ -83,20 +83,13 @@ export class FootballApiService {
 
   }
   
-  getFeaxture(id:number, season:string):Observable <any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}fixtures?league=${id}&season=${season}`,this.options);
+  getFeaxture(id:number, season:string, fromdate:string , todate:string):Observable <any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}fixtures?team=${id}&season=${season}&from=${fromdate}&to=${todate}`,this.options);
 
   }
 
-  getfeaxtureForiD(id:number):Observable <any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}fixtures?id=${id}`,this.options);
+ 
 
-  }
-
-  getPreFixture(id:number, season:string):Observable <any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}odds?league=${id}&season=${season}`,this.options);
-
-  }
   
 getStanding(id:number,season:string):Observable  <any[]> {
   return this.http.get<any[]>(`${this.apiUrl}standings?league=${id}&season=${season}`,this.options);
