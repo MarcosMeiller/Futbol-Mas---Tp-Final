@@ -36,10 +36,11 @@ export class LeaguesComponent implements OnInit {
   }
   searchLeagues() {
     if (this.search.trim() !== '') {
-      this.footballApiService.searchLeagueByName(this.search).subscribe((res: any) => {
+      this.footballApiService.searchLeagueByName(this.search).subscribe({next: (res: any) => {
         console.log(res);
         this.ligas = res.response;
-      });
+      },error: console.log()
+     });
     } else {
       this.ngOnInit();
     }
