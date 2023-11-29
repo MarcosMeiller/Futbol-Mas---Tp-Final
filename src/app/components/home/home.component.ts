@@ -58,6 +58,8 @@ export class HomeComponent {
             followedTeams.add(follow.id); 
           });
 
+          console.log(follows)
+
           
           this.followedMatches = this.live.filter((match: any) => {
             return (

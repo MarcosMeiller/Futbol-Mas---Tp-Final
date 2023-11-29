@@ -1,6 +1,6 @@
 <!-- eslint-disable @angular-eslint/template/interactive-supports-focus -->
 <!-- eslint-disable @angular-eslint/template/click-events-have-key-events -->
-<div *ngIf="ligas" class="bg-slate-800 rounded-2xl m-4 p-4 shadow-2xl flex-col justify-center items-center">
+<section *ngIf="ligas" class="bg-slate-800 rounded-2xl m-4 p-4 shadow-2xl flex-col justify-center items-center">
   <h1 class="text-center" style="font-size: 32px; font-weight: bold; color: #ffffff;">Ligas</h1>
   <div>
     <h2 class="text-center ligas-title">Ligas</h2>
@@ -17,5 +17,5 @@
       <app-card-league [league]="liga" [follow]="validateFollow(liga.league.id)"></app-card-league>
     </div>
   </div>
-</div>
+</section>
 

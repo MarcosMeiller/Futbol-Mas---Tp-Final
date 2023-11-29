@@ -20,18 +20,17 @@ export class FollowServiceTeam {
 
   createNewFollowTeam(followData: any) {
     
-    this.http.post(this.apiUrlTeam, followData,this.options)
-      .subscribe(
-        (response) => {
-          console.log('Éxito al desuscribirse:', response);
+    console.log('creando follow')
+    this.http.post(this.apiUrlFollow+'/'+followData,'',this.options)
+      .subscribe({next:
+        response => {
+          console.log('Follow created')
         },
-        (error) => {
-          console.error('Error creating Team', error);
-          console.log('Cuerpo de la respuesta:', error.error);
-
+        error: error => {
+          console.error('Error creating league', error);
         }
+      }
       );
-      this.http.post(this.apiUrlFollow + `/${followData.id}`,this.options)
   }
  
  
@@ -43,7 +42,7 @@ export class FollowServiceTeam {
     });
 
     const url = `${this.apiUrlFollow}`;
-    return this.http.get<any[]>(url, { headers });
+    return this.http.get<any[]>(url, this.options);
   }
 
 

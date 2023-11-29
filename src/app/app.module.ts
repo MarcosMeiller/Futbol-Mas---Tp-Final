@@ -21,7 +21,6 @@ import { EventIconDirective } from './directives/event-icon.directive';
 import { Routes,RouterModule } from '@angular/router';
 import { LeaguesComponent } from './components/leagues/leagues.component';
 
-
 import { SearchComponent } from './components/search/search.component';
 import { LigaDetalleComponent } from './components/league-detalled/liga-detalle.component';
 import { EquipoDetalleComponent } from './components/team-detalled/equipo-detalle.component';
@@ -39,6 +38,7 @@ import { StandingsLeagueComponent } from './components/standings-league/standing
 import { StatisticsTeamComponent } from './components/statistics-team/statistics-team.component';
 import { PlayersMatchComponent } from './components/players-match/players-match.component';
 import { ViewFollowComponent } from './components/view-follow/view-follow.component';
+
 
 import { UpdateUserComponent } from './components/update-user/update-user.component';
 import { CardMatchComponent } from './components/card-match/card-match.component';
@@ -72,7 +72,6 @@ import { CardLeagueComponent } from './components/card-league/card-league.compon
     PredictionAllComponent,
     MatchHistoryComponent,
     HomeComponent,
-    TeamFixtureComponent,
     StandingsLeagueComponent,
     StatisticsTeamComponent,
     PlayersMatchComponent,
@@ -81,12 +80,14 @@ import { CardLeagueComponent } from './components/card-league/card-league.compon
     CardMatchComponent,
     SliderComponent,
     CardLeagueComponent,
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
+    TeamFixtureComponent,
     HttpClientModule,
     BrowserAnimationsModule,
   ],

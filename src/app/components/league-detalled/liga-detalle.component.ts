@@ -38,7 +38,7 @@ export class LigaDetalleComponent  {
     if (this.search.trim() !== '') {
       this.footballApiService.searchTeamsByName(this.search).subscribe((res: any) => {
         
-        this.equipos = res;
+        this.equipos = res.response;
         console.log(this.equipos);
       });
     } else {
@@ -67,15 +67,14 @@ export class LigaDetalleComponent  {
   }
 
   toggleFollowTeam(equipo: any) {
-    const teamId = equipo.id;
-
-    if (this.isFollowingTeam[teamId]) {
+    console.log(equipo)
+    if (this.isFollowingTeam[equipo]) {
       this.followService.UnfollowTeam(equipo)
     } else {
      this.followService.createNewFollowTeam(equipo);
     }
 
-    this.isFollowingTeam[teamId] = !this.isFollowingTeam[teamId];
+    this.isFollowingTeam[equipo] = !this.isFollowingTeam[equipo];
   }
 
   

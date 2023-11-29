@@ -38,7 +38,7 @@ export class MatchService {
   
 
   private url= 'http://localhost:1234/fixtures'
-  private  APIKEY='b65eb04d11125bddb886fa37cb9d0251'
+  private  APIKEY='67767856d9121ae7b46593a39167d9ac'
 
   private apiUrl = 'https://v3.football.api-sports.io/fixtures';
 
@@ -60,6 +60,10 @@ export class MatchService {
     // result.then(res=>{
     //   round=res
     // }).catch(err=>{console.log(err)})
+  }
+
+  getMatchesLastNext(params :{teamId: number,last:number,next:number}){
+    return this.http.get(this.url+`?team=${params.teamId}&last=${params.last}&next=${params.next}`,this.options)
   }
   getStatusInPlay()
   {return this.statusCodes.filter(status => status.type === 'In Play').map(status => status.short);}

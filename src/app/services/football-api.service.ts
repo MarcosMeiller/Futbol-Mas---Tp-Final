@@ -9,7 +9,7 @@ export class FootballApiService {
   private localApiUrl='http://localhost:1234/'
   private apiUrl = 'https://v3.football.api-sports.io/'; 
   
-private  APIKEY='b65eb04d11125bddb886fa37cb9d0251'
+private  APIKEY='67767856d9121ae7b46593a39167d9ac'
 
   options={headers:new HttpHeaders({
 
@@ -25,16 +25,16 @@ private  APIKEY='b65eb04d11125bddb886fa37cb9d0251'
   constructor(private http: HttpClient) {
   }
 
-  getLeagues(): Observable<any[]> {
+  getLeagues(index: {startIndex: number, endIndex: number}): Observable<any[]> {
 
      // return this.http.get<any[]>(`${this.apiUrl}/leagues`,this.options);
     
 
-    const index: {startIndex: number, endIndex:number} = {startIndex : 0, endIndex: 5}
     const options={headers:new HttpHeaders({
 
       'x-apisports-key': this.APIKEY,
-      'Index': JSON.stringify(index)
+      'Index': JSON.stringify(index),
+      'Authorization' :localStorage.getItem('token') || ''
   
       //'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
     })}
@@ -76,16 +76,16 @@ private  APIKEY='b65eb04d11125bddb886fa37cb9d0251'
   
 
   getPlayers(team: number): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}players/squads?team=${team}`,this.options);
+    return this.http.get<any[]>(`${this.apiUrl}players/squads?team=${team}`,this.optionsApi);
   }
 
   getPlayerStatistic(id: number,season: string): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}players?id=${id}&season=${season}`,this.options);
+    return this.http.get<any[]>(`${this.apiUrl}players?id=${id}&season=${season}`,this.optionsApi);
 
   }
   
   getFeaxture(id:number, season:string, fromdate:string , todate:string):Observable <any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}fixtures?team=${id}&season=${season}&from=${fromdate}&to=${todate}`,this.options);
+    return this.http.get<any[]>(`${this.apiUrl}fixtures?team=${id}&season=${season}&from=${fromdate}&to=${todate}`,this.optionsApi);
 
   }
 
@@ -93,25 +93,25 @@ private  APIKEY='b65eb04d11125bddb886fa37cb9d0251'
 
   
 getStanding(id:number,season:string):Observable  <any[]> {
-  return this.http.get<any[]>(`${this.apiUrl}standings?league=${id}&season=${season}`,this.options);
+  return this.http.get<any[]>(`${this.apiUrl}standings?league=${id}&season=${season}`,this.optionsApi);
 
 }
 getStatisticsTeam(idTeam:number, idLeague:number, season:string):Observable  <any[]> {
 
-  return this.http.get<any[]>(`${this.apiUrl}teams/statistics?league=${idLeague}&team=${idTeam}&season=${season}`,this.options);
+  return this.http.get<any[]>(`${this.apiUrl}teams/statistics?league=${idLeague}&team=${idTeam}&season=${season}`,this.optionsApi);
  }
   getFixtureLive():Observable  <any[]> {
 
     return this.http.get<any[]>(`${this.apiUrl}fixtures?live=${'all'}`,this.optionsApi);
    }
   searchLeagueByName(name: string): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}leagues?search=${name}`, this.options)
+    return this.http.get<any[]>(`${this.apiUrl}leagues?search=${name}`, this.optionsApi)
   }
 searchTeamsByName(name: string): Observable<any[]> {
-  return this.http.get<any[]>(`${this.apiUrl}teams?search=${name}`, this.options);
+  return this.http.get<any[]>(`${this.apiUrl}teams?search=${name}`, this.optionsApi);
 }
 
 searchPlayersByName(teamId: number, playerName: string): Observable<any[]> {
-  return this.http.get<any[]>(`${this.apiUrl}players?team=${teamId}&search=${playerName}`, this.options);
+  return this.http.get<any[]>(`${this.apiUrl}players?team=${teamId}&search=${playerName}`, this.optionsApi);
 }
  }

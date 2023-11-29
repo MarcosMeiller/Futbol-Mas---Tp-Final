@@ -1,3 +1,6 @@
+<!-- eslint-disable @angular-eslint/template/alt-text -->
+<!-- eslint-disable @angular-eslint/template/interactive-supports-focus -->
+<!-- eslint-disable @angular-eslint/template/click-events-have-key-events -->
 <div *ngIf="equipo" class="bg-slate-800 rounded-2xl m-4 p-4 shadow-2xl flex-col justify-center items-center">
   <h1 class="text-center" style="font-size: 32px; font-weight: bold; color: #ffffff;">Detalles de equipo</h1>
 
@@ -83,7 +86,7 @@
                 
                 
             </div>
-            <i class="text-white text-4xl absolute bottom-0 end-0 p-3" (click)="toggleFollowPlayer(jugador)" [ngClass]="{'text-red-500': isFollowingPlayer[jugador.id]}">&hearts;</i>
+            <i class="text-white text-4xl absolute bottom-0 end-0 p-3" (click)="toggleFollowPlayer(jugador.id)" [ngClass]="{'text-red-500': isFollowingPlayer[jugador.id]}">&hearts;</i>
           </div>
 
         </div>

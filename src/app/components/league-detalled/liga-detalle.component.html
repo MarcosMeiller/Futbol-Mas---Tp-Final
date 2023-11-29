@@ -47,7 +47,7 @@
             <div class="card-body">
               <h5 class="card-title text-white">{{ equipo.team.name }}</h5>
             </div>
-            <i class="text-white text-4xl absolute bottom-0 end-0 p-3" (click)="toggleFollowTeam(equipo.team)" [ngClass]="{'text-red-500': isFollowingTeam[equipo.team.id]}">&hearts;</i>
+            <i class="text-white text-4xl absolute bottom-0 end-0 p-3" (click)="toggleFollowTeam(equipo.team.id)" [ngClass]="{'text-red-500': isFollowingTeam[equipo.team.id]}">&hearts;</i>
           </div>
         </div>
       </div>

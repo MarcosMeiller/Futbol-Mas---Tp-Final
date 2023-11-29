@@ -66,14 +66,14 @@ export class EquipoDetalleComponent {
   }
 
   toggleFollowPlayer(jugador: any) {
-    const playerId = jugador.id;
+  
 
-    if (this.isFollowingPlayer[playerId]) {
+    if (this.isFollowingPlayer[jugador]) {
       this.FollowServicePlayer.UnfollowPlayer(jugador)
     } else {
      this.FollowServicePlayer.createNewFollowPlayer(jugador);
     }
 
-    this.isFollowingPlayer[playerId] = !this.isFollowingPlayer[playerId];
+    this.isFollowingPlayer[jugador] = !this.isFollowingPlayer[jugador];
   }
 }

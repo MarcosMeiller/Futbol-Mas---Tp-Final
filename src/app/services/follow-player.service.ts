@@ -27,15 +27,15 @@ export class FollowPlayerService {
 
   createNewFollowPlayer(followData: any) {
   
-    this.http.post(this.apiUrlTeam, followData,this.options)
+    console.log('creando follow')
+    this.http.post(this.apiUrlFollow+followData,'',this.options)
       .subscribe(
         response => {
         },
         error => {
-          console.error('Error creating prediction', error);
+          console.error('Error creating follow', error);
         }
       );
-      this.http.post(this.apiUrlFollow + `/${followData.id}`,this.options)
   }
   UnfollowPlayer(followData: any){
     const token = localStorage.getItem('token');
@@ -43,7 +43,7 @@ export class FollowPlayerService {
       'Content-Type': 'application/json',
       'Authorization': `${token}`
     });
-      this.http.delete(this.apiUrlFollow + `/${followData.id}`,{headers})
+      this.http.delete(this.apiUrlFollow + `/${followData.id}`,this.options)
   }
   getUserFollowPlayer(): Observable <any[]> {
     const token = localStorage.getItem('token');
@@ -53,7 +53,7 @@ export class FollowPlayerService {
     });
 
     const url = `${this.apiUrlFollow}`;
-    return this.http.get<any[]>(url, { headers });
+    return this.http.get<any[]>(url, this.options);
   }
 
 }
