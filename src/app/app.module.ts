@@ -44,6 +44,7 @@ import { UpdateUserComponent } from './components/update-user/update-user.compon
 import { CardMatchComponent } from './components/card-match/card-match.component';
 import { SliderComponent } from './components/slider/slider.component';
 import { CardLeagueComponent } from './components/card-league/card-league.component';
+import { TeamCardComponent } from './components/team-card/team-card.component';
 
 
 
@@ -80,6 +81,7 @@ import { CardLeagueComponent } from './components/card-league/card-league.compon
     CardMatchComponent,
     SliderComponent,
     CardLeagueComponent,
+    TeamCardComponent,
     
   ],
   imports: [

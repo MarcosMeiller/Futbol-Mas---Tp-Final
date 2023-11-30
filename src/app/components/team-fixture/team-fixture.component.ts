@@ -6,15 +6,16 @@ import { Router } from '@angular/router'
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { DateRange } from '@angular/material/datepicker';
-
-
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-team-fixture',
   templateUrl: './team-fixture.component.html',
   styleUrls: ['./team-fixture.component.css'],
   standalone: true,
-  imports: [MatFormFieldModule, MatDatepickerModule, MatNativeDateModule,FormsModule],
+  imports: [MatFormFieldModule, MatDatepickerModule, MatNativeDateModule,FormsModule,CommonModule,MatInputModule,],
 })
 export class TeamFixtureComponent{
  
@@ -34,9 +35,9 @@ export class TeamFixtureComponent{
  
   onSearchClick() {
     console.log(this.picker)
-    if (this.fromDate && this.toDate) {
-      const fromDateString = this.fromDate.toISOString().split('T')[0]; 
-      const toDateString = this.toDate.toISOString().split('T')[0];  
+  if (this.fromDate !== null && this.toDate !== null) {
+    const fromDateString = this.formatDate(this.fromDate);
+    const toDateString = this.formatDate(this.toDate);
       this.footballApiService.getFeaxture(this.id, '2023', fromDateString, toDateString).subscribe({
         next: (data: any) => {
           console.log(data);
@@ -63,6 +64,12 @@ handleDateInput(selection:any) {
 
   // Realiza la lógica que necesites con el rango seleccionado
 }
- 
+private formatDate(date: Date): string {
+  return `${date.getFullYear()}-${this.padNumber(date.getMonth() + 1)}-${this.padNumber(date.getDate())}`;
+}
+
+private padNumber(num: number): string {
+  return num < 10 ? `0${num}` : `${num}`;
+}
 
   }

@@ -12,11 +12,12 @@ import { FollowLeagueService } from 'src/app/services/follow-league.service';
 export class LigaDetalleComponent  {
   equipos: any;
   search=''
- 
+  followedTeam: any=[]
   liga: any;
   view='events'
-  isFollowingLeague: boolean = false;
-  isFollowingTeam: { [teamId: string]: boolean } = {};
+  loading=true
+  
+  followleague=true
   constructor(private footballApiService: FootballApiService,private followService: FollowServiceTeam, private dataService: DetalleService,private router: Router,private followLeague: FollowLeagueService) {}
   ngOnInit() {
     this.liga = this.dataService.getLiga();
@@ -47,36 +48,41 @@ export class LigaDetalleComponent  {
 
   }
 
-  mostrarInformacionEquipo(equipo: any) {
-    this.dataService.setEquipo(equipo);
-    this.router.navigate(['/detalleEquipo']);
-  }
+
   setView(name:string,event:Event){
     event.preventDefault();
     this.view=name
    }
 
-   toggleFollowLeague(dato:any) {
-    if (this.isFollowingLeague) {
-      this.followLeague.UnfollowLeague(dato);
+   toggleFollowLeague() {
+    const leagueId = this.liga.league.id;
+   
+    if (this.followleague) {
+      this.followLeague.UnfollowLeague(leagueId).subscribe({next:
+        (res)=>console.log(res),
+        error:(err)=> {
+          console.log(err)
+        }  
+      })
     } else {
-      this.followLeague.createNewFollowLeague(dato);
+     this.followLeague.createNewFollowLeague(leagueId)
     }
 
-    this.isFollowingLeague = !this.isFollowingLeague;
+    this.followleague= !this.followleague
   }
 
-  toggleFollowTeam(equipo: any) {
-    console.log(equipo)
-    if (this.isFollowingTeam[equipo]) {
-      this.followService.UnfollowTeam(equipo)
-    } else {
-     this.followService.createNewFollowTeam(equipo);
-    }
 
-    this.isFollowingTeam[equipo] = !this.isFollowingTeam[equipo];
+  getTeamFollowed(){
+    this.followService.getUserFollowTeam().subscribe({next: res=>{
+      console.log('hola')
+      this.followedTeam=res.map(item=>{return item.league.id})
+      this.loading=false
+    },error: (err)=>{console.log(err)}}
+    )
   }
-
+  validateFollow(id:string){
+    return this.followedTeam.includes(id)
+  }
   
 }
   

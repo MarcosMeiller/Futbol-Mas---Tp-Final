@@ -7,7 +7,7 @@
 
   <!-- Información de la liga y logo -->
   <div class="row">
-    <div class="col-md-6 d-flex align-items-center">
+    <div class="col-md-6 d-flex align-items-center" >
       <p style="font-size: 18px; font-weight: bold; color: #ffffff;">Nombre: {{ liga.league.name }} <img [src]="liga.league.logo" class="logo-img" alt="Logo de la liga"></p>
     </div>
     <div class="col-md-6 d-flex justify-content-end align-items-start">
@@ -19,7 +19,7 @@
   </div>
 
  
-  <i class="text-white text-4xl mt-2 mb-2" (click)="toggleFollowLeague(liga.league)" [ngClass]="{'text-red-500': isFollowingLeague}">&hearts;</i>
+
 
   <div class="bg-slate-800 rounded-2xl m-4 p-4  shadow-2xl flex-col justify-center items-center">
     <div class="flex shadow-xl justify-center">
@@ -42,12 +42,8 @@
         </div>
       
         <div class="d-flex flex-wrap justify-content-center">
-          <div *ngFor="let equipo of equipos" class="card m-2 bg-slate-700 p-4" style="width: 18rem; cursor: pointer;" (click)="mostrarInformacionEquipo(equipo)">
-            <img [src]="equipo.team.logo" class="card-img-top" alt="Logo del equipo" style="max-height: 100px; object-fit: contain;">
-            <div class="card-body">
-              <h5 class="card-title text-white">{{ equipo.team.name }}</h5>
-            </div>
-            <i class="text-white text-4xl absolute bottom-0 end-0 p-3" (click)="toggleFollowTeam(equipo.team.id)" [ngClass]="{'text-red-500': isFollowingTeam[equipo.team.id]}">&hearts;</i>
+          <div *ngFor="let equipo of equipos" class="card m-2 bg-slate-700 p-4" style="width: 18rem; cursor: pointer;" >
+            <app-team-card [team]="equipo" [follow]="validateFollow(equipo.team.id)"></app-team-card>
           </div>
         </div>
       </div>

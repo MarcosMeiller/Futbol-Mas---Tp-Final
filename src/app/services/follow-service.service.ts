@@ -69,9 +69,9 @@ export class FollowService {
   private normalizeData(data: any[], commonProperty: string): Follow[] {
     return data.map(item => {
       const followItem: Follow = {
-        id: item[0].team.id, 
-        name: item[0].team.name,
-        photo: item[0].team.logo || item[0].team.photo,
+        id: item.team.id, 
+        name: item.team.name,
+        photo: item.team.logo || item[0].team.photo,
         ...item
       };
       return followItem;
